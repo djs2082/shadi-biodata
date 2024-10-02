@@ -1,5 +1,4 @@
 import { Button, FormControl, OutlinedInput } from "@mui/material";
-import { CounterAPI } from "counterapi";
 import axios from 'axios';
 import FormField from "../UtilComponents/FormField";
 import { saveAs } from 'file-saver';
