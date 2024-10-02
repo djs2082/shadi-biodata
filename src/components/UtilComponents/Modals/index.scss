@@ -1,0 +1,75 @@
+.modal-header-content {
+  display: flex;
+  justify-content: flex-end;
+  .MuiButtonBase-root.MuiIconButton-root {
+    background-color: "#e5eef1";
+    width: 24px;
+    height: 24px;
+  }
+  .MuiSvgIcon-root {
+    font-size: 10px !important;
+    color: "#0483df";
+    width: 15px;
+    height: 15px;
+    stroke: "#0483df";
+    stroke-width: 2px;
+  }
+}
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px 26px 30px;
+  row-gap: 24px;
+  .modal-content {
+    box-shadow: none !important;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-direction: column;
+    .modal-image {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .modal-with-no-icon {
+      justify-content: center;
+    }
+
+    .modal-with-justified-content {
+      flex-direction: column;
+      gap: 24px;
+    }
+    .modal-text-and-icon {
+      box-shadow: none !important;
+      display: flex;
+      column-gap: 24px;
+      justify-content: flex-start;
+      width: 100%;
+      .modal-text {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    .modal-form {
+      width: 100%;
+    }
+  }
+
+  .modal-content-header {
+    color: "#788892";
+    font-size: 20px;
+  }
+  .modal-buttons {
+    display: flex;
+    column-gap: 24px;
+    width: 100%;
+  }
+  .modal-buttons-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

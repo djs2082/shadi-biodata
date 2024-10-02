@@ -20,8 +20,10 @@ interface FormFieldProps {
   key?: number;
   required?: boolean;
   label: string;
+  value: string;
   onDelete: () => void;
   onFieldMove: (direction: 'up' | 'down') => void;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }
 
 const FormField: React.FC<FormFieldProps> = ({
@@ -30,10 +32,9 @@ const FormField: React.FC<FormFieldProps> = ({
   label,
   onDelete,
   onFieldMove,
+  onChange,
+  value
 }) => {
-  useEffect(() => {
-    console.log(key);
-  }, [key]);
 
   const formFieldKey = key ? key : uuidv4();
   return (
@@ -63,17 +64,19 @@ const FormField: React.FC<FormFieldProps> = ({
           // sx={{ width: "100%" }}
         /> */}
         <InputLabel htmlFor='custom-text-field' sx={{ color: '#1a1e3e' }}>
-          {label}
+          {`${label} ${required ? " (Required)" : ""}`}
         </InputLabel>
         <FormControl sx={{ width: '100%' }} variant='outlined'>
           <OutlinedInput
             id={`value_${formFieldKey}`}
-            placeholder={required ? `Enter ${label}` : `Enter ${label} Value`}
+            placeholder={required ? `Enter ${label}` : `Enter ${label}`}
             sx={{
               '& .MuiInputBase-input': {
                 color: '#1a1e3e',
               },
             }}
+            value={value}
+            onChange={onChange}
           />
           {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDatePicker

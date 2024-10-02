@@ -1,20 +1,30 @@
-import { Button } from '@mui/material';
-import FormField from '../UtilComponents/FormField';
-import AddIcon from '@mui/icons-material/Add';
-import './index.scss';
-import { useState } from 'react';
+import { Button, FormControl, OutlinedInput } from "@mui/material";
+import FormField from "../UtilComponents/FormField";
+import { saveAs } from 'file-saver';
+import AddIcon from "@mui/icons-material/Add";
+import { pdf } from '@react-pdf/renderer';
+import "./index.scss";
+import { useEffect, useState } from "react";
 // import PermMediaIcon from '@mui/icons-material/PermMedia';
 // import Cropper from "react-easy-crop";
 // import getCroppedImg from './cropImage'; // Helper function to crop the image (explained below)
 // import { Area } from 'react-easy-crop';
 // import axios from 'axios';
-import ImageCropModal from '../UtilComponents/ImgeCropModal';
+import ImageCropModal from "../UtilComponents/ImgeCropModal";
+import BasicTemplate from "../BioDataTemplates/BasicTemplate";
+import PrimaryButton from "../UtilComponents/Buttons/PrimaryButton";
+import SecondaryButton from "../UtilComponents/Buttons/SecondaryButton";
+import Modal from "../UtilComponents/Modals/Modal";
+import CustomModal from "../UtilComponents/Modals/Modal";
+import { FormDataFields } from "./formDataFields";
 // import { relative } from "path";
+
 
 interface FormDataField {
   id: number;
   label: string;
   type: string;
+  value: string;
   required: boolean;
 }
 
@@ -25,84 +35,13 @@ interface FormDataFieldGorup {
 }
 
 const BioDataForm = () => {
-  const BioDataFormData: FormDataFieldGorup[] = [
-    {
-      id: 1,
-      title: 'Personal Details',
-      data: [
-        {
-          id: 1,
-          label: 'Full Name',
-          type: 'text',
-          required: true,
-        },
-        {
-          id: 2,
-          label: 'Date Of Birth',
-          type: 'date',
-          required: true,
-        },
-        {
-          id: 3,
-          label: 'Place Of Birth',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: 'Family Details',
-      data: [
-        {
-          id: 1,
-          label: 'Full Name',
-          type: 'text',
-          required: true,
-        },
-        {
-          id: 2,
-          label: 'Date Of Birth',
-          type: 'date',
-          required: true,
-        },
-        {
-          id: 3,
-          label: 'Place Of Birth',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: 'Education Details',
-      data: [
-        {
-          id: 1,
-          label: 'Full Name',
-          type: 'text',
-          required: true,
-        },
-        {
-          id: 2,
-          label: 'Date Of Birth',
-          type: 'date',
-          required: true,
-        },
-        {
-          id: 3,
-          label: 'Place Of Birth',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
-  ];
+  const [showExtraFieldForm, setShowExtraFieldForm] = useState(false);
+  const BioDataFormData: FormDataFieldGorup[] = FormDataFields;
 
   const ExtraFieldTemplate = {
-    label: 'Field',
-    type: 'string',
+    label: "Field",
+    type: "string",
+    value:"",
     required: false,
   };
 
@@ -114,15 +53,29 @@ const BioDataForm = () => {
   // const [croppedImage, setCroppedImage] = useState<string | null>(null);
   // const [crop, setCrop] = useState({ x: 0, y: 0 });
   // const [zoom, setZoom] = useState(1);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [extraFieldFormGroupId, setExtraFieldFormGroupId] = useState<number | null>(null);
+  const [extraFieldName, setExtraFieldName] = useState<string>("");
+  const [extraFieldValue, setExtraFieldValue] = useState<string>();
+
+  const hideExtraFieldForm = () => {
+    setShowExtraFieldForm(false);
+    setExtraFieldFormGroupId(null);
+    setExtraFieldName("");
+    setExtraFieldValue("");
+  }
+
+  const addExtraFieldForm = (id: number) => {
+    setExtraFieldFormGroupId(id);
+    setShowExtraFieldForm(true);
+  }
 
   const removeFormField = (parentDataId: number, childDataId: number) => {
-    console.log('here');
-    const updatedFormDataGroups = formDataFieldsGroup.map(group => {
+    const updatedFormDataGroups = formDataFieldsGroup.map((group) => {
       if (group.id === parentDataId) {
         return {
           ...group,
-          data: group.data.filter(field => field.id !== childDataId),
+          data: group.data.filter((field) => field.id !== childDataId),
         };
       }
       return group;
@@ -130,16 +83,21 @@ const BioDataForm = () => {
     setFormDataFieldsGroup(updatedFormDataGroups); // Update state with the new array
   };
 
-  const addFormField = (id: number) => {
-    const updatedFormDataGroups = formDataFieldsGroup.map(group => {
-      if (group.id === id) {
+
+  const addFormField = () => {
+    const updatedFormDataGroups = formDataFieldsGroup.map((group) => {
+      if (group.id === extraFieldFormGroupId) {
+        const maxId = Math.max(...group.data.map((field)=>field.id))
         return {
           ...group,
           data: [
             ...group.data,
             {
-              id: group.data.length + 1, // New field ID
-              ...ExtraFieldTemplate,
+              id: maxId + 1, // New field ID
+              label: extraFieldName,
+              value: extraFieldValue || "",
+              type: "string",
+              required: false,
             },
           ],
         };
@@ -148,27 +106,41 @@ const BioDataForm = () => {
     });
 
     setFormDataFieldsGroup(updatedFormDataGroups); // Update state with the new array
+    hideExtraFieldForm();
   };
+
+  const resetFormFields = () => {
+    const updatedFormDataGroups: FormDataFieldGorup[] = formDataFieldsGroup.map((group) => (
+      {
+          ...group,
+          data: group.data.map((field)=>(
+            {
+              ...field,
+              value: ""
+            }))
+    }))
+    setFormDataFieldsGroup(updatedFormDataGroups); // Update state with the new array
+  }
 
   const moveTheFormField = (
     parentFiledId: number,
     childFieldId: number,
-    direction: 'up' | 'down'
+    direction: "up" | "down"
   ) => {
     const parentGroup = formDataFieldsGroup.find(
-      group => group.id === parentFiledId
+      (group) => group.id === parentFiledId
     );
     if (!parentGroup) return;
     const data = parentGroup?.data;
-    const index = data.findIndex(item => item.id === childFieldId);
+    const index = data.findIndex((item) => item.id === childFieldId);
     if (index === -1) {
-      console.error('Item not found');
+      console.error("Item not found");
       return; // Item not found, return original array
     }
-    let newIndex = direction === 'up' ? index - 1 : index + 1;
+    let newIndex = direction === "up" ? index - 1 : index + 1;
     // Check if the new index is valid
     if (newIndex < 0 || newIndex >= data.length) {
-      console.error('Cannot move in that direction');
+      console.error("Cannot move in that direction");
       return; // New index is out of bounds
     }
 
@@ -176,7 +148,7 @@ const BioDataForm = () => {
     const newData = [...data]; // Create a copy of the array
     [newData[index], newData[newIndex]] = [newData[newIndex], newData[index]];
     setFormDataFieldsGroup(
-      formDataFieldsGroup.map(group => {
+      formDataFieldsGroup.map((group) => {
         if (group.id === parentFiledId) {
           return { ...group, data: newData };
         }
@@ -184,6 +156,13 @@ const BioDataForm = () => {
       })
     );
   };
+
+  const downloadPdf = async () => {
+    const fileName = 'test.pdf';
+    const blob  = await pdf(<BasicTemplate data={formDataFieldsGroup}/>).toBlob();
+    saveAs(blob, fileName);
+  }
+
 
   // const handleFileChange = async (
   //   event: React.ChangeEvent<HTMLInputElement>
@@ -235,7 +214,7 @@ const BioDataForm = () => {
     if (e.target.files && e.target.files.length > 0) {
       // const file = e.target.files[0];
       // let imageDataUrl = await readFile(file);
-      console.log('uploading files');
+      console.log("uploading files");
       // setImageSrc(imageDataUrl);
       setShowModal(true);
     }
@@ -249,46 +228,82 @@ const BioDataForm = () => {
   //   });
   // }
 
+  const handleValueChange = (groupId: number,fieldId: number,value: string) => {
+      const updatedFormDataGroups = formDataFieldsGroup.map((group) => {
+        if (group.id === groupId) {
+          group.data = group.data.map((field)=>{
+            if(field.id === fieldId){
+              return {
+                ...field,
+                value
+              }
+            }
+            return field;
+          })
+        }
+        return group;
+      });
+  
+      setFormDataFieldsGroup(updatedFormDataGroups); // Update state with the new array
+  }
+
   return (
-    <div className='biodata-form-wrapper'>
-      <div className='biodata-fields-wrapper'>
-        {formDataFieldsGroup.map(data => (
+    <div className="biodata-form-outer-wrapper">
+    <div className="biodata-form-wrapper">
+      <div className="biodata-fields-wrapper">
+        {formDataFieldsGroup.map((data) => (
           <>
-            <p className='biodata-field-title'>{data.title}</p>
-            {data.data.map(field => (
+            <p className="biodata-field-title">{data.title}</p>
+            {data.data.map((field) => (
               <FormField
                 key={field.id}
                 label={field.label}
                 required={field.required}
                 onDelete={() => removeFormField(data.id, field.id)}
-                onFieldMove={(direction: 'up' | 'down') =>
+                onFieldMove={(direction: "up" | "down") =>
                   moveTheFormField(data.id, field.id, direction)
                 }
+                value={field.value}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=>{handleValueChange(data.id, field.id, e.target.value)}}
               />
             ))}
             <Button
-              variant='text'
-              className='add-field-btn'
-              onClick={() => addFormField(data.id)}
+              variant="text"
+              className="add-field-btn"
+              onClick={() => addExtraFieldForm(data.id)}
             >
               <AddIcon /> Add More Fields
             </Button>
           </>
         ))}
+        <div className="biodata-form-buttons-wrpper">
+          <PrimaryButton onClick={(e) => { downloadPdf()}}> Submit</PrimaryButton>
+          <SecondaryButton onClick={(e) => resetFormFields()}> Reset Form</SecondaryButton>
+        </div>
+        {/* <Button variant="text" className="add-field-btn" onClick={downloadPdf}>
+          Submit
+        </Button> */}
+
+        {/* <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
+         {({blob, url, loading, error}) => (loading ? 'Loading document ...': 'Download now!')}
+        </PDFDownloadLink> */}
       </div>
 
       <input
-        id='fileInput'
-        className='d-none'
-        type='file'
+        id="fileInput"
+        className="d-none"
+        disabled
+        type="file"
         // accept="image/*"
-        style={{ display: 'none' }}
+        style={{ display: "none", cursor: "not-allowed" }}
         onChange={onFileChange}
       />
       <div
-        className='biodata-profile-picture-wrapper'
-        onClick={() => document.getElementById('fileInput')?.click()}
+      style={{cursor: "not-allowed"}}
+        className="biodata-profile-picture-wrapper"
+        onClick={() => document.getElementById("fileInput")?.click()}
       >
+        <p> coming soon....</p>
         {/* {croppedImage ? (
           <img className='h-48' src={croppedImage} alt='crop' />
         ) : (
@@ -308,7 +323,11 @@ const BioDataForm = () => {
         <button onClick={handleUpload} disabled={!croppedImage}>
           Upload Image
         </button> */}
+ 
       </div>
+
+    </div>
+
 
       <ImageCropModal
         show={showModal}
@@ -335,6 +354,40 @@ const BioDataForm = () => {
         // onHide={() => {}}
       />
       {/* </input> */}
+      <CustomModal 
+      show={showExtraFieldForm} 
+      onHide={()=>{hideExtraFieldForm()}} 
+      header={<div>Enter Field Name and Value</div>} 
+      body={<div style={{display: "flex", flexDirection: "column", rowGap: "16px"}}>
+        <FormControl sx={{ width: '100%', display: "flex", rowGap: "16px" }} variant='outlined'>
+          <OutlinedInput
+            id={`extra_field_label`}
+            placeholder="Enter Field Name"
+            sx={{
+              '& .MuiInputBase-input': {
+                color: '#1a1e3e',
+              },
+            }}
+            onChange={(e)=>setExtraFieldName(e.target.value)}
+            value={extraFieldName}
+          />
+        </FormControl>
+        <FormControl sx={{ width: '100%', display: "flex", rowGap: "16px" }} variant='outlined'>
+          <OutlinedInput
+            id={`extra_field_value`}
+            placeholder="Enter Field Value"
+            sx={{
+              '& .MuiInputBase-input': {
+                color: '#1a1e3e',
+              },
+            }}
+            onChange={(e)=>setExtraFieldValue(e.target.value)}
+            value={extraFieldValue}
+          />
+      </FormControl>
+      </div>} 
+      primaryButton={<PrimaryButton onClick={()=>{addFormField()}}>Save</PrimaryButton>} 
+      secondaryButton={<SecondaryButton onClick={()=>{hideExtraFieldForm()}}>Cancel</SecondaryButton>}/>
     </div>
   );
 };

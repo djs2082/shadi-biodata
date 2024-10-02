@@ -49,6 +49,15 @@
       flex-direction: column;
       justify-content: center;
     }
+    .biodata-form-buttons-wrpper {
+      display: flex;
+      column-gap: 32px;
+      justify-content: flex-end;
+      margin-bottom: 32px;
+      > button {
+        width: 320px;
+      }
+    }
   }
   .biodata-profile-picture-wrapper {
     display: flex;
