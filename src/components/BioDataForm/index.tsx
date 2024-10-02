@@ -91,7 +91,7 @@ const BioDataForm = () => {
       console.log(res.data.count)
       setCurrentCount(res.data.count);
     })
-  },[])
+  },[url])
 
 
 
