@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver';
 import AddIcon from "@mui/icons-material/Add";
 import { pdf } from '@react-pdf/renderer';
 import "./index.scss";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 // import PermMediaIcon from '@mui/icons-material/PermMedia';
 // import Cropper from "react-easy-crop";
 // import getCroppedImg from './cropImage'; // Helper function to crop the image (explained below)
@@ -14,7 +14,6 @@ import ImageCropModal from "../UtilComponents/ImgeCropModal";
 import BasicTemplate from "../BioDataTemplates/BasicTemplate";
 import PrimaryButton from "../UtilComponents/Buttons/PrimaryButton";
 import SecondaryButton from "../UtilComponents/Buttons/SecondaryButton";
-import Modal from "../UtilComponents/Modals/Modal";
 import CustomModal from "../UtilComponents/Modals/Modal";
 import { FormDataFields } from "./formDataFields";
 // import { relative } from "path";
@@ -37,13 +36,6 @@ interface FormDataFieldGorup {
 const BioDataForm = () => {
   const [showExtraFieldForm, setShowExtraFieldForm] = useState(false);
   const BioDataFormData: FormDataFieldGorup[] = FormDataFields;
-
-  const ExtraFieldTemplate = {
-    label: "Field",
-    type: "string",
-    value:"",
-    required: false,
-  };
 
   const [formDataFieldsGroup, setFormDataFieldsGroup] =
     useState<FormDataFieldGorup[]>(BioDataFormData);

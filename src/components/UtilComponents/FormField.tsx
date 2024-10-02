@@ -14,7 +14,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { v4 as uuidv4 } from 'uuid';
 import './index.scss';
-import { useEffect } from 'react';
 
 interface FormFieldProps {
   key?: number;

@@ -1,4 +1,3 @@
-import { BorderColor } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 
 interface SecondaryButtonProps {

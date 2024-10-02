@@ -85,21 +85,7 @@ const BasicTemplate = (props) => {
       dateOfBirth,
       placeOfBirth,
     });
-  }, []);
-
-  const getPersonalDetail = () => {
-    let fullName = "";
-    props.data.each((data) => {
-      if (data.title === "Personal Details") {
-        data.data.each((field) => {
-          if (field.title === "Full Name") {
-            fullName = field.value;
-          }
-        });
-      }
-    });
-    return fullName;
-  };
+  }, [props.data]);
 
   return (
     <Document>

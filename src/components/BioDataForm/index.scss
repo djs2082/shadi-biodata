@@ -2,13 +2,19 @@
   display: flex;
   column-gap: 16px;
   margin: 0 40px;
-  width: 100%;
+  @media screen and (max-width: 480px) {
+    margin: 0 4px;
+  }
+  width: 90vw;
   height: 100vh;
   .biodata-fields-wrapper {
     display: flex;
     flex-direction: column;
     row-gap: 16px;
     width: 65%;
+    @media screen and (max-width: 480px) {
+      width: 100vw;
+    }
     overflow-y: auto;
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
@@ -72,6 +78,9 @@
     margin-bottom: 1rem;
     border: 1px solid #e8eaef;
     background-color: #e8eaef;
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
     cursor: pointer;
     > p {
       width: 240px;

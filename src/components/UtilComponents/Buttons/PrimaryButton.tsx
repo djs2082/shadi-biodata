@@ -1,5 +1,4 @@
 import Button from "@mui/material/Button";
-import { MouseEventHandler } from "react";
 
 interface PrimaryButtonProps {
   sx?: { [key: string]: string };
