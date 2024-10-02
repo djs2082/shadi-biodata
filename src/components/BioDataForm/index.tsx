@@ -1,10 +1,12 @@
 import { Button, FormControl, OutlinedInput } from "@mui/material";
+import { CounterAPI } from "counterapi";
+import axios from 'axios';
 import FormField from "../UtilComponents/FormField";
 import { saveAs } from 'file-saver';
 import AddIcon from "@mui/icons-material/Add";
 import { pdf } from '@react-pdf/renderer';
 import "./index.scss";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 // import PermMediaIcon from '@mui/icons-material/PermMedia';
 // import Cropper from "react-easy-crop";
 // import getCroppedImg from './cropImage'; // Helper function to crop the image (explained below)
@@ -37,6 +39,8 @@ const BioDataForm = () => {
   const [showExtraFieldForm, setShowExtraFieldForm] = useState(false);
   const BioDataFormData: FormDataFieldGorup[] = FormDataFields;
 
+
+
   const [formDataFieldsGroup, setFormDataFieldsGroup] =
     useState<FormDataFieldGorup[]>(BioDataFormData);
   // const [imageSrc, setImageSrc] = useState<any>(null);
@@ -49,6 +53,13 @@ const BioDataForm = () => {
   const [extraFieldFormGroupId, setExtraFieldFormGroupId] = useState<number | null>(null);
   const [extraFieldName, setExtraFieldName] = useState<string>("");
   const [extraFieldValue, setExtraFieldValue] = useState<string>();
+  const [currentCount, setCurrentCount] = useState<string>();
+
+  const url =  (process.env.NODE_ENV === 'production') ?
+  'https://api.counterapi.dev/v1/shadibiodata/prod':
+  'https://api.counterapi.dev/v1/shadibiodata/dev'
+
+
 
   const hideExtraFieldForm = () => {
     setShowExtraFieldForm(false);
@@ -74,6 +85,15 @@ const BioDataForm = () => {
     });
     setFormDataFieldsGroup(updatedFormDataGroups); // Update state with the new array
   };
+
+  useEffect(()=>{
+    axios.get(url)
+    .then((res)=>{
+      console.log(res.data.count)
+      setCurrentCount(res.data.count);
+    })
+  },[])
+
 
 
   const addFormField = () => {
@@ -153,6 +173,13 @@ const BioDataForm = () => {
     const fileName = 'test.pdf';
     const blob  = await pdf(<BasicTemplate data={formDataFieldsGroup}/>).toBlob();
     saveAs(blob, fileName);
+    const url =  (process.env.NODE_ENV === 'production') ?
+    'https://api.counterapi.dev/v1/shadibiodata/prod/up':
+    'https://api.counterapi.dev/v1/shadibiodata/dev/up'
+    axios.get(url).then((res)=>{
+      console.log(res);
+      setCurrentCount(res.data.count);
+    })
   }
 
 
@@ -241,6 +268,7 @@ const BioDataForm = () => {
 
   return (
     <div className="biodata-form-outer-wrapper">
+      {currentCount && <p><div className="blinking-dot"></div>{`  ${currentCount} biodatas created today`}</p>}
     <div className="biodata-form-wrapper">
       <div className="biodata-fields-wrapper">
         {formDataFieldsGroup.map((data) => (
