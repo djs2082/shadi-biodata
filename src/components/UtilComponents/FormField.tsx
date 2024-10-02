@@ -2,26 +2,26 @@ import {
   FormControl,
   IconButton,
   OutlinedInput,
-  TextField,
+  // TextField,
   InputLabel,
   Tooltip,
-} from "@mui/material";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { v4 as uuidv4 } from "uuid";
-import "./index.scss";
-import { useEffect } from "react";
+} from '@mui/material';
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { v4 as uuidv4 } from 'uuid';
+import './index.scss';
+import { useEffect } from 'react';
 
 interface FormFieldProps {
   key?: number;
   required?: boolean;
   label: string;
   onDelete: () => void;
-  onFieldMove: (direction: "up" | "down") => void;
+  onFieldMove: (direction: 'up' | 'down') => void;
 }
 
 const FormField: React.FC<FormFieldProps> = ({
@@ -37,8 +37,8 @@ const FormField: React.FC<FormFieldProps> = ({
 
   const formFieldKey = key ? key : uuidv4();
   return (
-    <div className="form-field-wrapper">
-      <div className="form-fields">
+    <div className='form-field-wrapper'>
+      <div className='form-fields'>
         {/* <TextField
           id={`label_${formFieldKey}`}
           label={required ? `${label} ${required ? "(Required)" : ""}` : ""}
@@ -62,16 +62,16 @@ const FormField: React.FC<FormFieldProps> = ({
           }}
           // sx={{ width: "100%" }}
         /> */}
-        <InputLabel htmlFor="custom-text-field" sx={{ color: "#1a1e3e" }}>
+        <InputLabel htmlFor='custom-text-field' sx={{ color: '#1a1e3e' }}>
           {label}
         </InputLabel>
-        <FormControl sx={{ width: "100%" }} variant="outlined">
+        <FormControl sx={{ width: '100%' }} variant='outlined'>
           <OutlinedInput
             id={`value_${formFieldKey}`}
             placeholder={required ? `Enter ${label}` : `Enter ${label} Value`}
             sx={{
-              "& .MuiInputBase-input": {
-                color: "#1a1e3e",
+              '& .MuiInputBase-input': {
+                color: '#1a1e3e',
               },
             }}
           />
@@ -87,26 +87,26 @@ const FormField: React.FC<FormFieldProps> = ({
           </LocalizationProvider> */}
         </FormControl>
       </div>
-      <div className="form-move-arrows">
-        <IconButton onClick={() => onFieldMove("up")}>
-          <ArrowDropUpIcon fontSize="large" />
+      <div className='form-move-arrows'>
+        <IconButton onClick={() => onFieldMove('up')}>
+          <ArrowDropUpIcon fontSize='large' />
         </IconButton>
-        <IconButton onClick={() => onFieldMove("down")}>
-          <ArrowDropDownIcon fontSize="large" />
+        <IconButton onClick={() => onFieldMove('down')}>
+          <ArrowDropDownIcon fontSize='large' />
         </IconButton>
       </div>
-      <div className="form-field-delete-icon">
-        <Tooltip title={required ? "Cannot Delete Required Field" : null} arrow>
+      <div className='form-field-delete-icon'>
+        <Tooltip title={required ? 'Cannot Delete Required Field' : null} arrow>
           <IconButton
             sx={{
-              cursor: required ? "not-allowed" : "pointer", // Apply `not-allowed` cursor when disabled
-              "&.Mui-disabled": {
-                cursor: "not-allowed", // Override default pointer cursor when disabled
+              cursor: required ? 'not-allowed' : 'pointer', // Apply `not-allowed` cursor when disabled
+              '&.Mui-disabled': {
+                cursor: 'not-allowed', // Override default pointer cursor when disabled
               },
             }}
-            onClick={() => (required ? "" : onDelete())}
+            onClick={() => (required ? '' : onDelete())}
           >
-            <DeleteIcon fontSize="large" sx={{ color: "rgb(235, 119, 117)" }} />
+            <DeleteIcon fontSize='large' sx={{ color: 'rgb(235, 119, 117)' }} />
           </IconButton>
         </Tooltip>
       </div>

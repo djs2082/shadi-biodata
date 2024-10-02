@@ -1,14 +1,14 @@
-import { Button } from "@mui/material";
-import FormField from "../UtilComponents/FormField";
-import AddIcon from "@mui/icons-material/Add";
-import "./index.scss";
-import { useCallback, useState } from "react";
-import PermMediaIcon from "@mui/icons-material/PermMedia";
-import Cropper from "react-easy-crop";
-import getCroppedImg from "./cropImage"; // Helper function to crop the image (explained below)
-import { Area } from "react-easy-crop";
-import axios from "axios";
-import ImageCropModal from "../UtilComponents/ImgeCropModal";
+import { Button } from '@mui/material';
+import FormField from '../UtilComponents/FormField';
+import AddIcon from '@mui/icons-material/Add';
+import './index.scss';
+import { useState } from 'react';
+// import PermMediaIcon from '@mui/icons-material/PermMedia';
+// import Cropper from "react-easy-crop";
+// import getCroppedImg from './cropImage'; // Helper function to crop the image (explained below)
+// import { Area } from 'react-easy-crop';
+// import axios from 'axios';
+import ImageCropModal from '../UtilComponents/ImgeCropModal';
 // import { relative } from "path";
 
 interface FormDataField {
@@ -28,72 +28,72 @@ const BioDataForm = () => {
   const BioDataFormData: FormDataFieldGorup[] = [
     {
       id: 1,
-      title: "Personal Details",
+      title: 'Personal Details',
       data: [
         {
           id: 1,
-          label: "Full Name",
-          type: "text",
+          label: 'Full Name',
+          type: 'text',
           required: true,
         },
         {
           id: 2,
-          label: "Date Of Birth",
-          type: "date",
+          label: 'Date Of Birth',
+          type: 'date',
           required: true,
         },
         {
           id: 3,
-          label: "Place Of Birth",
-          type: "text",
+          label: 'Place Of Birth',
+          type: 'text',
           required: true,
         },
       ],
     },
     {
       id: 2,
-      title: "Family Details",
+      title: 'Family Details',
       data: [
         {
           id: 1,
-          label: "Full Name",
-          type: "text",
+          label: 'Full Name',
+          type: 'text',
           required: true,
         },
         {
           id: 2,
-          label: "Date Of Birth",
-          type: "date",
+          label: 'Date Of Birth',
+          type: 'date',
           required: true,
         },
         {
           id: 3,
-          label: "Place Of Birth",
-          type: "text",
+          label: 'Place Of Birth',
+          type: 'text',
           required: true,
         },
       ],
     },
     {
       id: 3,
-      title: "Education Details",
+      title: 'Education Details',
       data: [
         {
           id: 1,
-          label: "Full Name",
-          type: "text",
+          label: 'Full Name',
+          type: 'text',
           required: true,
         },
         {
           id: 2,
-          label: "Date Of Birth",
-          type: "date",
+          label: 'Date Of Birth',
+          type: 'date',
           required: true,
         },
         {
           id: 3,
-          label: "Place Of Birth",
-          type: "text",
+          label: 'Place Of Birth',
+          type: 'text',
           required: true,
         },
       ],
@@ -101,28 +101,28 @@ const BioDataForm = () => {
   ];
 
   const ExtraFieldTemplate = {
-    label: "Field",
-    type: "string",
+    label: 'Field',
+    type: 'string',
     required: false,
   };
 
   const [formDataFieldsGroup, setFormDataFieldsGroup] =
     useState<FormDataFieldGorup[]>(BioDataFormData);
-  const [imageSrc, setImageSrc] = useState<any>(null);
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [croppedArea, setCroppedArea] = useState<any>(null);
-  const [croppedImage, setCroppedImage] = useState<string | null>(null);
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
+  // const [imageSrc, setImageSrc] = useState<any>(null);
+  // const [imageFile, setImageFile] = useState<File | null>(null);
+  // const [croppedArea, setCroppedArea] = useState<any>(null);
+  // const [croppedImage, setCroppedImage] = useState<string | null>(null);
+  // const [crop, setCrop] = useState({ x: 0, y: 0 });
+  // const [zoom, setZoom] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
   const removeFormField = (parentDataId: number, childDataId: number) => {
-    console.log("here");
-    const updatedFormDataGroups = formDataFieldsGroup.map((group, index) => {
+    console.log('here');
+    const updatedFormDataGroups = formDataFieldsGroup.map(group => {
       if (group.id === parentDataId) {
         return {
           ...group,
-          data: group.data.filter((field) => field.id !== childDataId),
+          data: group.data.filter(field => field.id !== childDataId),
         };
       }
       return group;
@@ -131,7 +131,7 @@ const BioDataForm = () => {
   };
 
   const addFormField = (id: number) => {
-    const updatedFormDataGroups = formDataFieldsGroup.map((group, index) => {
+    const updatedFormDataGroups = formDataFieldsGroup.map(group => {
       if (group.id === id) {
         return {
           ...group,
@@ -153,22 +153,22 @@ const BioDataForm = () => {
   const moveTheFormField = (
     parentFiledId: number,
     childFieldId: number,
-    direction: "up" | "down"
+    direction: 'up' | 'down'
   ) => {
     const parentGroup = formDataFieldsGroup.find(
-      (group) => group.id === parentFiledId
+      group => group.id === parentFiledId
     );
     if (!parentGroup) return;
     const data = parentGroup?.data;
-    const index = data.findIndex((item) => item.id === childFieldId);
+    const index = data.findIndex(item => item.id === childFieldId);
     if (index === -1) {
-      console.error("Item not found");
+      console.error('Item not found');
       return; // Item not found, return original array
     }
-    let newIndex = direction === "up" ? index - 1 : index + 1;
+    let newIndex = direction === 'up' ? index - 1 : index + 1;
     // Check if the new index is valid
     if (newIndex < 0 || newIndex >= data.length) {
-      console.error("Cannot move in that direction");
+      console.error('Cannot move in that direction');
       return; // New index is out of bounds
     }
 
@@ -176,7 +176,7 @@ const BioDataForm = () => {
     const newData = [...data]; // Create a copy of the array
     [newData[index], newData[newIndex]] = [newData[newIndex], newData[index]];
     setFormDataFieldsGroup(
-      formDataFieldsGroup.map((group) => {
+      formDataFieldsGroup.map(group => {
         if (group.id === parentFiledId) {
           return { ...group, data: newData };
         }
@@ -185,90 +185,90 @@ const BioDataForm = () => {
     );
   };
 
-  const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
+  // const handleFileChange = async (
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   const file = event.target.files?.[0];
+  //   if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImageSrc(reader.result as string);
-      setImageFile(file);
-    };
-    reader.readAsDataURL(file);
-  };
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     setImageSrc(reader.result as string);
+  //     setImageFile(file);
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
 
-  const onCropComplete = useCallback((_: Area, croppedAreaPixels: Area) => {
-    setCroppedArea(croppedAreaPixels);
-  }, []);
+  // const onCropComplete = useCallback((_: Area, croppedAreaPixels: Area) => {
+  //   setCroppedArea(croppedAreaPixels);
+  // }, []);
 
-  const showCroppedImage = useCallback(async () => {
-    try {
-      if (!imageSrc || !croppedArea) return;
-      const croppedImageUrl = await getCroppedImg(imageSrc, croppedArea);
-      setCroppedImage(croppedImageUrl);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [imageSrc, croppedArea]);
+  // const showCroppedImage = useCallback(async () => {
+  //   try {
+  //     if (!imageSrc || !croppedArea) return;
+  //     const croppedImageUrl = await getCroppedImg(imageSrc, croppedArea);
+  //     setCroppedImage(croppedImageUrl);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }, [imageSrc, croppedArea]);
 
-  const handleUpload = async () => {
-    if (!croppedImage || !imageFile) return;
+  // const handleUpload = async () => {
+  //   if (!croppedImage || !imageFile) return;
 
-    const formData = new FormData();
-    const blob = await (await fetch(croppedImage)).blob(); // Converting cropped image to Blob
+  //   const formData = new FormData();
+  //   const blob = await (await fetch(croppedImage)).blob(); // Converting cropped image to Blob
 
-    formData.append("image", blob, imageFile.name);
+  //   formData.append('image', blob, imageFile.name);
 
-    try {
-      const response = await axios.post("/api/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      console.log("Image uploaded successfully:", response.data);
-    } catch (error) {
-      console.error("Image upload failed:", error);
-    }
-  };
+  //   try {
+  //     const response = await axios.post('/api/upload', formData, {
+  //       headers: { 'Content-Type': 'multipart/form-data' },
+  //     });
+  //     console.log('Image uploaded successfully:', response.data);
+  //   } catch (error) {
+  //     console.error('Image upload failed:', error);
+  //   }
+  // };
 
   const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      let imageDataUrl = await readFile(file);
-      console.log("uploading files");
-      setImageSrc(imageDataUrl);
+      // const file = e.target.files[0];
+      // let imageDataUrl = await readFile(file);
+      console.log('uploading files');
+      // setImageSrc(imageDataUrl);
       setShowModal(true);
     }
   };
 
-  function readFile(file: File) {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.addEventListener("load", () => resolve(reader.result), false);
-      reader.readAsDataURL(file);
-    });
-  }
+  // function readFile(file: File) {
+  //   return new Promise(resolve => {
+  //     const reader = new FileReader();
+  //     reader.addEventListener('load', () => resolve(reader.result), false);
+  //     reader.readAsDataURL(file);
+  //   });
+  // }
 
   return (
-    <div className="biodata-form-wrapper">
-      <div className="biodata-fields-wrapper">
-        {formDataFieldsGroup.map((data) => (
+    <div className='biodata-form-wrapper'>
+      <div className='biodata-fields-wrapper'>
+        {formDataFieldsGroup.map(data => (
           <>
-            <p className="biodata-field-title">{data.title}</p>
-            {data.data.map((field) => (
+            <p className='biodata-field-title'>{data.title}</p>
+            {data.data.map(field => (
               <FormField
                 key={field.id}
                 label={field.label}
                 required={field.required}
                 onDelete={() => removeFormField(data.id, field.id)}
-                onFieldMove={(direction: "up" | "down") =>
+                onFieldMove={(direction: 'up' | 'down') =>
                   moveTheFormField(data.id, field.id, direction)
                 }
               />
             ))}
             <Button
-              variant="text"
-              className="add-field-btn"
+              variant='text'
+              className='add-field-btn'
               onClick={() => addFormField(data.id)}
             >
               <AddIcon /> Add More Fields
@@ -278,30 +278,30 @@ const BioDataForm = () => {
       </div>
 
       <input
-        id="fileInput"
-        className="d-none"
-        type="file"
+        id='fileInput'
+        className='d-none'
+        type='file'
         // accept="image/*"
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         onChange={onFileChange}
       />
       <div
-        className="biodata-profile-picture-wrapper"
-        onClick={() => document.getElementById("fileInput")?.click()}
+        className='biodata-profile-picture-wrapper'
+        onClick={() => document.getElementById('fileInput')?.click()}
       >
-        {croppedImage ? (
-          <img className="h-48" src={croppedImage} alt="crop" />
+        {/* {croppedImage ? (
+          <img className='h-48' src={croppedImage} alt='crop' />
         ) : (
           <>
             <PermMediaIcon
-              sx={{ width: "100px", fontSize: "100px", color: "#64728c" }}
+              sx={{ width: '100px', fontSize: '100px', color: '#64728c' }}
             />
             <p>
               Click here to add your photo <br />
               (Up to 20MB in size)
             </p>
           </>
-        )}
+        )} */}
 
         {/* Buttons for cropping and uploading */}
         {/* <button onClick={showCroppedImage}>Crop Image</button>
