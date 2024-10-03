@@ -22,7 +22,9 @@ interface FormFieldProps {
   value: string;
   onDelete: () => void;
   onFieldMove: (direction: 'up' | 'down') => void;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void;
 }
 
 const FormField: React.FC<FormFieldProps> = ({
@@ -32,10 +34,9 @@ const FormField: React.FC<FormFieldProps> = ({
   onDelete,
   onFieldMove,
   onChange,
-  value
+  value,
 }) => {
-
-  const formFieldKey = key ? key : uuidv4();
+  const formFieldKey = key || uuidv4();
   return (
     <div className='form-field-wrapper'>
       <div className='form-fields'>
@@ -63,7 +64,7 @@ const FormField: React.FC<FormFieldProps> = ({
           // sx={{ width: "100%" }}
         /> */}
         <InputLabel htmlFor='custom-text-field' sx={{ color: '#1a1e3e' }}>
-          {`${label} ${required ? " (Required)" : ""}`}
+          {`${label} ${required ? ' (Required)' : ''}`}
         </InputLabel>
         <FormControl sx={{ width: '100%' }} variant='outlined'>
           <OutlinedInput

@@ -1,4 +1,4 @@
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
 interface PrimaryButtonProps {
   sx?: { [key: string]: string };
@@ -17,32 +17,32 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 }) => {
   const PrimaryButtonStyle = {
     ...sx,
-    maxWidth: "100%",
-    height: "40px",
-    width: "240px",
-    background: "linear-gradient(270deg, #0483df -0.05%, #004b87 99.95%)",
-    borderRadius: "4px",
-    fontSize: "16px",
-    textAlign: "center",
-    color: "white",
-    textTransform: "none",
+    maxWidth: '100%',
+    height: '40px',
+    width: '240px',
+    background: 'linear-gradient(270deg, #0483df -0.05%, #004b87 99.95%)',
+    borderRadius: '4px',
+    fontSize: '16px',
+    textAlign: 'center',
+    color: 'white',
+    textTransform: 'none',
 
-    "&:hover": {
-      boxShadow: "0px 4px 4px rgba(138, 110, 147, 0.5)",
-      borderRadius: "4px",
+    '&:hover': {
+      boxShadow: '0px 4px 4px rgba(138, 110, 147, 0.5)',
+      borderRadius: '4px',
     },
-    "&:active": {
-      background: "#004b87",
+    '&:active': {
+      background: '#004b87',
     },
-    "&:disabled": {
-      background: "#e5eef1",
-      color: "#bcccd3",
+    '&:disabled': {
+      background: '#e5eef1',
+      color: '#bcccd3',
     },
   };
 
   return (
     <Button
-      className="primary-button"
+      className='primary-button'
       disabled={disabled}
       disableRipple={disableRipple}
       sx={PrimaryButtonStyle}

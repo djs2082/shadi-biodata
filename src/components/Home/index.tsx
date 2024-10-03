@@ -1,4 +1,4 @@
-import BioDataForm from "../BioDataForm";
+import BioDataForm from '../BioDataForm';
 
 const Home = () => {
   return (

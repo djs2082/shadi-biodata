@@ -1,11 +1,11 @@
-import { Area } from "react-easy-crop";
+import { Area } from 'react-easy-crop';
 
 const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const image = new Image();
-    image.addEventListener("load", () => resolve(image));
-    image.addEventListener("error", (error) => reject(error));
-    image.setAttribute("crossOrigin", "anonymous"); // To avoid CORS issues
+    image.addEventListener('load', () => resolve(image));
+    image.addEventListener('error', error => reject(error));
+    image.setAttribute('crossOrigin', 'anonymous'); // To avoid CORS issues
     image.src = url;
   });
 
@@ -14,8 +14,8 @@ export default async function getCroppedImg(
   crop: Area
 ): Promise<string> {
   const image = await createImage(imageSrc);
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
 
   canvas.width = crop.width;
   canvas.height = crop.height;
@@ -32,8 +32,8 @@ export default async function getCroppedImg(
     crop.height
   );
 
-  return new Promise((resolve) => {
-    canvas.toDataURL("image/jpeg", (dataUrl: string) => {
+  return new Promise(resolve => {
+    canvas.toDataURL('image/jpeg', (dataUrl: string) => {
       resolve(dataUrl);
     });
   });

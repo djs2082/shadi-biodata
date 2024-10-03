@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Page,
   Text,
@@ -6,11 +6,11 @@ import {
   Document,
   StyleSheet,
   Font,
-} from "@react-pdf/renderer";
-import NotoSansFont from "./../../fonts/Noto_Sans/NotoSans-VariableFont_wdth.ttf";
+} from '@react-pdf/renderer';
+import NotoSansFont from './../../fonts/Noto_Sans/NotoSans-VariableFont_wdth.ttf';
 
 Font.register({
-  family: "Noto Sans Devanagari",
+  family: 'Noto Sans Devanagari',
   fonts: [
     {
       src: NotoSansFont,
@@ -21,30 +21,30 @@ Font.register({
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "Noto Sans Devanagari", // Use the registered font
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#E4E4E4",
-    border: "8px solid #a63e12",
+    fontFamily: 'Noto Sans Devanagari', // Use the registered font
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#E4E4E4',
+    border: '8px solid #a63e12',
   },
   title: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "24px",
-    textAlign: "center",
-    marginBottom: "20px",
-    marginTop: "20px",
-    color: "#a63e12",
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '24px',
+    textAlign: 'center',
+    marginBottom: '20px',
+    marginTop: '20px',
+    color: '#a63e12',
   },
   header: {
-    display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     name: {
-      fontSize: "28px",
-      fontWeight: "bold",
+      fontSize: '28px',
+      fontWeight: 'bold',
     },
   },
   section: {
@@ -54,27 +54,29 @@ const styles = StyleSheet.create({
   },
 });
 
-const BasicTemplate = (props) => {
+const BasicTemplate = props => {
   const [personalDetail, setPersonalDetail] = useState({
-    fullName: "",
-    dateOfBirth: "",
-    placeOfBirth: "",
+    fullName: '',
+    dateOfBirth: '',
+    placeOfBirth: '',
   });
 
   useEffect(() => {
-    let fullName = "";
-    let dateOfBirth = "";
-    let placeOfBirth = "";
-    props.data.forEach((data) => {
-      if (data.title === "Personal Details") {
-        data.data.forEach((field) => {
-          if (field.label === "Full Name") {
+    // eslint-disable-next-line
+    const { data } = props;
+    let fullName = '';
+    let dateOfBirth = '';
+    let placeOfBirth = '';
+    data.forEach(data => {
+      if (data.title === 'Personal Details') {
+        data.data.forEach(field => {
+          if (field.label === 'Full Name') {
             fullName = field.value;
           }
-          if (field.label === "Date Of Birth") {
+          if (field.label === 'Date Of Birth') {
             dateOfBirth = field.value;
           }
-          if (field.label === "Place Of Birth") {
+          if (field.label === 'Place Of Birth') {
             placeOfBirth = field.value;
           }
         });
@@ -89,7 +91,7 @@ const BasicTemplate = (props) => {
 
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
+      <Page size='A4' style={styles.page}>
         <View>
           <Text style={styles.title}>ॐ श्री गणेशाय नमः</Text>
         </View>
