@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import cornerFlowerRight from './images/corner_flower_right.png'
+import cornerFlowerLeft from './images/corner_flower_left.png'
 import {
   Page,
   Text,
@@ -6,6 +8,7 @@ import {
   Document,
   StyleSheet,
   Font,
+  Image,
 } from "@react-pdf/renderer";
 import NotoSansFont from "./../../fonts/Noto_Sans/NotoSans-VariableFont_wdth.ttf";
 
@@ -46,6 +49,14 @@ const styles = StyleSheet.create({
       fontSize: "28px",
       fontWeight: "bold",
     },
+  },
+  watermark: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    opacity: 0.1, // Set opacity to make it a watermark
+    width: 200, // Set the width of the watermark
+    height: 'auto',
   },
   section: {
     margin: 10,
@@ -90,6 +101,16 @@ const BasicTemplate = (props) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
+        <View>
+        <Image 
+        style={{...styles.watermark, right: 0}}
+        src={cornerFlowerRight}
+      />
+             <Image 
+        style={{...styles.watermark, left: 0}}
+        src={cornerFlowerLeft}
+      />
+        </View>
         <View>
           <Text style={styles.title}>ॐ श्री गणेशाय नमः</Text>
         </View>

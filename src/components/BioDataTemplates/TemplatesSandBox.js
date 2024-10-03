@@ -1,6 +1,7 @@
 import { PDFViewer } from "@react-pdf/renderer";
 import { useParams } from "react-router-dom";
 import BasicTemplate from "./BasicTemplate";
+import Data from "./data";
 
 const TemplatesSandBox = () => {
   const { template_name } = useParams();
@@ -10,7 +11,7 @@ const TemplatesSandBox = () => {
   const getTemplateComponent = () => {
     switch (template_name) {
       case 'basic_template':
-        return <BasicTemplate />;
+        return <BasicTemplate data={Data} />;
       default:
         <></>
 

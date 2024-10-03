@@ -308,6 +308,7 @@ const BioDataForm = () => {
           <div className='biodata-form-buttons-wrpper'>
             <PrimaryButton
               onClick={e => {
+                console.log(formDataFieldsGroup)
                 downloadPdf();
               }}
             >
