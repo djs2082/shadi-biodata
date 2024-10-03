@@ -4,6 +4,7 @@
   margin: 0 40px;
   @media screen and (max-width: 480px) {
     // padding: 0 4px;
+    width: 100vw;
     margin: 0;
   }
   width: 100vw;
@@ -14,7 +15,7 @@
     row-gap: 16px;
     width: 65%;
     @media screen and (max-width: 480px) {
-      width: 100vw;
+      width: 100%;
       padding: 0 16px;
     }
     overflow-y: auto;
