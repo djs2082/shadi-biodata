@@ -4,8 +4,9 @@ import FormField from '../UtilComponents/FormField';
 import { saveAs } from 'file-saver';
 import AddIcon from '@mui/icons-material/Add';
 import { pdf } from '@react-pdf/renderer';
+import _ from 'lodash';
 import './index.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // import PermMediaIcon from '@mui/icons-material/PermMedia';
 // import Cropper from "react-easy-crop";
 // import getCroppedImg from './cropImage'; // Helper function to crop the image (explained below)
@@ -25,6 +26,8 @@ interface FormDataField {
   type: string;
   value: string;
   required: boolean;
+  error?: boolean;
+  errorText?: string;
 }
 
 interface FormDataFieldGorup {
@@ -52,6 +55,9 @@ const BioDataForm = () => {
   const [extraFieldName, setExtraFieldName] = useState<string>('');
   const [extraFieldValue, setExtraFieldValue] = useState<string>();
   const [currentCount, setCurrentCount] = useState<string>();
+  const [fileName, setFileName] = useState<string>();
+
+  const targetDevRef = useRef<HTMLDivElement>(null);
 
   const url =
     process.env.NODE_ENV === 'production' ?
@@ -89,6 +95,7 @@ const BioDataForm = () => {
       setCurrentCount(res.data.count);
     });
   }, [url]);
+
 
   const addFormField = () => {
     const updatedFormDataGroups = formDataFieldsGroup.map(group => {
@@ -163,8 +170,33 @@ const BioDataForm = () => {
     );
   };
 
+  const validateData = () => {
+    let error = false;
+    const newFormDataFieldsGroup = formDataFieldsGroup.map((group)=>{
+      const newDataArray = group.data.map((field)=>{
+        if(field.required){
+          if(field.value === ""){
+            error = true;
+            return {...field,  error: true};
+          }else{
+            return {...field, error: false}
+          }
+        }
+        return field;
+      })
+      return {...group, data: newDataArray}
+    })
+    if(error){
+      setFormDataFieldsGroup(newFormDataFieldsGroup);
+      if (targetDevRef.current) {
+        targetDevRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }else{
+      downloadPdf();
+    }
+  }
+
   const downloadPdf = async () => {
-    const fileName = 'test.pdf';
     const blob = await pdf(
       <BasicTemplate data={formDataFieldsGroup} />
     ).toBlob();
@@ -252,6 +284,7 @@ const BioDataForm = () => {
       if (group.id === groupId) {
         group.data = group.data.map(field => {
           if (field.id === fieldId) {
+            if(field.label === 'Full Name') setFileName(`${_.snakeCase(value)}_biodata`)
             return {
               ...field,
               value,
@@ -267,7 +300,7 @@ const BioDataForm = () => {
   };
 
   return (
-    <div className='biodata-form-outer-wrapper'>
+    <div ref={targetDevRef}  className='biodata-form-outer-wrapper'>
       {currentCount && (
         <p>
           <div className='blinking-dot' />
@@ -275,7 +308,7 @@ const BioDataForm = () => {
         </p>
       )}
       <div className='biodata-form-wrapper'>
-        <div className='biodata-fields-wrapper'>
+        <div  className='biodata-fields-wrapper'>
           {formDataFieldsGroup.map(data => (
             <>
               <p className='biodata-field-title'>{data.title}</p>
@@ -294,6 +327,8 @@ const BioDataForm = () => {
                   ) => {
                     handleValueChange(data.id, field.id, e.target.value);
                   }}
+                  error={field.error}
+                  errorText={field.errorText}
                 />
               ))}
               <Button
@@ -309,7 +344,8 @@ const BioDataForm = () => {
             <PrimaryButton
               onClick={e => {
                 console.log(formDataFieldsGroup)
-                downloadPdf();
+                validateData();
+                // downloadPdf();
               }}
             >
               Submit

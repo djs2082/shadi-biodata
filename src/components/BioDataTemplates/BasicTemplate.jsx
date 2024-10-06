@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import cornerFlowerRight from './images/corner_flower_right.png'
-import cornerFlowerLeft from './images/corner_flower_left.png'
+import cornerRangoli from './images/corner_rangoli.jpeg'
+import cornerBottomFlower from './images/corner_bottom_flower.jpeg'
+import Tags from "./tags";
 import {
   Page,
   Text,
@@ -11,24 +12,55 @@ import {
   Image,
 } from "@react-pdf/renderer";
 import NotoSansFont from "./../../fonts/Noto_Sans/NotoSans-VariableFont_wdth.ttf";
+import LibreBaskervilleBold from "./../../fonts/LibreBaskerville/LibreBaskerville-Bold.ttf"
+import LibreBaskervilleRegular from "./../../fonts/LibreBaskerville/LibreBaskerville-Regular.ttf"
+import TimesNewRomanRegular from './../../fonts/TimesNewRoman/times_new_roman_regular.ttf';
+import TimesNewRomanBold from './../../fonts/TimesNewRoman/times_new_roman_bold.ttf';
 
 Font.register({
   family: "Noto Sans Devanagari",
   fonts: [
     {
       src: NotoSansFont,
-      fontWeight: 600,
-    },
+      fontWeight: 900,
+    }
   ],
 });
 
+Font.register({
+  family: "Libre Baskerville",
+  fonts:[ 
+  {
+    src: LibreBaskervilleBold,
+    fontWeight: 700
+  },
+  {
+    src: LibreBaskervilleRegular,
+    fontWeight: 600
+}]
+})
+
+
+Font.register({
+  family: "Times New Roman",
+  fonts:[ 
+  {
+    src: TimesNewRomanBold,
+    fontWeight: 700
+  },
+  {
+    src: TimesNewRomanRegular,
+    fontWeight: 600
+}]
+})
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "Noto Sans Devanagari", // Use the registered font
+    // fontFamily: "Noto Sans Devanagari", // Use the registered font
+    fontFamily: 'Times New Roman',
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#E4E4E4",
-    border: "8px solid #a63e12",
+    border: "8px solid #a63e12"
   },
   title: {
     width: "100%",
@@ -40,14 +72,24 @@ const styles = StyleSheet.create({
     marginBottom: "20px",
     marginTop: "20px",
     color: "#a63e12",
+    fontFamily: "Noto Sans Devanagari"
   },
   header: {
     display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    marginHorizontal: 'auto',
+    marginLeft: "auto",
+    marginRight: "auto",
+    alignSelf: "center",
+    justifyContent: "center",
+    width:"auto",
+    text: {
+      margin: 4
+    },
     name: {
       fontSize: "28px",
-      fontWeight: "bold",
+      fontWeight: "700",
     },
   },
   watermark: {
@@ -55,13 +97,89 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     opacity: 0.1, // Set opacity to make it a watermark
-    width: 200, // Set the width of the watermark
+    width: 400, // Set the width of the watermark
     height: 'auto',
   },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
+  watermarkBottomWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+  watermarkBottom: {
+    opacity: 0.1, // Set opacity to make it a watermark
+    width: 400, // Set the width of the watermark
+
+  }},
+  body:{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginHorizontal: 'auto',
+    marginLeft: "auto",
+    marginRight: "auto",
+    alignSelf: "center",
+    justifyContent: "flex-start",
+    width:"auto",
+    text: {
+      margin: 4
+    },
+    subHeader: {
+      backgroundColor: "#8a3e07", /* Brownish color */
+      color: "white", /* White text */
+      fontSize: "18px",
+      fontWeight: "700", /* Bold text */
+      border: "none", /* Remove default border */
+      borderRadius: "50px", /* Fully rounded corners */
+      padding: "10px 30px", /* Add padding to the button */
+      cursor: "pointer", /* Change cursor to pointer on hover */
+      textAlign: "center",
+      justifyContent: "center",
+      display: "inline-block",
+      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", /* Optional shadow for a nice effect */
+      width: "240px",
+      margin: "40px 0"
+    },
+    fieldsWrapper:{
+      display: "flex",
+      flexDirection: "column",
+      fontSize: "18px",
+      width: "100vw",
+      
+    },
+    fieldsContainer: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "flex-start",
+      marginBottom: "10px",
+      columnGap:  "10%",
+      width: "100%",
+      padding: "0 40px 10px 40px",
+      label: {
+        fontWeight: "600",
+        width: "40%",
+        justifySelf: "left",
+        alignSelf: "flex-start",
+        textAlign: "left",
+        paddingLeft: "40px",
+      },
+      value:  {
+          fontWeight: "600",
+          width: "75%",
+          // textAlign: "left",
+          justifySelf: "left",
+          alignSelf: "flex-start",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          paddingRight: "48px",
+        }
+    }
+  },
+  branding: {
+    fontSize: "18",
+    color: "grey",
+    position: "absolute",
+    bottom: "20",
+    right: "20"
   },
 });
 
@@ -98,31 +216,54 @@ const BasicTemplate = (props) => {
     });
   }, [props.data]);
 
+  const getPageUI = (data) =>{
+    return(<View style={styles.body} wrap={false}>
+    <View><Text style={styles.body.subHeader}>{data.title}</Text></View>
+    <View style={styles.body.fieldsWrapper}>
+      {data.data.map((field) => (
+        <View style={styles.body.fieldsContainer}>
+         <Text style={styles.body.fieldsContainer.label}>{field.label}</Text> 
+         <Text style={styles.body.fieldsContainer.value}>{field.value}</Text>
+       </View>
+      ))}
+    </View>
+  </View>)
+  }
+
+
+  const createPersonalDetailsPage = (personalDetails) =>{
+    return(
+    <>
+    <View style={styles.header}>
+      <Text style={{...styles.header.text,  ...Tags.h1}}>{personalDetail.fullName}</Text>
+      <Text style={{...styles.header.text, ...Tags.paragraph}}>Date Of Birth  :  {personalDetail.dateOfBirth}</Text>
+      <Text style={{...styles.header.text, ...Tags.paragraph}}>Place Of Birth  :  {personalDetail.placeOfBirth}</Text>
+    </View>
+     {getPageUI(personalDetails)}
+    </>
+    )
+  }
+
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
-        <View>
-        <Image 
-        style={{...styles.watermark, right: 0}}
-        src={cornerFlowerRight}
-      />
-             <Image 
-        style={{...styles.watermark, left: 0}}
-        src={cornerFlowerLeft}
-      />
-        </View>
-        <View>
-          <Text style={styles.title}>ॐ श्री गणेशाय नमः</Text>
-        </View>
-        <View style={styles.header}>
-          <Text style={styles.header.name}>{personalDetail.fullName}</Text>
-          <Text>Date Of Birth: {personalDetail.dateOfBirth}</Text>
-          <Text>Place Of Birth: {personalDetail.placeOfBirth}</Text>
-        </View>
-
-        {/* <View style={styles.section}>
-          <Text>Section #2</Text>
-        </View> */}
+        <Page size="A3" style={styles.page}>
+          <View fixed>
+            <Image 
+              style={{...styles.watermark, right: 0}}
+              src={cornerRangoli}
+            />
+          </View>
+          <View fixed>
+            <Text style={styles.title}>ॐ श्री गणेशाय नमः</Text>
+          </View>
+          {createPersonalDetailsPage(props.data[0])}
+          {getPageUI(props.data[1])}
+          {getPageUI(props.data[2])}
+          <View fixed style={styles.watermarkBottomWrapper}>
+            <Image style={{...styles.watermarkBottomWrapper.watermarkBottom}}
+              src={cornerBottomFlower}/>
+            </View>
+          <View style={styles.branding} fixed><Text>www.shadibiodata.com</Text></View>
       </Page>
     </Document>
   );
