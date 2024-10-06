@@ -17,7 +17,8 @@ import BasicTemplate from '../BioDataTemplates/BasicTemplate';
 import PrimaryButton from '../UtilComponents/Buttons/PrimaryButton';
 import SecondaryButton from '../UtilComponents/Buttons/SecondaryButton';
 import CustomModal from '../UtilComponents/Modals/Modal';
-import { FormDataFields } from './formDataFields';
+import { FormDataFields, FormDataPreFilledFields } from './formDataFields';
+import { useSearchParams } from 'react-router-dom';
 // import { relative } from "path";
 
 interface FormDataField {
@@ -37,8 +38,11 @@ interface FormDataFieldGorup {
 }
 
 const BioDataForm = () => {
+  const [params] = useSearchParams();
+  const isDev = params.get('dev')
+  console.log(params.get('dev'));
    const [showExtraFieldForm, setShowExtraFieldForm] = useState(false);
-  const BioDataFormData: FormDataFieldGorup[] = FormDataFields;
+  const BioDataFormData: FormDataFieldGorup[] = isDev ? FormDataPreFilledFields: FormDataFields;
 
   const [formDataFieldsGroup, setFormDataFieldsGroup] =
     useState<FormDataFieldGorup[]>(BioDataFormData);
