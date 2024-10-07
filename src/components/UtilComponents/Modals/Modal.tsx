@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import { IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import './index.scss';
+import React, { ReactNode } from "react";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import "./index.scss";
 
 interface CustomModalProps {
   show: boolean;
@@ -12,21 +12,22 @@ interface CustomModalProps {
   body: ReactNode;
   primaryButton: ReactNode;
   secondaryButton: ReactNode;
+  className?: string;
 }
-const reasonsToAvoidModalHide = ['backdropClick', 'escapeKeyDown'];
+const reasonsToAvoidModalHide = ["backdropClick", "escapeKeyDown"];
 
 const modalDefaultStyle = {
-  position: 'absolute',
-  outline: 'none',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  bgcolor: 'background.paper',
+  position: "absolute",
+  outline: "none",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
   border: `1px solid #e5eef1`,
-  padding: '10px',
+  padding: "10px",
   boxShadow:
-    '0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08)',
-  borderRadius: '8px',
+    "0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08)",
+  borderRadius: "8px",
 };
 
 const CustomModal: React.FC<CustomModalProps> = ({
@@ -34,6 +35,7 @@ const CustomModal: React.FC<CustomModalProps> = ({
   onHide,
   header,
   body,
+  className,
   primaryButton,
   secondaryButton,
 }) => {
@@ -43,51 +45,54 @@ const CustomModal: React.FC<CustomModalProps> = ({
   };
 
   return (
-    <div className='modal-box'>
-      <Modal open={show} onClose={handleClose}>
-        <Box className='modal-box-wrapper' sx={modalDefaultStyle}>
+    <div className="modal-box">
+      <Modal open={show} onClose={handleClose} className={className}>
+        <Box className="modal-box-wrapper" sx={modalDefaultStyle}>
           {/* modal Header */}
-          <div id='modal-header-content' className='modal-header-content'>
-            <span id='modal-close-button' className='modal-close-button'>
+          <div id="modal-header-content" className="modal-header-content">
+            <span id="modal-close-button" className="modal-close-button">
               <IconButton onClick={onHide}>
                 <CloseIcon />
               </IconButton>
             </span>
           </div>
           {/* modal content */}
-          <div className='modal-details'>
+          <div className="modal-details">
             {/* modal image and content */}
-            <div id='modal-content' className='modal-content'>
+            <div id="modal-content" className="modal-content">
               <div
-                id='modal-text-and-icon'
-                className='modal-text-and-icon'
+                id="modal-text-and-icon"
+                className="modal-text-and-icon"
                 style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: '24px',
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "24px",
                 }}
               >
                 <span
-                  id='modal-text'
-                  className='modal-text'
+                  id="modal-text"
+                  className="modal-text"
                   style={{
-                    width: '100%',
+                    width: "100%",
                   }}
                 >
                   <span
-                    id='modal-content-header'
-                    className='modal-content-header'
-                    style={{ textAlign: 'center' }}
+                    id="modal-content-header"
+                    className="modal-content-header"
+                    style={{ textAlign: "center" }}
                   >
                     {header}
                   </span>
 
                   <span
-                    id='modal-content-body'
-                    className='modal-content-body'
+                    id="modal-content-body"
+                    className="modal-content-body"
                     style={{
-                      flexDirection: 'row',
-                      gap: '24px',
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: "24px",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
                   >
                     {body}
@@ -97,11 +102,11 @@ const CustomModal: React.FC<CustomModalProps> = ({
             </div>
             {/* modal content buttons */}
             <div
-              id='modal-buttons'
-              className='modal-buttons'
+              id="modal-buttons"
+              className="modal-buttons"
               style={{
-                flexDirection: 'row',
-                gap: '24px',
+                flexDirection: "row",
+                gap: "24px",
               }}
             >
               {primaryButton}

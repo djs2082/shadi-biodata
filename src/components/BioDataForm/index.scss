@@ -94,6 +94,50 @@
       font-weight: 500;
       color: rgb(100, 114, 140);
     }
+    .close-btn {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: rgba(111, 9, 9, 0.8);
+      color: white;
+      border: none;
+      font-size: 8px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      // line-height: 25px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      z-index: 1; /* Ensures the button stays above the image */
+    }
+    .replace-photo-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 4px;
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background-color: rgba(0, 0, 0, 0.5);
+      // opacity: 0.4;
+      color: white;
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 140px;
+      height: 36px;
+      border-radius: 10px;
+      // line-height: 25px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      z-index: 1; /* Ensures the button stays above the image */
+    }
+
+    .close-btn:hover {
+      background-color: maroon;
+    }
   }
 }
 
