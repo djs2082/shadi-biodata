@@ -1,7 +1,7 @@
 import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer";
 import "./index.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import BasicTemplate from "../BioDataTemplates/BasicTemplate";
 import PrimaryButton from "../UtilComponents/Buttons/PrimaryButton";

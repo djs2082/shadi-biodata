@@ -16,7 +16,6 @@ import LibreBaskervilleBold from "./../../fonts/LibreBaskerville/LibreBaskervill
 import LibreBaskervilleRegular from "./../../fonts/LibreBaskerville/LibreBaskerville-Regular.ttf";
 import TimesNewRomanRegular from "./../../fonts/TimesNewRoman/times_new_roman_regular.ttf";
 import TimesNewRomanBold from "./../../fonts/TimesNewRoman/times_new_roman_bold.ttf";
-import { getImageFromDB } from "../../services/indexedDB";
 
 Font.register({
   family: "Noto Sans Devanagari",

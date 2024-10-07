@@ -40,6 +40,7 @@ const TemplatesSandBox = () => {
     return () => {
       URL.revokeObjectURL(croppedImage || "");
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getTemplateComponent = () => {
