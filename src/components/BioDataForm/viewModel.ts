@@ -67,7 +67,9 @@ class BioDataFormViewModel {
 
   public getData = () => this.store.data;
   public updateBioDataDataForDev = (isDev: string | null) => {
+    const savedData = localStorage.getItem("biodataData");
     if (isDev) this.store.setData(FormDataPreFilledFields);
+    if (savedData) this.store.setData(JSON.parse(savedData));
   };
 
   public onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
