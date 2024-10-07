@@ -2,11 +2,6 @@ import axios from "axios";
 import useBioDataFormDataStore, { BioDataFormDataStore } from "./index.store";
 import { FormDataFieldGorup } from "./model";
 import _ from "lodash";
-
-import BasicTemplate from "../BioDataTemplates/BasicTemplate";
-
-import { pdf } from "@react-pdf/renderer";
-import { saveAs } from "file-saver";
 import React from "react";
 import { FormDataPreFilledFields } from "./formDataFields";
 
@@ -57,6 +52,8 @@ class BioDataFormViewModel {
   public getTodaysBioDataCount = () => {
     return this.store.todaysBiodataCount;
   };
+
+  public getDownloadFileName = () => this.store.downloadFileName;
 
   public setTodaysBioDataCount = () => {
     axios.get(this.url).then((res) => {

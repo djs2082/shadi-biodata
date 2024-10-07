@@ -9,11 +9,6 @@ import CustomModal from "../../UtilComponents/Modals/Modal";
 import Cropper from "react-cropper"; // Assuming you're using react-cropper
 import "cropperjs/dist/cropper.css";
 import useBioDataFormViewModel from "./../viewModel";
-import {
-  removeImageFromLocalStorage,
-  retrieveImageBlobFromLocalStorage,
-  saveImageBlobToLocalStorage,
-} from "../../../services/localStorageService";
 import { IconButton, Tooltip } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -39,7 +34,6 @@ const AddImage = () => {
   });
   const [showCropModal, setShowCropModal] = useState(false);
   const [fileFormatSupported, setFileFormatSupported] = useState(true);
-  const cropperRef = useRef<HTMLImageElement>(null); // For cropper instance
   const [cropper, setCropper] = useState<Cropper | null>();
   const setCroppedImage = viewModel.setCroppedImage;
   const croppedImage = viewModel.getCroppedImage();
@@ -77,6 +71,7 @@ const AddImage = () => {
     return () => {
       URL.revokeObjectURL(croppedImage || "");
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isValidFileFormat = (mimeType: FileTypeResult | undefined): boolean => {
@@ -118,6 +113,7 @@ const AddImage = () => {
             );
           } else {
             setFileFormatSupported(false);
+            console.log(fileFormatSupported);
             setTimeout(() => setFileFormatSupported(true), 2000);
           }
         }

@@ -39,7 +39,6 @@ function base64ToBlob(base64: string): Blob {
 
 // Retrieve Blob from localStorage
 export function retrieveImageBlobFromLocalStorage(key: string): Blob | null {
-  const worker = new Worker("worker.js");
   const base64Data = localStorage.getItem(key);
   console.log(base64Data);
   if (!base64Data) {

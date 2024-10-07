@@ -1,4 +1,3 @@
-import { useScrollTrigger } from "@mui/material";
 import { PDFViewer } from "@react-pdf/renderer";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

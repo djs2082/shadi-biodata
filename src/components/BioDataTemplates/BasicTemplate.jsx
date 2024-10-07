@@ -16,9 +16,7 @@ import LibreBaskervilleBold from "./../../fonts/LibreBaskerville/LibreBaskervill
 import LibreBaskervilleRegular from "./../../fonts/LibreBaskerville/LibreBaskerville-Regular.ttf";
 import TimesNewRomanRegular from "./../../fonts/TimesNewRoman/times_new_roman_regular.ttf";
 import TimesNewRomanBold from "./../../fonts/TimesNewRoman/times_new_roman_bold.ttf";
-import { retrieveImageBlobFromLocalStorage } from "../../services/localStorageService";
 import { getImageFromDB } from "../../services/indexedDB";
-import useBioDataFormViewModel from "../BioDataForm/viewModel";
 
 Font.register({
   family: "Noto Sans Devanagari",
@@ -211,7 +209,6 @@ const BasicTemplate = (props) => {
     dateOfBirth: "",
     placeOfBirth: "",
   });
-  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     let fullName = "";
@@ -238,31 +235,6 @@ const BasicTemplate = (props) => {
       placeOfBirth,
     });
   }, [props.data]);
-
-  useEffect(() => {
-    // setImageUrl(props.image);
-    // console.log(retrieveImageBlobFromLocalStorage("profile_picture"));
-    // try {
-    //   setImageUrl(
-    //     URL.createObjectURL(
-    //       retrieveImageBlobFromLocalStorage("profile_picture") || ""
-    //     )
-    //   );
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
-    getImageFromDB()
-      .then((result) => {
-        console.log(result);
-        // setImageUrl(URL.createObjectURL(result));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return () => {
-      URL.revokeObjectURL(imageUrl);
-    };
-  }, []);
 
   const getPageUI = (data) => {
     return (

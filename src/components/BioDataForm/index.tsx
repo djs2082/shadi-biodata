@@ -1,34 +1,16 @@
 import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer";
-import _ from "lodash";
 import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 
 import BasicTemplate from "../BioDataTemplates/BasicTemplate";
 import PrimaryButton from "../UtilComponents/Buttons/PrimaryButton";
 import SecondaryButton from "../UtilComponents/Buttons/SecondaryButton";
-import { FormDataFields, FormDataPreFilledFields } from "./formDataFields";
 import { useSearchParams } from "react-router-dom";
 import useBioDataFormViewModel from "./viewModel";
 import TodaysCountShow from "./components/TodaysCountShow";
 import FormGroup from "./components/FormGroup";
 import AddImage from "./components/AddImage";
-
-interface FormDataField {
-  id: number;
-  label: string;
-  type: string;
-  value: string;
-  required: boolean;
-  error?: boolean;
-  errorText?: string;
-}
-
-interface FormDataFieldGorup {
-  id: number;
-  title: string;
-  data: FormDataField[];
-}
 
 const BioDataForm = () => {
   const viewModel = useBioDataFormViewModel();
@@ -36,12 +18,11 @@ const BioDataForm = () => {
   const [params] = useSearchParams();
   const isDev = params.get("dev");
 
-  const [fileName, setFileName] = useState<string>();
-
   const targetDevRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     viewModel.setTodaysBioDataCount();
     viewModel.updateBioDataDataForDev(isDev);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const validateData = () => {
@@ -59,7 +40,7 @@ const BioDataForm = () => {
         image={viewModel.getCroppedImage()}
       />
     ).toBlob();
-    saveAs(blob, fileName);
+    saveAs(blob, viewModel.getDownloadFileName());
     viewModel.setTodaysBioDataCount();
   };
 
