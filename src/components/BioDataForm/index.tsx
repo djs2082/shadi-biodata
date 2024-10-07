@@ -11,6 +11,8 @@ import useBioDataFormViewModel from "./viewModel";
 import TodaysCountShow from "./components/TodaysCountShow";
 import FormGroup from "./components/FormGroup";
 import AddImage from "./components/AddImage";
+import Media from "react-media";
+import MobileAddImage from "./components/MobileAddImage";
 
 const BioDataForm = () => {
   const viewModel = useBioDataFormViewModel();
@@ -47,6 +49,9 @@ const BioDataForm = () => {
   return (
     <div ref={targetDevRef} className="biodata-form-outer-wrapper">
       <TodaysCountShow />
+      <Media queries={{ mobile: "(max-width: 480px)" }}>
+        {(matches) => <>{matches.mobile && <MobileAddImage />}</>}
+      </Media>
       <div className="biodata-form-wrapper">
         <div className="biodata-fields-wrapper">
           <FormGroup />
@@ -63,7 +68,9 @@ const BioDataForm = () => {
             </SecondaryButton>
           </div>
         </div>
-        <AddImage />
+        <Media queries={{ web: "(min-width: 480px)" }}>
+          {(matches) => <>{matches.web && <AddImage />}</>}
+        </Media>
       </div>
     </div>
   );

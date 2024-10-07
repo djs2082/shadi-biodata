@@ -16,6 +16,7 @@ import {
   deleteImageFromDB,
   getImageFromDB,
 } from "./../../../services/indexedDB";
+import Media from "react-media";
 
 interface SelectedImage {
   file: string | ArrayBuffer | null;
@@ -193,6 +194,8 @@ const AddImage = () => {
     }
   };
 
+  const isMobile = () => window.screen.width <= 480;
+
   return (
     <>
       <div
@@ -205,7 +208,21 @@ const AddImage = () => {
               className="replace-photo-btn"
               onClick={(e) => removeSelectedImage(e, true)}
             >
-              <ImageIcon></ImageIcon>Replace Photo
+              {" "}
+              <ImageIcon></ImageIcon>
+              <Media
+                queries={{
+                  mobile: "(max-width: 480px)",
+                  web: "(min-width: 480px)",
+                }}
+              >
+                {(matches) => (
+                  <>
+                    {matches.mobile && "Replace"}
+                    {matches.web && "Replace Photo"}
+                  </>
+                )}
+              </Media>
             </div>
             <Tooltip title="Remove the Profile Picture">
               <IconButton
@@ -218,7 +235,7 @@ const AddImage = () => {
             <img
               src={croppedImage}
               alt={selectedImage.name || "Selected Image"}
-              className="biodata-profile-picture-wrapper"
+              className="biodata-profile-picture"
               style={{ marginBottom: "0" }}
               // style={{ width: "100%", height: "auto", marginTop: "10px" }} // Adjust styles as needed
             />
@@ -236,15 +253,47 @@ const AddImage = () => {
         />
         <>
           {!croppedImage && (
-            <>
-              <PermMediaIcon
-                sx={{ width: "100px", fontSize: "100px", color: "#64728c" }}
-              />
-              <p>
-                Click here to add your photo <br />
-                (Up to 20MB in size)
-              </p>
-            </>
+            <Media
+              queries={{
+                mobile: "(max-width: 480px)",
+                web: "(min-width: 480px)",
+              }}
+            >
+              {(matches) => (
+                <>
+                  {matches.mobile && (
+                    <>
+                      <PermMediaIcon
+                        sx={{
+                          width: "100px",
+                          fontSize: "60px",
+                          color: "#64728c",
+                        }}
+                      />
+                      <p>
+                        Click here <br />
+                        (Up to 20MB only)
+                      </p>
+                    </>
+                  )}
+                  {matches.web && (
+                    <>
+                      <PermMediaIcon
+                        sx={{
+                          width: "100px",
+                          fontSize: "100px",
+                          color: "#64728c",
+                        }}
+                      />
+                      <p>
+                        Click here to add your photo <br />
+                        (Up to 20MB in size)
+                      </p>
+                    </>
+                  )}
+                </>
+              )}
+            </Media>
           )}
           <CustomModal
             show={showCropModal}
@@ -254,14 +303,17 @@ const AddImage = () => {
             body={
               <div onWheel={handleZoom}>
                 <Cropper
-                  style={{ height: 400, width: 280 }}
+                  style={{
+                    height: isMobile() ? 228.6 : 400,
+                    width: isMobile() ? 160 : 280,
+                  }}
                   zoomTo={0.5}
                   // initialAspectRatio={280 / 400}
                   preview=".img-preview"
                   src={selectedImage.file as string}
                   // viewMode={1}
-                  minCropBoxHeight={400}
-                  minCropBoxWidth={280}
+                  minCropBoxHeight={isMobile() ? 228.6 : 400}
+                  minCropBoxWidth={isMobile() ? 160 : 280}
                   background={false}
                   responsive
                   // autoCropArea={1}
@@ -276,7 +328,27 @@ const AddImage = () => {
               </div>
             }
             primaryButton={
-              <PrimaryButton onClick={saveProfilePicture}>Save</PrimaryButton>
+              <Media
+                queries={{
+                  mobile: "(max-width: 480px)",
+                  web: "(min-width: 480px)",
+                }}
+              >
+                {(matches) => (
+                  <>
+                    {matches.mobile && (
+                      <PrimaryButton onClick={saveProfilePicture}>
+                        Save Crop
+                      </PrimaryButton>
+                    )}
+                    {matches.web && (
+                      <PrimaryButton onClick={saveProfilePicture}>
+                        Save
+                      </PrimaryButton>
+                    )}
+                  </>
+                )}
+              </Media>
             }
             secondaryButton={
               <SecondaryButton onClick={closeCropModal}>Close</SecondaryButton>

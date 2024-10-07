@@ -10,9 +10,10 @@ interface CustomModalProps {
   onHide: () => void;
   header: ReactNode;
   body: ReactNode;
-  primaryButton: ReactNode;
-  secondaryButton: ReactNode;
+  primaryButton?: ReactNode;
+  secondaryButton?: ReactNode;
   className?: string;
+  style?: { [key: string]: string };
 }
 const reasonsToAvoidModalHide = ["backdropClick", "escapeKeyDown"];
 
@@ -38,6 +39,7 @@ const CustomModal: React.FC<CustomModalProps> = ({
   className,
   primaryButton,
   secondaryButton,
+  style,
 }) => {
   const handleClose = (reason: string) => {
     if (reason && reasonsToAvoidModalHide.includes(reason)) return;
@@ -47,7 +49,10 @@ const CustomModal: React.FC<CustomModalProps> = ({
   return (
     <div className="modal-box">
       <Modal open={show} onClose={handleClose} className={className}>
-        <Box className="modal-box-wrapper" sx={modalDefaultStyle}>
+        <Box
+          className="modal-box-wrapper"
+          sx={{ ...modalDefaultStyle, ...style }}
+        >
           {/* modal Header */}
           <div id="modal-header-content" className="modal-header-content">
             <span id="modal-close-button" className="modal-close-button">
