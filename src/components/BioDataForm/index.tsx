@@ -13,6 +13,7 @@ import FormGroup from "./components/FormGroup";
 import AddImage from "./components/AddImage";
 import Media from "react-media";
 import MobileAddImage from "./components/MobileAddImage";
+import LandingPage from "./components/LandingPage";
 
 const BioDataForm = () => {
   const viewModel = useBioDataFormViewModel();
@@ -47,32 +48,34 @@ const BioDataForm = () => {
   };
 
   return (
-    <div ref={targetDevRef} className="biodata-form-outer-wrapper">
-      <TodaysCountShow />
-      <Media queries={{ mobile: "(max-width: 480px)" }}>
-        {(matches) => <>{matches.mobile && <MobileAddImage />}</>}
-      </Media>
-      <div className="biodata-form-wrapper">
-        <div className="biodata-fields-wrapper">
-          <FormGroup />
-          <div className="biodata-form-buttons-wrpper">
-            <PrimaryButton
-              onClick={(e) => {
-                validateData();
-              }}
-            >
-              Submit
-            </PrimaryButton>
-            <SecondaryButton onClick={(e) => viewModel.resetFormFields()}>
-              Reset Form
-            </SecondaryButton>
-          </div>
-        </div>
-        <Media queries={{ web: "(min-width: 480px)" }}>
-          {(matches) => <>{matches.web && <AddImage />}</>}
+    <>
+      <LandingPage />
+      <div ref={targetDevRef} className="biodata-form-outer-wrapper">
+        <Media queries={{ mobile: "(max-width: 480px)" }}>
+          {(matches) => <>{matches.mobile && <MobileAddImage />}</>}
         </Media>
+        <div className="biodata-form-wrapper">
+          <div className="biodata-fields-wrapper">
+            <FormGroup />
+            <div className="biodata-form-buttons-wrpper">
+              <PrimaryButton
+                onClick={(e) => {
+                  validateData();
+                }}
+              >
+                Submit
+              </PrimaryButton>
+              <SecondaryButton onClick={(e) => viewModel.resetFormFields()}>
+                Reset Form
+              </SecondaryButton>
+            </div>
+          </div>
+          <Media queries={{ web: "(min-width: 480px)" }}>
+            {(matches) => <>{matches.web && <AddImage />}</>}
+          </Media>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

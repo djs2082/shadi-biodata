@@ -54,6 +54,7 @@ Font.register({
     },
   ],
 });
+
 const styles = StyleSheet.create({
   page: {
     // fontFamily: "Noto Sans Devanagari", // Use the registered font

@@ -5,7 +5,7 @@ const TodaysCountShow: React.FC = () => {
   const todaysCount = viewModel.getTodaysBioDataCount();
   if (!todaysCount) return <></>;
   return (
-    <p>
+    <p className="todays-count-show-wrapper">
       <div className="blinking-dot" />
       {`  ${todaysCount} biodatas created today`}
     </p>
