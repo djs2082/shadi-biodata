@@ -8,7 +8,6 @@ import PrimaryButton from "../UtilComponents/Buttons/PrimaryButton";
 import SecondaryButton from "../UtilComponents/Buttons/SecondaryButton";
 import { useSearchParams } from "react-router-dom";
 import useBioDataFormViewModel from "./viewModel";
-import TodaysCountShow from "./components/TodaysCountShow";
 import FormGroup from "./components/FormGroup";
 import AddImage from "./components/AddImage";
 import Media from "react-media";
