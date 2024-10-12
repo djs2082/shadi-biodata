@@ -3,7 +3,7 @@ import useBioDataFormDataStore, { BioDataFormDataStore } from "./index.store";
 import { FormDataFieldGorup } from "./model";
 import _ from "lodash";
 import React from "react";
-import { FormDataPreFilledFields } from "./formDataFields";
+import { FormDataFields, FormDataPreFilledFields } from "./formDataFields";
 
 class BioDataFormViewModel {
   private store: BioDataFormDataStore;
@@ -118,16 +118,17 @@ class BioDataFormViewModel {
   };
 
   public resetFormFields = () => {
-    const updatedFormDataGroups: FormDataFieldGorup[] = this.store.data.map(
-      (group) => ({
-        ...group,
-        data: group.data.map((field) => ({
-          ...field,
-          value: "",
-        })),
-      })
-    );
-    this.store.setData(updatedFormDataGroups); // Update state with the new array
+    localStorage.setItem("biodataData", "");
+    // const updatedFormDataGroups: FormDataFieldGorup[] = this.store.data.map(
+    //   (group) => ({
+    //     ...group,
+    //     data: group.data.map((field) => ({
+    //       ...field,
+    //       value: "",
+    //     })),
+    //   })
+    // );
+    this.store.setData(FormDataFields); // Update state with the new array
   };
 
   public moveTheFormField = (

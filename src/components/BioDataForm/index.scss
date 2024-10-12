@@ -75,12 +75,13 @@
         text-align: left;
 
         @media screen and (max-width: 480px) {
+          display: none;
           color: black;
           position: absolute;
           text-align: left;
           background-color: rgba(120, 120, 120, 0.5);
           font-weight: bold;
-          bottom: 10%;
+          bottom: 20%;
           left: 50%;
           transform: translate(-50%, 0);
         }
@@ -100,6 +101,26 @@
       align-items: center;
       text-align: center;
       color: white; /* Adjust text color if needed */
+    }
+    .create-biodata-btn {
+      background: linear-gradient(
+        90deg,
+        rgba(99, 10, 33, 1) 24%,
+        rgba(236, 3, 3, 0.8225884103641457) 63%,
+        rgba(82, 3, 34, 1) 100%
+      );
+
+      // background: #800000;
+      border-radius: 40px;
+      height: 40px;
+      position: absolute;
+      left: 2%;
+      bottom: 6%;
+      @media screen and (max-width: 480px) {
+        bottom: 15%;
+        left: 50%;
+        transform: translate(-50%);
+      }
     }
   }
   .hero-information {
@@ -138,6 +159,15 @@
       }
     }
   }
+  .form-add-title {
+    height: 64px;
+    background: linear-gradient(
+      90deg,
+      rgba(200, 24, 198, 1) 24%,
+      rgba(190, 195, 26, 0.8225884103641457) 63%,
+      rgba(69, 173, 218, 1) 100%
+    );
+  }
 }
 
 .biodata-form-outer-wrapper {
@@ -160,13 +190,16 @@
       flex-direction: column;
       row-gap: 16px;
       width: 65%;
-      @media screen and (max-width: 480px) {
-        width: 100%;
-        padding: 0 16px;
-      }
       overflow-y: auto;
       scrollbar-width: none; /* For Firefox */
       -ms-overflow-style: none; /* For Internet Explorer and Edge */
+      @media screen and (max-width: 480px) {
+        width: 100%;
+        height: fit-content;
+        box-sizing: border-box;
+        padding: 0 4px;
+      }
+
       .biodata-field-title {
         font-weight: 700;
         font-size: 1.8rem;
@@ -338,19 +371,20 @@
 }
 .todays-count-show-wrapper {
   position: absolute;
-  bottom: 24px;
+  bottom: 70px;
   left: 32px;
   color: black;
   font-weight: bold;
   @media screen and (max-width: 480px) {
-    width: fit-content;
+    width: 200px;
     height: 16px;
     position: absolute;
-    bottom: 20px;
+    bottom: 18.5%;
     padding: 4px 8px;
-    left: 10%;
-    color: white;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: black;
     border-radius: 4px;
-    background-color: rgba(120, 120, 120, 0.8);
+    // background-color: rgba(120, 120, 120, 0.8);
   }
 }

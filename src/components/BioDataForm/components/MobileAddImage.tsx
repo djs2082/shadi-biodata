@@ -11,7 +11,9 @@ const MobileAddImage = () => {
   const viewModel = useBioDataFormViewModel();
   const croppedImage = viewModel.getCroppedImage();
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div
+      style={{ display: "flex", justifyContent: "center", padding: "8px 0" }}
+    >
       <SecondaryButton
         onClick={() => {
           setShowAddImageModal(true);

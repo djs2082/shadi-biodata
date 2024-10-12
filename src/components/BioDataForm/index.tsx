@@ -48,7 +48,16 @@ const BioDataForm = () => {
 
   return (
     <>
-      <LandingPage />
+      <LandingPage
+        onCreateClick={() => {
+          if (targetDevRef && targetDevRef.current) {
+            targetDevRef.current.scrollIntoView({
+              behavior: "smooth", // Smooth scrolling
+              block: "start", // Align to the top
+            });
+          }
+        }}
+      />
       <div ref={targetDevRef} className="biodata-form-outer-wrapper">
         <Media queries={{ mobile: "(max-width: 480px)" }}>
           {(matches) => <>{matches.mobile && <MobileAddImage />}</>}
