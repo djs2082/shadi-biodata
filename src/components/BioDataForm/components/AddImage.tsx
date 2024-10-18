@@ -203,7 +203,7 @@ const AddImage = () => {
         className="biodata-profile-picture-wrapper"
         onClick={() => document.getElementById("fileInput")?.click()}
       >
-        <img className="profile-image-wrapper" src={imageFrameOld} />
+        <img className="profile-image-wrapper" alt="" src={imageFrameOld} />
         {croppedImage && (
           <>
             <div
