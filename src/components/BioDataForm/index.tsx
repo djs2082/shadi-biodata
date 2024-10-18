@@ -12,7 +12,7 @@ import FormGroup from "./components/FormGroup";
 import AddImage from "./components/AddImage";
 import Media from "react-media";
 import MobileAddImage from "./components/MobileAddImage";
-import imageFrame from "./../BioDataTemplates/images/imageFrame.png";
+// import imageFrame from "./../BioDataTemplates/images/imageFrame.png";
 
 const BioDataForm = () => {
   const viewModel = useBioDataFormViewModel();
