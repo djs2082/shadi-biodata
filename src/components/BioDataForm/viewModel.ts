@@ -201,8 +201,10 @@ class BioDataFormViewModel {
           if (field.id === fieldId) {
             if (field.label === "Full Name")
               this.store.setDownloadFileName(`${_.snakeCase(value)}_biodata`);
+            console.log(field);
             return {
               ...field,
+              error: false,
               value,
             };
           }

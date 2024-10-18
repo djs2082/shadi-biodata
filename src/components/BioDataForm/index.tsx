@@ -31,6 +31,7 @@ const BioDataForm = () => {
     if (!viewModel.validateData()) {
       // URL.revokeObjectURL(viewModel.getCroppedImage() || "");
       localStorage.setItem("biodataData", JSON.stringify(viewModel.getData()));
+      console.log(JSON.stringify(viewModel.getData()));
       downloadPdf();
     }
   };
@@ -59,7 +60,7 @@ const BioDataForm = () => {
         }}
       /> */}
       <div ref={targetDevRef} className="biodata-form-outer-wrapper">
-        <img className="design-image-left" src={imageFrame} alt="" />
+        {/* <img className="design-image-left" src={imageFrame} alt="" /> */}
         <Media queries={{ mobile: "(max-width: 480px)" }}>
           {(matches) => <>{matches.mobile && <MobileAddImage />}</>}
         </Media>
