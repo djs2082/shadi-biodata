@@ -300,6 +300,7 @@
 
 .profile-image-container {
   width: 50%;
+  z-index: 2;
   @media screen and (max-width: 600px) {
     width: 100%;
     display: flex;

@@ -236,23 +236,40 @@ const BasicTemplate = (props) => {
     });
   }, [props.data]);
 
+  const checkIfTitlePrintable = (data) => {
+    let isAllowed = false;
+    data.forEach((item) => {
+      console.log(data.data);
+      if (item.value.length > 0) {
+        isAllowed = true;
+        return;
+      }
+    });
+    return isAllowed;
+  };
+
   const getPageUI = (data) => {
     return (
       <View style={styles.body} wrap={false}>
-        <View>
-          <Text style={styles.body.subHeader}>{data.title}</Text>
-        </View>
+        {checkIfTitlePrintable(data.data) && (
+          <View>
+            <Text style={styles.body.subHeader}>{data.title}</Text>
+          </View>
+        )}
         <View style={styles.body.fieldsWrapper}>
-          {data.data.map((field) => (
-            <View style={styles.body.fieldsContainer}>
-              <Text style={styles.body.fieldsContainer.label}>
-                {field.label}
-              </Text>
-              <Text style={styles.body.fieldsContainer.value}>
-                {field.value}
-              </Text>
-            </View>
-          ))}
+          {data.data.map(
+            (field) =>
+              field.value.length > 0 && (
+                <View style={styles.body.fieldsContainer}>
+                  <Text style={styles.body.fieldsContainer.label}>
+                    {field.label}
+                  </Text>
+                  <Text style={styles.body.fieldsContainer.value}>
+                    {field.value}
+                  </Text>
+                </View>
+              )
+          )}
         </View>
       </View>
     );
