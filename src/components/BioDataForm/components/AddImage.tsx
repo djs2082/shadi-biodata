@@ -327,7 +327,11 @@ const AddImage = () => {
           <CustomModal
             show={showCropModal}
             onHide={closeCropModal}
-            header={<div>Set Profile Photo</div>}
+            header={
+              <div style={{ margin: "0px 0px 24px 0px" }}>
+                Set Profile Photo
+              </div>
+            }
             className="crop-modal"
             body={
               <div onWheel={handleZoom}>

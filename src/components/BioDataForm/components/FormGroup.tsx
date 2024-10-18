@@ -9,7 +9,7 @@ const FormGroup: React.FC = () => {
   const data = viewModel.getData();
 
   return (
-    <div className="biodata-fields-wrapper" style={{ width: "80%" }}>
+    <div className="biodata-fields-wrapper biodata-group-wrapper">
       {data.map((data) => (
         <>
           <div className="biodata-field-title-wrapper">

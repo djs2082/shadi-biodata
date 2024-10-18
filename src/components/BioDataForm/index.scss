@@ -175,6 +175,9 @@
   position: relative;
   width: 100vw;
   height: 100vh;
+  @media screen and (max-width: 600px) {
+    height: auto;
+  }
 
   .design-image-left {
     position: absolute;
@@ -184,6 +187,13 @@
     opacity: 0.1; // Set opacity to make it a watermark
     width: 400px; // Set the width of the watermark
     height: auto;
+    @media screen and (max-width: 600px) {
+      position: fixed;
+      bottom: 7px;
+      opacity: 0.04;
+      z-index: 3;
+      // right: 0;
+    }
   }
   .biodata-form-wrapper {
     position: relative;
@@ -194,6 +204,7 @@
       // padding: 0 4px;
       width: 100vw;
       margin: 0;
+      height: auto;
     }
     width: 100vw;
     height: 100vh;
@@ -207,6 +218,7 @@
       -ms-overflow-style: none; /* For Internet Explorer and Edge */
       @media screen and (max-width: 600px) {
         width: 100%;
+        background: #fdf5e6;
         height: fit-content;
         box-sizing: border-box;
         padding: 0 4px;
@@ -226,6 +238,9 @@
           font-size: 1.8rem;
           margin-bottom: 1rem;
           color: #800000;
+        }
+        @media screen and (max-width: 600px) {
+          position: sticky;
         }
       }
 
@@ -271,11 +286,22 @@
         }
       }
     }
+    .biodata-group-wrapper {
+      width: 80%;
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+    }
   }
 }
 
 .profile-image-container {
   width: 50%;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   .biodata-profile-picture-wrapper {
     position: relative;
     display: flex;
@@ -292,6 +318,9 @@
     border: 1px solid #e8eaef;
     // background-color: #e8eaef;
     background-color: rgba(218, 165, 32, 0.2);
+    @media screen and (max-width: 600px) {
+      margin: 0;
+    }
     .profile-image-wrapper {
       position: absolute;
       // top: 50px;
@@ -301,6 +330,10 @@
       z-index: 2;
       width: 391px;
       height: 591px;
+      @media screen and (max-width: 600px) {
+        width: 272px;
+        height: 337.6px;
+      }
     }
     @media screen and (max-width: 600px) {
       width: 160px;

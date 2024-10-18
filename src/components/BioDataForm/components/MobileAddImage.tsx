@@ -12,7 +12,17 @@ const MobileAddImage = () => {
   const croppedImage = viewModel.getCroppedImage();
   return (
     <div
-      style={{ display: "flex", justifyContent: "center", padding: "8px 0" }}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "8px 0",
+        position: "sticky",
+        top: "0",
+        zIndex: "6",
+        width: "100%",
+        height: "60px",
+        backgroundColor: "#fdf5e6",
+      }}
     >
       <SecondaryButton
         onClick={() => {
@@ -37,16 +47,22 @@ const MobileAddImage = () => {
       <CustomModal
         show={showAddImageModal}
         onHide={() => setShowAddImageModal(false)}
-        header={<div>Add Profile Picture</div>}
+        header={
+          <div style={{ margin: "0 0 64px 0" }}>
+            {"Add Profile Picture".toUpperCase()}
+          </div>
+        }
         body={<AddImage></AddImage>}
         primaryButton={
-          <PrimaryButton
-            onClick={() => {
-              setShowAddImageModal(false);
-            }}
-          >
-            Save
-          </PrimaryButton>
+          <div style={{ margin: "32px 0 0 0" }}>
+            <PrimaryButton
+              onClick={() => {
+                setShowAddImageModal(false);
+              }}
+            >
+              Save
+            </PrimaryButton>
+          </div>
         }
       />
     </div>
