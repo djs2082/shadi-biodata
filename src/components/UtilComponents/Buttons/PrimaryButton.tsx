@@ -29,6 +29,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     textAlign: "center",
     color: "white",
     textTransform: "none",
+    zIndex: 2,
 
     "&:hover": {
       boxShadow: "0px 4px 4px rgba(138, 110, 147, 0.5)",

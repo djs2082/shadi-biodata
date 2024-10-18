@@ -191,7 +191,7 @@
       position: fixed;
       bottom: 7px;
       opacity: 0.04;
-      z-index: 3;
+      z-index: 1;
       // right: 0;
     }
   }
@@ -256,6 +256,7 @@
         cursor: pointer;
         font-weight: 700;
         transition: background-color 0.1s ease-in;
+        z-index: 2;
 
         &:focus {
           background: #e8eaef;
@@ -270,8 +271,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        z-index: 2;
       }
       .form-field-delete-icon {
+        z-index: 2;
         display: flex;
         flex-direction: column;
         justify-content: center;

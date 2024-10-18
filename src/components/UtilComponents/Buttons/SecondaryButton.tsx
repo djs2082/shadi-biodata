@@ -27,6 +27,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
     textAlign: "centers",
     color: "black",
     textTransform: "none",
+    zIndex: 2,
     "&:hover": {
       background: "rgba(218, 165, 32, 1)",
       border: "1px solid #DAA520",

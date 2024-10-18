@@ -1,5 +1,6 @@
 .form-field-wrapper {
   display: flex;
+  z-index: 2;
   .form-fields {
     display: flex;
     flex-direction: column;

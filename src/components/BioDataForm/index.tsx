@@ -12,7 +12,7 @@ import FormGroup from "./components/FormGroup";
 import AddImage from "./components/AddImage";
 import Media from "react-media";
 import MobileAddImage from "./components/MobileAddImage";
-// import imageFrame from "./../BioDataTemplates/images/imageFrame.png";
+import imageFrame from "./../BioDataTemplates/images/imageFrame.png";
 
 const BioDataForm = () => {
   const viewModel = useBioDataFormViewModel();
@@ -60,7 +60,7 @@ const BioDataForm = () => {
         }}
       /> */}
       <div ref={targetDevRef} className="biodata-form-outer-wrapper">
-        {/* <img className="design-image-left" src={imageFrame} alt="" /> */}
+        <img className="design-image-left" src={imageFrame} alt="" />
         <Media queries={{ mobile: "(max-width: 480px)" }}>
           {(matches) => <>{matches.mobile && <MobileAddImage />}</>}
         </Media>
