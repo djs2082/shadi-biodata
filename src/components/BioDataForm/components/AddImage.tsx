@@ -288,7 +288,7 @@ const AddImage = () => {
                           rowGap: "2px",
                           fontSize: "16px",
                           transition:
-                            "transform 0.2s ease-in-out, color 0.3s ease-in-out", // Smooth transition
+                            "transform 0.1s ease-in-out, color 0.3s ease-in-out", // Smooth transition
                           "&:hover": {
                             transform: "scale(1.2)", // Grow the icon by 20% on hover
                           },
