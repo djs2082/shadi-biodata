@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import PermMediaIcon from "@mui/icons-material/PermMedia";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { fileTypeFromBuffer, FileTypeResult } from "file-type";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import ImageIcon from "@mui/icons-material/Image";
@@ -17,6 +17,7 @@ import {
   getImageFromDB,
 } from "./../../../services/indexedDB";
 import Media from "react-media";
+import imageFrameOld from "./../../BioDataTemplates/images/imageFrameOld2.png";
 
 interface SelectedImage {
   file: string | ArrayBuffer | null;
@@ -197,11 +198,12 @@ const AddImage = () => {
   const isMobile = () => window.screen.width <= 480;
 
   return (
-    <>
+    <div className="profile-image-container">
       <div
         className="biodata-profile-picture-wrapper"
         onClick={() => document.getElementById("fileInput")?.click()}
       >
+        <img className="profile-image-wrapper" src={imageFrameOld} />
         {croppedImage && (
           <>
             <div
@@ -263,7 +265,7 @@ const AddImage = () => {
                 <>
                   {matches.mobile && (
                     <>
-                      <PermMediaIcon
+                      <AddAPhotoIcon
                         sx={{
                           width: "100px",
                           fontSize: "60px",
@@ -278,17 +280,44 @@ const AddImage = () => {
                   )}
                   {matches.web && (
                     <>
-                      <PermMediaIcon
+                      <IconButton
+                        disableRipple
                         sx={{
-                          width: "100px",
-                          fontSize: "100px",
-                          color: "#64728c",
+                          display: "flex",
+                          flexDirection: "column",
+                          rowGap: "2px",
+                          fontSize: "16px",
+                          transition:
+                            "transform 0.2s ease-in-out, color 0.3s ease-in-out", // Smooth transition
+                          "&:hover": {
+                            transform: "scale(1.2)", // Grow the icon by 20% on hover
+                          },
                         }}
-                      />
-                      <p>
-                        Click here to add your photo <br />
-                        (Up to 20MB in size)
-                      </p>
+                      >
+                        <AddAPhotoIcon
+                          sx={{
+                            color: "#5E5E5E",
+                            width: "100px",
+                            fontSize: "100px",
+                            // transition:
+                            //   "transform 0.2s ease-in-out, color 0.3s ease-in-out", // Smooth transition
+                            // "&:hover": {
+                            //   transform: "scale(1.2)", // Grow the icon by 20% on hover
+                            // },
+                            // color: "#64728c",
+                          }}
+                        />
+
+                        <p
+                          style={{
+                            color: "#5E5E5E",
+                            fontWeight: "bold",
+                            margin: 0,
+                          }}
+                        >
+                          {"Add your photo".toUpperCase()} <br />
+                        </p>
+                      </IconButton>
                     </>
                   )}
                 </>
@@ -356,7 +385,7 @@ const AddImage = () => {
           />
         </>
       </div>
-    </>
+    </div>
   );
 };
 

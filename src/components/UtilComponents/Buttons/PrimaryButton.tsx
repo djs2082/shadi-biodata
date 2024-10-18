@@ -22,8 +22,9 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     maxWidth: "100%",
     height: "40px",
     width: "240px",
-    background: "linear-gradient(270deg, #0483df -0.05%, #004b87 99.95%)",
-    borderRadius: "4px",
+    backgroundColor: "rgba(128, 0, 0, 0.8)",
+    // background: "linear-gradient(270deg, #0483df -0.05%, #004b87 99.95%)",
+    borderRadius: "40px",
     fontSize: "16px",
     textAlign: "center",
     color: "white",
@@ -31,7 +32,11 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 
     "&:hover": {
       boxShadow: "0px 4px 4px rgba(138, 110, 147, 0.5)",
-      borderRadius: "4px",
+      borderRadius: "40px",
+      backgroundColor: "rgba(128, 0, 0, 1)",
+      // width: "280px",
+      // height: "80px",
+      // color: "#A0522D",
     },
     "&:active": {
       background: "#004b87",

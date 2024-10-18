@@ -78,6 +78,11 @@ const FormField: React.FC<FormFieldProps> = ({
             sx={{
               "& .MuiInputBase-input": {
                 color: "#1a1e3e",
+                border: "1px solid #800000",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#800000", // Change border color on focus (Gold)
+                borderWidth: "1.5px", // Optional: thicker border on focus
               },
             }}
             value={value}
@@ -99,10 +104,10 @@ const FormField: React.FC<FormFieldProps> = ({
       </div>
       <div className="form-move-arrows">
         <IconButton onClick={() => onFieldMove("up")}>
-          <ArrowDropUpIcon fontSize="large" />
+          <ArrowDropUpIcon fontSize="large" sx={{ color: "#DAA520" }} />
         </IconButton>
         <IconButton onClick={() => onFieldMove("down")}>
-          <ArrowDropDownIcon fontSize="large" />
+          <ArrowDropDownIcon fontSize="large" sx={{ color: "#DAA520" }} />
         </IconButton>
       </div>
       <div className="form-field-delete-icon">

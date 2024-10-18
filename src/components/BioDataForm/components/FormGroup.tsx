@@ -9,10 +9,12 @@ const FormGroup: React.FC = () => {
   const data = viewModel.getData();
 
   return (
-    <div className="biodata-fields-wrapper">
+    <div className="biodata-fields-wrapper" style={{ width: "80%" }}>
       {data.map((data) => (
         <>
-          <p className="biodata-field-title">{data.title}</p>
+          <div className="biodata-field-title-wrapper">
+            <p className="biodata-field-title">{data.title}</p>
+          </div>
           {data.data.map((field) => (
             <FormField
               key={field.id}

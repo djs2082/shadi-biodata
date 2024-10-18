@@ -1,9 +1,11 @@
 import PrimaryButton from "../../UtilComponents/Buttons/PrimaryButton";
 import TodaysCountShow from "./TodaysCountShow";
-interface LandingPageProps {
-  onCreateClick: () => void;
-}
-const LandingPage: React.FC<LandingPageProps> = ({ onCreateClick }) => {
+import { useNavigate } from "react-router-dom";
+
+import "./../index.scss";
+interface LandingPageProps {}
+const LandingPage: React.FC<LandingPageProps> = () => {
+  const navigate = useNavigate();
   return (
     <div className="landing-page-wrapper">
       <div className="hero-image-wrapper">
@@ -22,7 +24,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onCreateClick }) => {
           <PrimaryButton
             className="create-biodata-btn"
             onClick={() => {
-              onCreateClick();
+              navigate("/form");
             }}
           >
             Create My Biodata
