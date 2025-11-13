@@ -13,16 +13,54 @@
 
 ## 🎯 Success Metrics
 
-| Metric | Current | Target |
-|--------|---------|--------|
-| TypeScript Coverage | 78% | 100% |
-| Test Coverage | 0% | 80% |
-| Bundle Size | ~50MB+ fonts | < 500KB |
-| Lighthouse Score | Unknown | 90+ |
-| Largest Component | 397 lines | < 150 lines |
-| Styling Approaches | 4 different | 1 (Tailwind) |
-| Console Logs | 26+ | 0 |
-| Build Time (CRA) | Slow | < 10s (Vite) |
+| Metric              | Current      | Target       |
+| ------------------- | ------------ | ------------ |
+| TypeScript Coverage | 78%          | 100%         |
+| Test Coverage       | 0%           | 80%          |
+| Bundle Size         | ~50MB+ fonts | < 500KB      |
+| Lighthouse Score    | Unknown      | 90+          |
+| Largest Component   | 397 lines    | < 150 lines  |
+| Styling Approaches  | 4 different  | 1 (Tailwind) |
+| Console Logs        | 26+          | 0            |
+| Build Time (CRA)    | Slow         | < 10s (Vite) |
+
+---
+
+## ✅ Progress Tracker
+
+**Last Updated:** 2025-11-13
+
+### Week 1: Foundation & Setup - ✅ DAY 1 COMPLETE
+
+#### Day 1: Development Tooling Setup ✅
+
+- [x] **Step 1.1:** Prettier installed and configured (Commit: f54b850)
+- [x] **Step 1.2:** ESLint configured with TypeScript support (Commit: e85fba1)
+- [x] **Step 1.3:** Husky & lint-staged set up (Commit: 33a09ab)
+- [x] **Step 1.4:** Environment variables configured (Commit: 43217f9)
+- [x] **Step 1.5:** Tailwind CSS v3 configured (Commit: fee28c1)
+
+**Achievements:**
+
+- ✅ Code formatting automated
+- ✅ Pre-commit hooks working
+- ✅ Tailwind CSS configured with custom theme
+- ✅ Environment variables externalized
+- ✅ ESLint catching errors
+
+**Metrics Improved:**
+
+- Console logs reduced (warnings added)
+- Code formatted consistently
+- Git hooks preventing bad commits
+- Tailwind classes available for use
+
+#### Day 2: Dependency Cleanup - 🔄 PENDING
+
+- [ ] Update Zustand to stable version
+- [ ] Remove unused dependencies
+- [ ] Update major dependencies
+- [ ] Font optimization
 
 ---
 
@@ -54,11 +92,13 @@
 ### Step 1.1: Install Prettier (1 hour)
 
 **Install dependencies:**
+
 ```bash
 npm install --save-dev prettier
 ```
 
 **Create `.prettierrc` file:**
+
 ```json
 {
   "semi": true,
@@ -73,6 +113,7 @@ npm install --save-dev prettier
 ```
 
 **Create `.prettierignore` file:**
+
 ```
 # Dependencies
 node_modules
@@ -103,6 +144,7 @@ coverage
 ```
 
 **Add Prettier scripts to `package.json`:**
+
 ```json
 {
   "scripts": {
@@ -113,11 +155,13 @@ coverage
 ```
 
 **Run initial format:**
+
 ```bash
 npm run format
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "chore: add Prettier configuration and format codebase"
@@ -128,6 +172,7 @@ git commit -m "chore: add Prettier configuration and format codebase"
 ### Step 1.2: Configure ESLint (2 hours)
 
 **Install ESLint dependencies:**
+
 ```bash
 npm install --save-dev \
   @typescript-eslint/parser \
@@ -140,6 +185,7 @@ npm install --save-dev \
 ```
 
 **Create `.eslintrc.js` file:**
+
 ```javascript
 module.exports = {
   root: true,
@@ -206,6 +252,7 @@ module.exports = {
 ```
 
 **Create `.eslintignore` file:**
+
 ```
 node_modules
 build
@@ -217,6 +264,7 @@ public
 ```
 
 **Add ESLint scripts to `package.json`:**
+
 ```json
 {
   "scripts": {
@@ -227,6 +275,7 @@ public
 ```
 
 **Run ESLint and fix auto-fixable issues:**
+
 ```bash
 npm run lint:fix
 ```
@@ -234,6 +283,7 @@ npm run lint:fix
 **Review remaining errors manually**
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "chore: add ESLint configuration with TypeScript support"
@@ -244,31 +294,30 @@ git commit -m "chore: add ESLint configuration with TypeScript support"
 ### Step 1.3: Set Up Husky & lint-staged (1.5 hours)
 
 **Install dependencies:**
+
 ```bash
 npm install --save-dev husky lint-staged
 ```
 
 **Initialize Husky:**
+
 ```bash
 npx husky-init && npm install
 ```
 
 **Configure lint-staged in `package.json`:**
+
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,css,scss,md}": [
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{json,css,scss,md}": ["prettier --write"]
   }
 }
 ```
 
 **Update `.husky/pre-commit` file:**
+
 ```bash
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
@@ -277,6 +326,7 @@ npx lint-staged
 ```
 
 **Create `.husky/pre-push` file:**
+
 ```bash
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
@@ -286,11 +336,13 @@ npm run format:check
 ```
 
 **Make pre-push executable:**
+
 ```bash
 chmod +x .husky/pre-push
 ```
 
 **Test hooks:**
+
 ```bash
 # Make a small change and commit to test
 git add .
@@ -298,6 +350,7 @@ git commit -m "test: verify husky hooks working"
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "chore: add Husky and lint-staged for pre-commit hooks"
@@ -308,6 +361,7 @@ git commit -m "chore: add Husky and lint-staged for pre-commit hooks"
 ### Step 1.4: Environment Variables Setup (1 hour)
 
 **Create `.env.example` file:**
+
 ```env
 # API Configuration
 REACT_APP_COUNTER_API_KEY=your_api_key_here
@@ -323,6 +377,7 @@ REACT_APP_ENABLE_DEBUG=false
 ```
 
 **Update `.gitignore` to include `.env`:**
+
 ```
 # Environment variables
 .env
@@ -332,6 +387,7 @@ REACT_APP_ENABLE_DEBUG=false
 ```
 
 **Create actual `.env` file from example:**
+
 ```bash
 cp .env.example .env
 ```
@@ -339,16 +395,19 @@ cp .env.example .env
 **Update code to use environment variables:**
 
 Find hardcoded API keys in:
+
 - `src/components/BioDataForm/viewModel.ts`
 - Any other files with API keys
 
 Replace with:
+
 ```typescript
 const API_KEY = process.env.REACT_APP_COUNTER_API_KEY;
 const API_URL = process.env.REACT_APP_COUNTER_API_URL;
 ```
 
 **Commit:**
+
 ```bash
 git add .env.example .gitignore
 git commit -m "chore: add environment variables configuration"
@@ -359,19 +418,18 @@ git commit -m "chore: add environment variables configuration"
 ### Step 1.5: Configure Tailwind CSS (3.5 hours)
 
 **Install Tailwind CSS and dependencies:**
+
 ```bash
 npm install --save-dev tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
 **Configure `tailwind.config.js`:**
+
 ```javascript
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html"
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
       colors: {
@@ -419,39 +477,40 @@ module.exports = {
         serif: ['Times New Roman', 'serif'],
       },
       fontSize: {
-        'xs': '0.75rem',     // 12px
-        'sm': '0.875rem',    // 14px
-        'base': '1rem',      // 16px
-        'lg': '1.125rem',    // 18px
-        'xl': '1.25rem',     // 20px
-        '2xl': '1.5rem',     // 24px
-        '3xl': '1.875rem',   // 30px
-        '4xl': '2.25rem',    // 36px
-        '5xl': '3rem',       // 48px
+        xs: '0.75rem', // 12px
+        sm: '0.875rem', // 14px
+        base: '1rem', // 16px
+        lg: '1.125rem', // 18px
+        xl: '1.25rem', // 20px
+        '2xl': '1.5rem', // 24px
+        '3xl': '1.875rem', // 30px
+        '4xl': '2.25rem', // 36px
+        '5xl': '3rem', // 48px
       },
       spacing: {
-        '72': '18rem',
-        '84': '21rem',
-        '96': '24rem',
+        72: '18rem',
+        84: '21rem',
+        96: '24rem',
       },
       borderRadius: {
-        'none': '0',
-        'sm': '0.125rem',
-        'DEFAULT': '0.25rem',
-        'md': '0.375rem',
-        'lg': '0.5rem',
-        'xl': '0.75rem',
+        none: '0',
+        sm: '0.125rem',
+        DEFAULT: '0.25rem',
+        md: '0.375rem',
+        lg: '0.5rem',
+        xl: '0.75rem',
         '2xl': '1rem',
         '3xl': '1.5rem',
-        'full': '9999px',
+        full: '9999px',
       },
       boxShadow: {
-        'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        'DEFAULT': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        'card': '0 2px 8px rgba(0, 0, 0, 0.1)',
+        sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        DEFAULT:
+          '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        card: '0 2px 8px rgba(0, 0, 0, 0.1)',
         'card-hover': '0 4px 16px rgba(0, 0, 0, 0.15)',
       },
       animation: {
@@ -475,19 +534,18 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
 ```
 
 **Install Tailwind plugins:**
+
 ```bash
 npm install --save-dev @tailwindcss/forms @tailwindcss/typography
 ```
 
 **Update `src/index.css` to include Tailwind:**
+
 ```css
 @tailwind base;
 @tailwind components;
@@ -503,7 +561,12 @@ npm install --save-dev @tailwindcss/forms @tailwindcss/typography
     @apply bg-neutral-50 text-neutral-900;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 
@@ -576,6 +639,7 @@ npm install --save-dev @tailwindcss/forms @tailwindcss/typography
 
 **Test Tailwind is working:**
 Create a test component to verify:
+
 ```tsx
 // Temporary test in App.tsx
 <div className="bg-primary-500 text-white p-4 rounded-lg">
@@ -584,6 +648,7 @@ Create a test component to verify:
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "feat: configure Tailwind CSS with custom theme"
@@ -596,23 +661,27 @@ git commit -m "feat: configure Tailwind CSS with custom theme"
 ### Step 2.1: Update Zustand to Stable Version (1 hour)
 
 **Check current version:**
+
 ```bash
 npm list zustand
 # Should show: zustand@5.0.0-rc.2
 ```
 
 **Update to stable version:**
+
 ```bash
 npm install zustand@latest
 ```
 
 **Verify version:**
+
 ```bash
 npm list zustand
 # Should show: zustand@5.x.x (stable)
 ```
 
 **Test application:**
+
 ```bash
 npm start
 ```
@@ -620,6 +689,7 @@ npm start
 **Navigate through all pages and test form functionality to ensure nothing broke**
 
 **Commit:**
+
 ```bash
 git add package.json package-lock.json
 git commit -m "chore: update Zustand to stable version"
@@ -632,32 +702,38 @@ git commit -m "chore: update Zustand to stable version"
 **Identify and remove unused packages:**
 
 **Remove react-easy-crop (duplicate cropper):**
+
 ```bash
 npm uninstall react-easy-crop
 ```
 
 **Check if used anywhere:**
+
 ```bash
 grep -r "react-easy-crop" src/
 # Should return nothing
 ```
 
 **Remove loadash (typo package):**
+
 ```bash
 npm uninstall loadash
 ```
 
 **Ensure lodash (correct) is still present:**
+
 ```bash
 npm list lodash
 ```
 
 **Remove react-media (deprecated):**
+
 ```bash
 npm uninstall react-media
 ```
 
 **Find all usages of react-media:**
+
 ```bash
 grep -r "react-media" src/
 ```
@@ -665,6 +741,7 @@ grep -r "react-media" src/
 **Replace react-media with modern hook:**
 
 Create `src/hooks/useMediaQuery.ts`:
+
 ```typescript
 import { useState, useEffect } from 'react';
 
@@ -689,11 +766,13 @@ export const useMediaQuery = (query: string): boolean => {
 
 // Preset breakpoints
 export const useIsMobile = () => useMediaQuery('(max-width: 768px)');
-export const useIsTablet = () => useMediaQuery('(min-width: 769px) and (max-width: 1024px)');
+export const useIsTablet = () =>
+  useMediaQuery('(min-width: 769px) and (max-width: 1024px)');
 export const useIsDesktop = () => useMediaQuery('(min-width: 1025px)');
 ```
 
 **Replace all react-media imports with new hook:**
+
 ```typescript
 // Old:
 import Media from 'react-media';
@@ -706,21 +785,25 @@ const isMobile = useIsMobile();
 ```
 
 **Check if @mui/x-date-pickers is actually used:**
+
 ```bash
 grep -r "@mui/x-date-pickers" src/
 ```
 
 **If not used, remove:**
+
 ```bash
 npm uninstall @mui/x-date-pickers
 ```
 
 **Test application thoroughly after removals:**
+
 ```bash
 npm start
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "chore: remove unused dependencies and replace react-media"
@@ -731,27 +814,32 @@ git commit -m "chore: remove unused dependencies and replace react-media"
 ### Step 2.3: Update Major Dependencies (3 hours)
 
 **Check outdated packages:**
+
 ```bash
 npm outdated
 ```
 
 **Update Material-UI (if keeping):**
+
 ```bash
 npm install @mui/material@latest @mui/icons-material@latest
 npm install @emotion/react@latest @emotion/styled@latest
 ```
 
 **Update testing libraries:**
+
 ```bash
 npm install --save-dev @testing-library/react@latest @testing-library/jest-dom@latest
 ```
 
 **Update React PDF renderer:**
+
 ```bash
 npm install @react-pdf/renderer@latest
 ```
 
 **Update other dependencies:**
+
 ```bash
 npm update
 ```
@@ -759,21 +847,25 @@ npm update
 **Review package.json for any remaining outdated packages**
 
 **Test application after updates:**
+
 ```bash
 npm start
 ```
 
 **Run existing test:**
+
 ```bash
 npm test
 ```
 
 **If any breaking changes, fix them:**
+
 - Check migration guides for updated packages
 - Update deprecated API usages
 - Fix type errors
 
 **Commit:**
+
 ```bash
 git add package.json package-lock.json
 git commit -m "chore: update dependencies to latest stable versions"
@@ -784,6 +876,7 @@ git commit -m "chore: update dependencies to latest stable versions"
 ### Step 2.4: Font Optimization - Remove Local Fonts (2 hours)
 
 **Analyze current font directory:**
+
 ```bash
 du -sh src/fonts/
 # Should show ~49MB
@@ -792,17 +885,25 @@ du -sh src/fonts/
 **Create Google Fonts configuration:**
 
 **Update `public/index.html` to load fonts from Google Fonts:**
+
 ```html
 <!-- Add in <head> section -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 **Or use Bunny Fonts (privacy-friendly alternative):**
+
 ```html
-<link rel="preconnect" href="https://fonts.bunny.net">
-<link href="https://fonts.bunny.net/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.bunny.net" />
+<link
+  href="https://fonts.bunny.net/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 **Update font-face declarations in CSS:**
@@ -810,6 +911,7 @@ du -sh src/fonts/
 Remove any `@font-face` declarations that reference local font files.
 
 **Find all local font imports:**
+
 ```bash
 grep -r "src/fonts" src/
 ```
@@ -817,6 +919,7 @@ grep -r "src/fonts" src/
 **Update PDF templates (they need embedded fonts):**
 
 For `BasicTemplate.tsx`, fonts need to be registered for PDF generation:
+
 ```typescript
 import { Font } from '@react-pdf/renderer';
 
@@ -837,17 +940,20 @@ Font.register({
 ```
 
 **Backup fonts directory first:**
+
 ```bash
 mkdir ../fonts-backup
 cp -r src/fonts ../fonts-backup/
 ```
 
 **Delete local fonts directory:**
+
 ```bash
 rm -rf src/fonts
 ```
 
 **Update any imports:**
+
 ```bash
 # Find all font imports
 grep -r "fonts/" src/
@@ -856,22 +962,26 @@ grep -r "fonts/" src/
 ```
 
 **Test application:**
+
 ```bash
 npm start
 ```
 
 **Verify fonts load correctly:**
+
 - Check web fonts in browser
 - Test PDF generation with embedded fonts
 - Check font fallbacks work
 
 **Measure bundle size difference:**
+
 ```bash
 npm run build
 # Check build/static directory size
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "perf: replace local fonts with web fonts, reduce bundle by ~49MB"
@@ -884,16 +994,19 @@ git commit -m "perf: replace local fonts with web fonts, reduce bundle by ~49MB"
 ### Step 3.1: Create Project Directory Structure (1 hour)
 
 **Create new directories:**
+
 ```bash
 mkdir -p src/{constants,utils,hooks,contexts,services,types,components/{atoms,molecules,organisms,templates,pages}}
 ```
 
 **Verify structure:**
+
 ```bash
 tree src -L 2 -d
 ```
 
 **Expected output:**
+
 ```
 src
 ├── components
@@ -911,6 +1024,7 @@ src
 ```
 
 **Create index files for barrel exports:**
+
 ```bash
 touch src/constants/index.ts
 touch src/utils/index.ts
@@ -921,6 +1035,7 @@ touch src/types/index.ts
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "chore: create atomic design directory structure"
@@ -931,10 +1046,12 @@ git commit -m "chore: create atomic design directory structure"
 ### Step 3.2: Extract Constants (3 hours)
 
 **Create `src/constants/apiEndpoints.ts`:**
+
 ```typescript
 export const API_ENDPOINTS = {
   COUNTER: {
-    BASE_URL: process.env.REACT_APP_COUNTER_API_URL || 'https://api.counterapi.dev/v1',
+    BASE_URL:
+      process.env.REACT_APP_COUNTER_API_URL || 'https://api.counterapi.dev/v1',
     API_KEY: process.env.REACT_APP_COUNTER_API_KEY || '',
   },
 } as const;
@@ -943,6 +1060,7 @@ export default API_ENDPOINTS;
 ```
 
 **Create `src/constants/cropDimensions.ts`:**
+
 ```typescript
 export const CROP_DIMENSIONS = {
   mobile: {
@@ -957,13 +1075,18 @@ export const CROP_DIMENSIONS = {
 } as const;
 
 export const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
-export const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp'] as const;
+export const ALLOWED_IMAGE_TYPES = [
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+] as const;
 export const IMAGE_QUALITY = 0.9;
 
 export default CROP_DIMENSIONS;
 ```
 
 **Create `src/constants/breakpoints.ts`:**
+
 ```typescript
 export const BREAKPOINTS = {
   mobile: 480,
@@ -983,6 +1106,7 @@ export default BREAKPOINTS;
 ```
 
 **Create `src/constants/validationRules.ts`:**
+
 ```typescript
 export const VALIDATION_RULES = {
   name: {
@@ -1015,6 +1139,7 @@ export default VALIDATION_RULES;
 ```
 
 **Create `src/constants/formFields.ts`:**
+
 ```typescript
 export const FORM_FIELD_TYPES = {
   TEXT: 'text',
@@ -1038,6 +1163,7 @@ export default FORM_FIELD_TYPES;
 ```
 
 **Create `src/constants/colors.ts`:**
+
 ```typescript
 // Fallback colors if Tailwind theme is not available
 export const COLORS = {
@@ -1068,6 +1194,7 @@ export default COLORS;
 ```
 
 **Create `src/constants/routes.ts`:**
+
 ```typescript
 export const ROUTES = {
   HOME: '/',
@@ -1081,6 +1208,7 @@ export default ROUTES;
 ```
 
 **Create barrel export in `src/constants/index.ts`:**
+
 ```typescript
 export * from './apiEndpoints';
 export * from './breakpoints';
@@ -1094,6 +1222,7 @@ export * from './validationRules';
 **Find and replace hardcoded values in codebase:**
 
 **Example replacements:**
+
 ```typescript
 // Before:
 height: isMobile() ? 228.6 : 400,
@@ -1107,6 +1236,7 @@ width: dimensions.width,
 ```
 
 **Set up path aliases in `tsconfig.json`:**
+
 ```json
 {
   "compilerOptions": {
@@ -1126,6 +1256,7 @@ width: dimensions.width,
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "refactor: extract constants and configure path aliases"
@@ -1136,6 +1267,7 @@ git commit -m "refactor: extract constants and configure path aliases"
 ### Step 3.3: Create Utility Functions (4 hours)
 
 **Create `src/utils/imageProcessing.ts`:**
+
 ```typescript
 import { CROP_DIMENSIONS, MAX_IMAGE_SIZE, IMAGE_QUALITY } from '@/constants';
 
@@ -1207,7 +1339,9 @@ export const resizeImage = async (
 /**
  * Validate image file
  */
-export const validateImage = (file: File): { valid: boolean; error?: string } => {
+export const validateImage = (
+  file: File
+): { valid: boolean; error?: string } => {
   if (file.size > MAX_IMAGE_SIZE) {
     return {
       valid: false,
@@ -1249,6 +1383,7 @@ export const getCropDimensions = (isMobile: boolean) => {
 ```
 
 **Create `src/utils/validators.ts`:**
+
 ```typescript
 import { VALIDATION_RULES } from '@/constants';
 
@@ -1343,6 +1478,7 @@ export const validateRequired = (value: any): ValidationResult => {
 ```
 
 **Create `src/utils/formatters.ts`:**
+
 ```typescript
 /**
  * Format date to readable string
@@ -1394,6 +1530,7 @@ export const truncate = (text: string, maxLength: number): string => {
 ```
 
 **Create `src/utils/storage.ts`:**
+
 ```typescript
 /**
  * Local storage utility with type safety
@@ -1442,6 +1579,7 @@ export default storage;
 ```
 
 **Create `src/utils/debounce.ts`:**
+
 ```typescript
 /**
  * Debounce function
@@ -1478,6 +1616,7 @@ export const throttle = <T extends (...args: any[]) => any>(
 ```
 
 **Create barrel export in `src/utils/index.ts`:**
+
 ```typescript
 export * from './debounce';
 export * from './formatters';
@@ -1487,6 +1626,7 @@ export * from './validators';
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "feat: add utility functions for validation, formatting, and image processing"
@@ -1499,6 +1639,7 @@ git commit -m "feat: add utility functions for validation, formatting, and image
 ### Step 4.1: Fix Typos in File Names (30 minutes)
 
 **Rename typo files:**
+
 ```bash
 # Fix ImgeCropModal → ImageCropModal
 mv src/components/UtilComponents/ImgeCropModal src/components/UtilComponents/ImageCropModal
@@ -1508,6 +1649,7 @@ mv src/components/BioDataTemplates/indes.scss src/components/BioDataTemplates/in
 ```
 
 **Update all imports:**
+
 ```bash
 # Find files importing the old paths
 grep -r "ImgeCropModal" src/
@@ -1517,6 +1659,7 @@ grep -r "indes.scss" src/
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "fix: correct typos in file names"
@@ -1527,16 +1670,19 @@ git commit -m "fix: correct typos in file names"
 ### Step 4.2: Remove Console Logs (2 hours)
 
 **Find all console.log statements:**
+
 ```bash
 grep -rn "console.log" src/
 ```
 
 **Strategy:**
+
 - Remove debugging console.logs
 - Replace important logs with proper logger utility
 - Keep error logs but improve them
 
 **Create logger utility `src/utils/logger.ts`:**
+
 ```typescript
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -1569,6 +1715,7 @@ export default logger;
 ```
 
 **Replace console.logs:**
+
 ```bash
 # Example replacements:
 # console.log('Error:', error) → logger.error('Error:', error)
@@ -1579,6 +1726,7 @@ export default logger;
 **Remove unnecessary logs** (e.g., "component mounted", "rendering", etc.)
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "refactor: replace console.logs with logger utility"
@@ -1589,6 +1737,7 @@ git commit -m "refactor: replace console.logs with logger utility"
 ### Step 4.3: Delete Commented Code (1.5 hours)
 
 **Find large blocks of commented code:**
+
 ```bash
 # Manually review files with commented code:
 # - src/components/UtilComponents/ImageCropModal/index.tsx (lines 16-62)
@@ -1599,26 +1748,31 @@ git commit -m "refactor: replace console.logs with logger utility"
 **Delete commented code blocks:**
 
 **ImageCropModal/index.tsx:**
+
 ```typescript
 // Delete lines 16-62 (commented component)
 ```
 
 **BioDataForm/index.tsx:**
+
 ```typescript
 // Delete lines 52-61 (commented validation logic)
 ```
 
 **FormField.tsx:**
+
 ```typescript
 // Delete commented TextField component
 ```
 
 **Note:** If any commented code seems important, move it to:
+
 - Documentation
 - Git history (it's already there)
 - Separate TODO file
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "chore: remove commented code blocks"
@@ -1629,6 +1783,7 @@ git commit -m "chore: remove commented code blocks"
 ### Step 4.4: Replace useMediaQuery Hook Usage (2 hours)
 
 **Find all instances of `isMobile()` function:**
+
 ```bash
 grep -rn "isMobile()" src/
 ```
@@ -1636,11 +1791,13 @@ grep -rn "isMobile()" src/
 **Replace with hook:**
 
 **Before:**
+
 ```typescript
 const mobile = isMobile();
 ```
 
 **After:**
+
 ```typescript
 import { useIsMobile } from '@/hooks/useMediaQuery';
 
@@ -1648,6 +1805,7 @@ const isMobile = useIsMobile();
 ```
 
 **Update all components:**
+
 - AddImage.tsx
 - MobileAddImage.tsx (will be merged later)
 - Any other components using isMobile()
@@ -1655,6 +1813,7 @@ const isMobile = useIsMobile();
 **Remove old isMobile() function definition**
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "refactor: use useMediaQuery hook instead of isMobile function"
@@ -1667,6 +1826,7 @@ git commit -m "refactor: use useMediaQuery hook instead of isMobile function"
 **Focus on small wins:**
 
 **Update imports to use path aliases:**
+
 ```typescript
 // Before:
 import { Button } from '../../components/UtilComponents/Buttons/PrimaryButton';
@@ -1676,6 +1836,7 @@ import { Button } from '@/components/UtilComponents/Buttons/PrimaryButton';
 ```
 
 **Run find-replace across codebase:**
+
 ```bash
 # Use VS Code or sed to replace relative imports with alias imports
 ```
@@ -1683,11 +1844,12 @@ import { Button } from '@/components/UtilComponents/Buttons/PrimaryButton';
 **Add missing prop types and return types:**
 
 **Example:**
+
 ```typescript
 // Before:
 const FormField = ({ label, value, onChange }) => {
   // ...
-}
+};
 
 // After:
 interface FormFieldProps {
@@ -1698,10 +1860,11 @@ interface FormFieldProps {
 
 const FormField = ({ label, value, onChange }: FormFieldProps): JSX.Element => {
   // ...
-}
+};
 ```
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "refactor: use path aliases and add missing types"
@@ -1715,7 +1878,7 @@ git commit -m "refactor: use path aliases and add missing types"
 
 **Create comprehensive README:**
 
-```markdown
+````markdown
 # Shadi Biodata Maker 🎴
 
 A modern web application for creating beautiful marriage biodata/profiles with customizable templates and PDF export.
@@ -1740,17 +1903,22 @@ A modern web application for creating beautiful marriage biodata/profiles with c
 ### Installation
 
 \`\`\`bash
+
 # Clone repository
+
 git clone <repo-url>
 cd shadi-biodata
 
 # Install dependencies
+
 npm install
 
 # Copy environment variables
+
 cp .env.example .env
 
 # Start development server
+
 npm start
 \`\`\`
 
@@ -1772,23 +1940,24 @@ Application will open at `http://localhost:3000`
 
 \`\`\`
 src/
-├── components/       # React components
-│   ├── atoms/       # Basic building blocks
-│   ├── molecules/   # Simple combinations
-│   ├── organisms/   # Complex components
-│   ├── templates/   # Page layouts
-│   └── pages/       # Route components
-├── constants/       # App constants
-├── contexts/        # React contexts
-├── hooks/          # Custom hooks
-├── services/       # API and business logic
-├── types/          # TypeScript types
-└── utils/          # Utility functions
+├── components/ # React components
+│ ├── atoms/ # Basic building blocks
+│ ├── molecules/ # Simple combinations
+│ ├── organisms/ # Complex components
+│ ├── templates/ # Page layouts
+│ └── pages/ # Route components
+├── constants/ # App constants
+├── contexts/ # React contexts
+├── hooks/ # Custom hooks
+├── services/ # API and business logic
+├── types/ # TypeScript types
+└── utils/ # Utility functions
 \`\`\`
 
 ### Code Style
 
 This project uses:
+
 - **TypeScript** for type safety
 - **ESLint** for code linting
 - **Prettier** for code formatting
@@ -1819,6 +1988,7 @@ Output: `dist/` directory
 ### Deploy
 
 Supports deployment to:
+
 - Netlify
 - Vercel
 - GitHub Pages
@@ -1827,13 +1997,17 @@ Supports deployment to:
 ## 🧪 Testing
 
 \`\`\`bash
+
 # Run all tests
+
 npm test
 
 # Run with coverage
+
 npm test -- --coverage
 
 # Run in watch mode
+
 npm test -- --watch
 \`\`\`
 
@@ -1857,10 +2031,12 @@ Made with ❤️ for the Indian wedding community
 \`\`\`
 
 **Commit:**
+
 ```bash
 git add README.md
 git commit -m "docs: update README with comprehensive project information"
 ```
+````
 
 ---
 
@@ -1868,7 +2044,7 @@ git commit -m "docs: update README with comprehensive project information"
 
 **Create `CONTRIBUTING.md`:**
 
-```markdown
+````markdown
 # Contributing to Shadi Biodata Maker
 
 Thank you for your interest in contributing! 🎉
@@ -1919,10 +2095,12 @@ Open an issue for any questions!
 \`\`\`
 
 **Commit:**
+
 ```bash
 git add CONTRIBUTING.md
 git commit -m "docs: add contributing guidelines"
 ```
+````
 
 ---
 
@@ -1930,7 +2108,7 @@ git commit -m "docs: add contributing guidelines"
 
 **Create `ARCHITECTURE.md`:**
 
-```markdown
+````markdown
 # Architecture Documentation
 
 ## Overview
@@ -1954,26 +2132,31 @@ Atoms → Molecules → Organisms → Templates → Pages
 \`\`\`
 
 **Atoms** (< 50 lines)
+
 - Basic UI elements: Button, Input, Label, Icon
 - No business logic
 - Highly reusable
 
 **Molecules** (50-100 lines)
+
 - Combinations of atoms: FormField, ImageUploadButton
 - Minimal logic
 - Single responsibility
 
 **Organisms** (100-150 lines)
+
 - Complex components: FormSection, NavigationBar
 - Can contain business logic
 - Feature-specific
 
 **Templates**
+
 - Page layouts
 - Composition of organisms
 - Define page structure
 
 **Pages**
+
 - Route-level components
 - Connect to services/contexts
 - Handle page-level logic
@@ -1985,16 +2168,19 @@ Atoms → Molecules → Organisms → Templates → Pages
 Using **Zustand** for global state with Context API for UI state.
 
 **Global State (Zustand)**:
+
 - Form data
 - User preferences
 - Persistent data
 
 **Local State (useState)**:
+
 - Component-specific UI state
 - Temporary data
 - Form inputs
 
 **Context API**:
+
 - Theme
 - Auth (future)
 - Modal management
@@ -2038,34 +2224,36 @@ Services handle all business logic and external interactions:
 \`\`\`
 src/
 ├── components/
-│   └── [atomic-structure]/
-│       └── ComponentName/
-│           ├── ComponentName.tsx
-│           ├── ComponentName.test.tsx
-│           ├── ComponentName.styles.ts (if needed)
-│           └── index.ts
+│ └── [atomic-structure]/
+│ └── ComponentName/
+│ ├── ComponentName.tsx
+│ ├── ComponentName.test.tsx
+│ ├── ComponentName.styles.ts (if needed)
+│ └── index.ts
 ├── services/
-│   └── featureName/
-│       ├── featureService.ts
-│       └── featureService.test.ts
+│ └── featureName/
+│ ├── featureService.ts
+│ └── featureService.test.ts
 ├── hooks/
-│   ├── useFeature.ts
-│   └── useFeature.test.ts
+│ ├── useFeature.ts
+│ └── useFeature.test.ts
 ├── types/
-│   └── feature.types.ts
+│ └── feature.types.ts
 └── utils/
-    ├── utilName.ts
-    └── utilName.test.ts
+├── utilName.ts
+└── utilName.test.ts
 \`\`\`
 
 ## Build & Bundle
 
 ### Current (CRA)
+
 - Webpack-based
 - ~2-3s build time
 - Bundle splitting by route
 
 ### Future (Vite)
+
 - Rollup-based
 - < 10s build
 - Better tree-shaking
@@ -2081,17 +2269,20 @@ src/
 ## Testing Strategy
 
 ### Unit Tests
+
 - All utilities: 100% coverage
 - All services: 90% coverage
 - Atoms: 100% coverage
 - Hooks: 80% coverage
 
 ### Integration Tests
+
 - Critical user flows
 - Form submission
 - PDF generation
 
 ### E2E Tests (Future)
+
 - Complete user journey
 - Cross-browser testing
 
@@ -2117,19 +2308,22 @@ src/
 - [ ] Cloud sync
 - [ ] Template customization
 - [ ] Social sharing
-\`\`\`
+      \`\`\`
 
 **Commit:**
+
 ```bash
 git add ARCHITECTURE.md
 git commit -m "docs: add architecture documentation"
 ```
+````
 
 ---
 
 ### Step 5.4: Week 1 Review & Testing (3 hours)
 
 **Run full test suite:**
+
 ```bash
 # Lint all code
 npm run lint
@@ -2145,6 +2339,7 @@ npm run build
 ```
 
 **Manual testing checklist:**
+
 - [ ] Application starts without errors
 - [ ] All pages load correctly
 - [ ] Fonts display properly (web fonts)
@@ -2154,11 +2349,13 @@ npm run build
 - [ ] Prettier formats on save
 
 **Review Week 1 accomplishments:**
+
 ```bash
 git log --oneline --since="1 week ago"
 ```
 
 **Measure improvements:**
+
 ```bash
 # Check bundle size
 du -sh build/
@@ -2174,7 +2371,8 @@ grep -r "console.log" src/ | wc -l
 **Create Week 1 Summary:**
 
 **Create `docs/week1-summary.md`:**
-```markdown
+
+````markdown
 # Week 1 Summary
 
 ## Completed Tasks
@@ -2197,33 +2395,36 @@ grep -r "console.log" src/ | wc -l
 
 ## Metrics
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Local Fonts | 49MB | 0MB | -100% |
-| Console Logs | 26+ | 0 | -100% |
-| Linting Errors | Unknown | 0 | ✅ |
-| Code Formatted | No | Yes | ✅ |
-| Git Hooks | No | Yes | ✅ |
-| Constants Extracted | No | Yes | ✅ |
+| Metric              | Before  | After | Improvement |
+| ------------------- | ------- | ----- | ----------- |
+| Local Fonts         | 49MB    | 0MB   | -100%       |
+| Console Logs        | 26+     | 0     | -100%       |
+| Linting Errors      | Unknown | 0     | ✅          |
+| Code Formatted      | No      | Yes   | ✅          |
+| Git Hooks           | No      | Yes   | ✅          |
+| Constants Extracted | No      | Yes   | ✅          |
 
 ## Next Week
 
 - TypeScript migration (all JS → TS)
 - Begin Tailwind migration
 - Start component decomposition
-\`\`\`
+  \`\`\`
 
 **Commit:**
+
 ```bash
 git add .
 git commit -m "docs: add week 1 summary and review checklist"
 ```
+````
 
 ---
 
 ## Week 1 Completion Checklist
 
 ### Day 1: Development Tooling ✅
+
 - [x] Prettier installed and configured
 - [x] ESLint installed and configured
 - [x] Husky + lint-staged set up
@@ -2231,23 +2432,27 @@ git commit -m "docs: add week 1 summary and review checklist"
 - [x] Tailwind CSS installed and configured
 
 ### Day 2: Dependency Cleanup ✅
+
 - [x] Zustand updated to stable
 - [x] Unused packages removed
 - [x] Dependencies updated
 - [x] Local fonts removed (49MB saved)
 
 ### Day 3: Project Structure ✅
+
 - [x] Atomic design directory created
 - [x] Constants extracted (7 files)
 - [x] Utility functions created (5 files)
 
 ### Day 4: File Cleanup ✅
+
 - [x] File name typos fixed
 - [x] Console.logs removed/replaced
 - [x] Commented code deleted
 - [x] Path aliases implemented
 
 ### Day 5: Documentation ✅
+
 - [x] README updated
 - [x] CONTRIBUTING.md created
 - [x] ARCHITECTURE.md created
