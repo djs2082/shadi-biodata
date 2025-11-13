@@ -71,7 +71,7 @@ export const deleteImageFromDB = async () => {
       localStorage.removeItem('profile_picture_id');
       resolve('Record Deleted successfully');
     };
-    request.onerror = (error) => {
+    request.onerror = () => {
       console.error('Failed to delete record:', request.error);
       reject('Failed to delete record: ' + request.error);
     };
