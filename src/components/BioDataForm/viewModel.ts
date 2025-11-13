@@ -11,10 +11,10 @@ class BioDataFormViewModel {
 
   constructor(store: BioDataFormDataStore) {
     this.store = store;
-    this.url =
-      process.env.NODE_ENV === 'production'
-        ? 'https://api.counterapi.dev/v1/shadibiodata/prod'
-        : 'https://api.counterapi.dev/v1/shadibiodata/dev';
+    const baseUrl =
+      process.env.REACT_APP_COUNTER_API_URL || 'https://api.counterapi.dev/v1';
+    const environment = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+    this.url = `${baseUrl}/shadibiodata/${environment}`;
   }
 
   public getShowAddNewFieldForm = () => this.store.showAddNewFieldForm;
