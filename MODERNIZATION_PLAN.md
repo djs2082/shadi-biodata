@@ -55,12 +55,12 @@
 - Git hooks preventing bad commits
 - Tailwind classes available for use
 
-#### Day 2: Dependency Cleanup - 🔄 IN PROGRESS
+#### Day 2: Dependency Cleanup - ✅ COMPLETE
 
 - [x] **Step 2.1:** Update Zustand to stable version (Commit: 99f1eb1)
 - [x] **Step 2.2:** Remove unused dependencies (Commit: b2d08d6)
-- [ ] **Step 2.3:** Update major dependencies
-- [ ] **Step 2.4:** Font optimization
+- [x] **Step 2.3:** Update major dependencies (Commit: 99f5a5e)
+- [x] **Step 2.4:** Font optimization (Commit: 5040d22)
 
 **Achievements:**
 
@@ -68,11 +68,20 @@
 - ✅ Removed 7 unused packages (react-easy-crop, loadash, react-media, etc.)
 - ✅ Created custom useMediaQuery hook to replace react-media
 - ✅ Fixed all import order issues for ESLint compliance
+- ✅ Updated @mui packages to v6.5.0 (from v6.1.2)
+- ✅ Updated @react-pdf/renderer to 4.3.1
+- ✅ Updated react-router-dom to 6.30.1
+- ✅ Updated tailwindcss to 3.4.18
+- ✅ Removed 49MB of local font files
+- ✅ Replaced local fonts with Google Fonts CDN
+- ✅ Fixed ESLint errors (empty interface, invalid HTML attributes, missing keys)
 
 **Metrics Improved:**
 
-- Bundle size reduced (removed 3 dependencies)
+- Bundle size reduced by ~49MB (font files removed)
+- Dependencies updated (10+ packages)
 - Custom hook implementation (no external dependency)
+- Code quality improved (ESLint errors fixed)
 
 ---
 
