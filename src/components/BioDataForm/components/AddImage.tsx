@@ -1,23 +1,23 @@
-import React, { useState, useRef, useEffect } from "react";
-import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import { fileTypeFromBuffer, FileTypeResult } from "file-type";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import ImageIcon from "@mui/icons-material/Image";
-import SecondaryButton from "../../UtilComponents/Buttons/SecondaryButton";
-import PrimaryButton from "../../UtilComponents/Buttons/PrimaryButton";
-import CustomModal from "../../UtilComponents/Modals/Modal";
-import Cropper from "react-cropper"; // Assuming you're using react-cropper
-import "cropperjs/dist/cropper.css";
-import useBioDataFormViewModel from "./../viewModel";
-import { IconButton, Tooltip } from "@mui/material";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState, useRef, useEffect } from 'react';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import { fileTypeFromBuffer, FileTypeResult } from 'file-type';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import ImageIcon from '@mui/icons-material/Image';
+import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
+import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
+import CustomModal from '../../UtilComponents/Modals/Modal';
+import Cropper from 'react-cropper'; // Assuming you're using react-cropper
+import 'cropperjs/dist/cropper.css';
+import useBioDataFormViewModel from './../viewModel';
+import { IconButton, Tooltip } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 import {
   addImageToDB,
   deleteImageFromDB,
   getImageFromDB,
-} from "./../../../services/indexedDB";
-import Media from "react-media";
-import imageFrameOld from "./../../BioDataTemplates/images/imageFrameOld2.png";
+} from './../../../services/indexedDB';
+import Media from 'react-media';
+import imageFrameOld from './../../BioDataTemplates/images/imageFrameOld2.png';
 
 interface SelectedImage {
   file: string | ArrayBuffer | null;
@@ -44,15 +44,15 @@ const AddImage = () => {
 
   const resizeImage = (imageBlob: Blob, width: number, height: number) => {
     return new Promise((resolve) => {
-      const img = document.createElement("img");
+      const img = document.createElement('img');
       img.src = URL.createObjectURL(imageBlob);
       img.onload = () => {
-        const canvas = document.createElement("canvas");
+        const canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext('2d');
         ctx?.drawImage(img, 0, 0, width, height);
-        canvas.toBlob(resolve, "image/jpeg", 0.7); // Compressing the image
+        canvas.toBlob(resolve, 'image/jpeg', 0.7); // Compressing the image
       };
     });
   };
@@ -71,13 +71,13 @@ const AddImage = () => {
         console.log(error);
       });
     return () => {
-      URL.revokeObjectURL(croppedImage || "");
+      URL.revokeObjectURL(croppedImage || '');
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isValidFileFormat = (mimeType: FileTypeResult | undefined): boolean => {
-    return mimeType ? mimeType.mime.split("/")[0] === "image" : false;
+    return mimeType ? mimeType.mime.split('/')[0] === 'image' : false;
   };
 
   const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -149,7 +149,7 @@ const AddImage = () => {
           blobbedImage(blob);
         }
       },
-      "image/jpeg",
+      'image/jpeg',
       0.75
     );
   };
@@ -163,7 +163,7 @@ const AddImage = () => {
     });
     setCroppedImage(null);
     setShowCropModal(false);
-    if (inputRef.current) inputRef.current.value = "";
+    if (inputRef.current) inputRef.current.value = '';
   };
 
   const handleZoom = (e: React.WheelEvent) => {
@@ -191,7 +191,7 @@ const AddImage = () => {
     deleteImageFromDB();
     cropper?.destroy();
     if (inputRef.current) {
-      inputRef.current.value = ""; // Clear the input value
+      inputRef.current.value = ''; // Clear the input value
     }
   };
 
@@ -201,7 +201,7 @@ const AddImage = () => {
     <div className="profile-image-container">
       <div
         className="biodata-profile-picture-wrapper"
-        onClick={() => document.getElementById("fileInput")?.click()}
+        onClick={() => document.getElementById('fileInput')?.click()}
       >
         <img className="profile-image-wrapper" alt="" src={imageFrameOld} />
         {croppedImage && (
@@ -210,18 +210,18 @@ const AddImage = () => {
               className="replace-photo-btn"
               onClick={(e) => removeSelectedImage(e, true)}
             >
-              {" "}
+              {' '}
               <ImageIcon></ImageIcon>
               <Media
                 queries={{
-                  mobile: "(max-width: 480px)",
-                  web: "(min-width: 480px)",
+                  mobile: '(max-width: 480px)',
+                  web: '(min-width: 480px)',
                 }}
               >
                 {(matches) => (
                   <>
-                    {matches.mobile && "Replace"}
-                    {matches.web && "Replace Photo"}
+                    {matches.mobile && 'Replace'}
+                    {matches.web && 'Replace Photo'}
                   </>
                 )}
               </Media>
@@ -236,20 +236,20 @@ const AddImage = () => {
             </Tooltip>
             <img
               src={croppedImage}
-              alt={selectedImage.name || "Selected Image"}
+              alt={selectedImage.name || 'Selected Image'}
               className="biodata-profile-picture"
-              style={{ marginBottom: "0" }}
+              style={{ marginBottom: '0' }}
               // style={{ width: "100%", height: "auto", marginTop: "10px" }} // Adjust styles as needed
             />
           </>
-        )}{" "}
+        )}{' '}
         <input
           id="fileInput"
           className="d-none"
           type="file"
           disabled={showCropModal}
           accept="image/*"
-          style={{ display: "none", cursor: "not-allowed" }}
+          style={{ display: 'none', cursor: 'not-allowed' }}
           onChange={onFileChange}
           ref={inputRef}
         />
@@ -257,8 +257,8 @@ const AddImage = () => {
           {!croppedImage && (
             <Media
               queries={{
-                mobile: "(max-width: 480px)",
-                web: "(min-width: 480px)",
+                mobile: '(max-width: 480px)',
+                web: '(min-width: 480px)',
               }}
             >
               {(matches) => (
@@ -267,9 +267,9 @@ const AddImage = () => {
                     <>
                       <AddAPhotoIcon
                         sx={{
-                          width: "100px",
-                          fontSize: "60px",
-                          color: "#64728c",
+                          width: '100px',
+                          fontSize: '60px',
+                          color: '#64728c',
                         }}
                       />
                       <p>
@@ -283,22 +283,22 @@ const AddImage = () => {
                       <IconButton
                         disableRipple
                         sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          rowGap: "2px",
-                          fontSize: "16px",
+                          display: 'flex',
+                          flexDirection: 'column',
+                          rowGap: '2px',
+                          fontSize: '16px',
                           transition:
-                            "transform 0.1s ease-in-out, color 0.3s ease-in-out", // Smooth transition
-                          "&:hover": {
-                            transform: "scale(1.2)", // Grow the icon by 20% on hover
+                            'transform 0.1s ease-in-out, color 0.3s ease-in-out', // Smooth transition
+                          '&:hover': {
+                            transform: 'scale(1.2)', // Grow the icon by 20% on hover
                           },
                         }}
                       >
                         <AddAPhotoIcon
                           sx={{
-                            color: "#5E5E5E",
-                            width: "100px",
-                            fontSize: "100px",
+                            color: '#5E5E5E',
+                            width: '100px',
+                            fontSize: '100px',
                             // transition:
                             //   "transform 0.2s ease-in-out, color 0.3s ease-in-out", // Smooth transition
                             // "&:hover": {
@@ -310,12 +310,12 @@ const AddImage = () => {
 
                         <p
                           style={{
-                            color: "#5E5E5E",
-                            fontWeight: "bold",
+                            color: '#5E5E5E',
+                            fontWeight: 'bold',
                             margin: 0,
                           }}
                         >
-                          {"Add your photo".toUpperCase()} <br />
+                          {'Add your photo'.toUpperCase()} <br />
                         </p>
                       </IconButton>
                     </>
@@ -328,7 +328,7 @@ const AddImage = () => {
             show={showCropModal}
             onHide={closeCropModal}
             header={
-              <div style={{ margin: "0px 0px 24px 0px" }}>
+              <div style={{ margin: '0px 0px 24px 0px' }}>
                 Set Profile Photo
               </div>
             }
@@ -363,8 +363,8 @@ const AddImage = () => {
             primaryButton={
               <Media
                 queries={{
-                  mobile: "(max-width: 480px)",
-                  web: "(min-width: 480px)",
+                  mobile: '(max-width: 480px)',
+                  web: '(min-width: 480px)',
                 }}
               >
                 {(matches) => (

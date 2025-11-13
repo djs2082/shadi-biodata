@@ -1,8 +1,8 @@
-import axios from "axios";
-import useBioDataFormDataStore, { BioDataFormDataStore } from "./index.store";
-import _ from "lodash";
-import React from "react";
-import { FormDataFields, FormDataPreFilledFields } from "./formDataFields";
+import axios from 'axios';
+import useBioDataFormDataStore, { BioDataFormDataStore } from './index.store';
+import _ from 'lodash';
+import React from 'react';
+import { FormDataFields, FormDataPreFilledFields } from './formDataFields';
 
 class BioDataFormViewModel {
   private store: BioDataFormDataStore;
@@ -11,9 +11,9 @@ class BioDataFormViewModel {
   constructor(store: BioDataFormDataStore) {
     this.store = store;
     this.url =
-      process.env.NODE_ENV === "production"
-        ? "https://api.counterapi.dev/v1/shadibiodata/prod"
-        : "https://api.counterapi.dev/v1/shadibiodata/dev";
+      process.env.NODE_ENV === 'production'
+        ? 'https://api.counterapi.dev/v1/shadibiodata/prod'
+        : 'https://api.counterapi.dev/v1/shadibiodata/dev';
   }
 
   public getShowAddNewFieldForm = () => this.store.showAddNewFieldForm;
@@ -63,7 +63,7 @@ class BioDataFormViewModel {
 
   public getData = () => this.store.data;
   public updateBioDataDataForDev = (isDev: string | null) => {
-    const savedData = localStorage.getItem("biodataData");
+    const savedData = localStorage.getItem('biodataData');
     if (isDev) this.store.setData(FormDataPreFilledFields);
     if (savedData) this.store.setData(JSON.parse(savedData));
   };
@@ -72,7 +72,7 @@ class BioDataFormViewModel {
     if (e.target.files && e.target.files.length > 0) {
       // const file = e.target.files[0];
       // let imageDataUrl = await readFile(file);
-      console.log("uploading files");
+      console.log('uploading files');
       // setImageSrc(imageDataUrl);
       this.store.setShowImageCropModal(true);
     }
@@ -103,8 +103,8 @@ class BioDataFormViewModel {
             {
               id: maxId + 1, // New field ID
               label: label,
-              value: value || "",
-              type: "string",
+              value: value || '',
+              type: 'string',
               required: false,
             },
           ],
@@ -117,7 +117,7 @@ class BioDataFormViewModel {
   };
 
   public resetFormFields = () => {
-    localStorage.setItem("biodataData", "");
+    localStorage.setItem('biodataData', '');
     // const updatedFormDataGroups: FormDataFieldGorup[] = this.store.data.map(
     //   (group) => ({
     //     ...group,
@@ -133,7 +133,7 @@ class BioDataFormViewModel {
   public moveTheFormField = (
     parentFiledId: number,
     childFieldId: number,
-    direction: "up" | "down"
+    direction: 'up' | 'down'
   ) => {
     const parentGroup = this.store.data.find(
       (group) => group.id === parentFiledId
@@ -142,13 +142,13 @@ class BioDataFormViewModel {
     const data = parentGroup?.data;
     const index = data.findIndex((item) => item.id === childFieldId);
     if (index === -1) {
-      console.error("Item not found");
+      console.error('Item not found');
       return; // Item not found, return original array
     }
-    const newIndex = direction === "up" ? index - 1 : index + 1;
+    const newIndex = direction === 'up' ? index - 1 : index + 1;
     // Check if the new index is valid
     if (newIndex < 0 || newIndex >= data.length) {
-      console.error("Cannot move in that direction");
+      console.error('Cannot move in that direction');
       return; // New index is out of bounds
     }
 
@@ -170,7 +170,7 @@ class BioDataFormViewModel {
     const newFormDataFieldsGroup = this.store.data.map((group) => {
       const newDataArray = group.data.map((field) => {
         if (field.required) {
-          if (field.value === "") {
+          if (field.value === '') {
             error = true;
             return { ...field, error: true };
           } else {
@@ -199,7 +199,7 @@ class BioDataFormViewModel {
       if (group.id === groupId) {
         group.data = group.data.map((field) => {
           if (field.id === fieldId) {
-            if (field.label === "Full Name")
+            if (field.label === 'Full Name')
               this.store.setDownloadFileName(`${_.snakeCase(value)}_biodata`);
             console.log(field);
             return {

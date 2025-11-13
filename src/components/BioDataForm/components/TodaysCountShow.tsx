@@ -1,4 +1,4 @@
-import useBioDataFormViewModel from "../viewModel";
+import useBioDataFormViewModel from '../viewModel';
 
 const TodaysCountShow: React.FC = () => {
   const viewModel = useBioDataFormViewModel();

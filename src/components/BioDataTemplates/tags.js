@@ -1,14 +1,14 @@
 const Tags = {
   h1: {
-    fontSize: "32px",
+    fontSize: '32px',
     fontWeight: 'bold',
-    marginBottom: "10px",
+    marginBottom: '10px',
   },
   paragraph: {
-    fontSize: "18px",
-    fontWeight: "300",
+    fontSize: '18px',
+    fontWeight: '300',
     lineHeight: 1.6,
-    marginBottom: "5px"
+    marginBottom: '5px',
   },
-}
+};
 export default Tags;

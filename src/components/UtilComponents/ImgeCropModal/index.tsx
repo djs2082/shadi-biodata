@@ -21,18 +21,18 @@ export const ImageCropModal: React.FC<ImageCropModalProps> = ({
   //   setShowModal(false);
   // };
   return show ? (
-    <div className='image-crop-modal-wrapper'>
-      <div className='image-crop-modal-inner-wrapper'>
+    <div className="image-crop-modal-wrapper">
+      <div className="image-crop-modal-inner-wrapper">
         {/* <header className="bg-pink-500  text-white text-xl text-center">
           Lets Crop Something
         </header> */}
-        <div className='image-crop-modal-content-wrapper'>
-          <div className='image-crop-modal-content'>{bodyContent}</div>
-          <div className='image-crop-modal-buttons-wrapper'>
-            <div className='action-buttons-wrapper'>
+        <div className="image-crop-modal-content-wrapper">
+          <div className="image-crop-modal-content">{bodyContent}</div>
+          <div className="image-crop-modal-buttons-wrapper">
+            <div className="action-buttons-wrapper">
               <Button
-                variant='outlined'
-                className='cancel-btn'
+                variant="outlined"
+                className="cancel-btn"
                 // className="p-2 text-white bg-blue-500"
                 onClick={() => {
                   // doneCropHandling();
@@ -41,8 +41,8 @@ export const ImageCropModal: React.FC<ImageCropModalProps> = ({
                 CANCEl
               </Button>
               <Button
-                variant='outlined'
-                className='crop-btn'
+                variant="outlined"
+                className="crop-btn"
                 // className="p-2 text-white bg-blue-500"
                 onClick={() => {
                   // doneCropHandling();

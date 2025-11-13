@@ -1,11 +1,11 @@
 @font-face {
-  font-family: "RobotoFont";
-  src: url("./../../fonts/Roboto/Roboto-Regular.ttf") format("ttf");
+  font-family: 'RobotoFont';
+  src: url('./../../fonts/Roboto/Roboto-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
 }
 * {
-  font-family: "RobotoFont";
+  font-family: 'RobotoFont';
 }
 .landing-page-wrapper {
   display: flex;
@@ -41,10 +41,10 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     z-index: 10;
     .hero-image {
-      background-image: url("./../BioDataTemplates/images/hero_image.webp");
+      background-image: url('./../BioDataTemplates/images/hero_image.webp');
       height: 70vh; /* Full viewport height */
       width: 70vw;
-      [datatype="h1"] {
+      [datatype='h1'] {
         color: #800000;
         position: absolute;
         font-size: 64px;
@@ -63,7 +63,7 @@
           line-height: 35px;
         }
       }
-      [datatype="p"] {
+      [datatype='p'] {
         color: #800000;
         border-radius: 8px;
         position: absolute;
@@ -136,7 +136,7 @@
       height: 70vh;
     }
     background-color: #f8c474;
-    [datatype="h1"] {
+    [datatype='h1'] {
       font-size: 2.6rem;
       font-weight: 600;
       margin-bottom: 32px;
@@ -145,7 +145,7 @@
         text-align: center;
       }
     }
-    [datatype="p1"] {
+    [datatype='p1'] {
       width: 60%;
       text-align: center;
       font-size: 1.2rem;

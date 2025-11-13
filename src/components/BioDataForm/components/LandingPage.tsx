@@ -1,8 +1,8 @@
-import PrimaryButton from "../../UtilComponents/Buttons/PrimaryButton";
-import TodaysCountShow from "./TodaysCountShow";
-import { useNavigate } from "react-router-dom";
+import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
+import TodaysCountShow from './TodaysCountShow';
+import { useNavigate } from 'react-router-dom';
 
-import "./../index.scss";
+import './../index.scss';
 interface LandingPageProps {}
 const LandingPage: React.FC<LandingPageProps> = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     <div className="landing-page-wrapper">
       <div className="hero-image-wrapper">
         <a href="/">
-          {" "}
+          {' '}
           <h3>ShadiBiodata.com</h3>
         </a>
 
@@ -24,7 +24,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
           <PrimaryButton
             className="create-biodata-btn"
             onClick={() => {
-              navigate("/form");
+              navigate('/form');
             }}
           >
             Create My Biodata

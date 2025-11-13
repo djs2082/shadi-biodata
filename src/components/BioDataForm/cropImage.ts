@@ -4,7 +4,7 @@ const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const image = new Image();
     image.addEventListener('load', () => resolve(image));
-    image.addEventListener('error', error => reject(error));
+    image.addEventListener('error', (error) => reject(error));
     image.setAttribute('crossOrigin', 'anonymous'); // To avoid CORS issues
     image.src = url;
   });
@@ -32,7 +32,7 @@ export default async function getCroppedImg(
     crop.height
   );
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     canvas.toDataURL('image/jpeg', (dataUrl: string) => {
       resolve(dataUrl);
     });

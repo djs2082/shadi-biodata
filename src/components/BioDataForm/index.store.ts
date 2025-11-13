@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { FormDataFieldGorup, FormDataFields } from "./model";
+import { create } from 'zustand';
+import { FormDataFieldGorup, FormDataFields } from './model';
 
 export type BioDataFormDataStore = {
   showLoader: boolean;
@@ -34,7 +34,7 @@ const useBioDataFormDataStore = create<BioDataFormDataStore>((set) => ({
     set({ extraFieldAddGroupId: id }),
   showAddNewFieldForm: false,
   setShowAddNewFieldForm: (show) => set({ showAddNewFieldForm: show }),
-  downloadFileName: "biodata_file",
+  downloadFileName: 'biodata_file',
   setDownloadFileName: (name) => set({ downloadFileName: name }),
   showImageCropModal: false,
   setShowImageCropModal: (show) => set({ showImageCropModal: show }),

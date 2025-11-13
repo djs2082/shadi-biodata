@@ -1,4 +1,4 @@
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
 interface PrimaryButtonProps {
   sx?: { [key: string]: string };
@@ -19,32 +19,32 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 }) => {
   const PrimaryButtonStyle = {
     ...sx,
-    maxWidth: "100%",
-    height: "40px",
-    width: "240px",
-    backgroundColor: "rgba(128, 0, 0, 0.8)",
+    maxWidth: '100%',
+    height: '40px',
+    width: '240px',
+    backgroundColor: 'rgba(128, 0, 0, 0.8)',
     // background: "linear-gradient(270deg, #0483df -0.05%, #004b87 99.95%)",
-    borderRadius: "40px",
-    fontSize: "16px",
-    textAlign: "center",
-    color: "white",
-    textTransform: "none",
+    borderRadius: '40px',
+    fontSize: '16px',
+    textAlign: 'center',
+    color: 'white',
+    textTransform: 'none',
     zIndex: 2,
 
-    "&:hover": {
-      boxShadow: "0px 4px 4px rgba(138, 110, 147, 0.5)",
-      borderRadius: "40px",
-      backgroundColor: "rgba(128, 0, 0, 1)",
+    '&:hover': {
+      boxShadow: '0px 4px 4px rgba(138, 110, 147, 0.5)',
+      borderRadius: '40px',
+      backgroundColor: 'rgba(128, 0, 0, 1)',
       // width: "280px",
       // height: "80px",
       // color: "#A0522D",
     },
-    "&:active": {
-      background: "#004b87",
+    '&:active': {
+      background: '#004b87',
     },
-    "&:disabled": {
-      background: "#e5eef1",
-      color: "#bcccd3",
+    '&:disabled': {
+      background: '#e5eef1',
+      color: '#bcccd3',
     },
   };
 

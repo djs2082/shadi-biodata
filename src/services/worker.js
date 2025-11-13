@@ -1,6 +1,6 @@
-import { retrieveImageBlobFromLocalStorage } from "./localStorageService";
+import { retrieveImageBlobFromLocalStorage } from './localStorageService';
 
 self.onmessage = (event) => {
-  const blob = localStorage.getItem("profile_picutre");
-  self.postMessage("Blob Load Complete");
+  const blob = localStorage.getItem('profile_picutre');
+  self.postMessage('Blob Load Complete');
 };
