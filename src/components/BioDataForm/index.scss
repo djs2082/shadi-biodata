@@ -1,11 +1,7 @@
-@font-face {
-  font-family: 'RobotoFont';
-  src: url('./../../fonts/Roboto/Roboto-Regular.ttf') format('ttf');
-  font-weight: normal;
-  font-style: normal;
-}
+// Fonts are now loaded via Google Fonts (see public/index.html)
+// Tailwind config has font-sans: ['Roboto', 'system-ui', 'sans-serif']
 * {
-  font-family: 'RobotoFont';
+  font-family: 'Roboto', system-ui, sans-serif;
 }
 .landing-page-wrapper {
   display: flex;

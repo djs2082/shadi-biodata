@@ -9,21 +9,21 @@ import {
 } from '@react-pdf/renderer';
 import React, { useState, useEffect } from 'react';
 
-import LibreBaskervilleBold from './../../fonts/LibreBaskerville/LibreBaskerville-Bold.ttf';
-import LibreBaskervilleRegular from './../../fonts/LibreBaskerville/LibreBaskerville-Regular.ttf';
-import NotoSansFont from './../../fonts/Noto_Sans/NotoSans-VariableFont_wdth.ttf';
-import TimesNewRomanBold from './../../fonts/TimesNewRoman/times_new_roman_bold.ttf';
-import TimesNewRomanRegular from './../../fonts/TimesNewRoman/times_new_roman_regular.ttf';
 import cornerBottomFlower from './images/corner_bottom_flower.jpeg';
 import cornerRangoli from './images/corner_rangoli.jpeg';
 import Tags from './tags';
 
+// Register Google Fonts for PDF rendering
 Font.register({
-  family: 'Noto Sans Devanagari',
+  family: 'Noto Sans',
   fonts: [
     {
-      src: NotoSansFont,
-      fontWeight: 900,
+      src: 'https://fonts.gstatic.com/s/notosans/v36/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7dvhuy_SI.ttf',
+      fontWeight: 400,
+    },
+    {
+      src: 'https://fonts.gstatic.com/s/notosans/v36/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcxavdvhuy_SI.ttf',
+      fontWeight: 700,
     },
   ],
 });
@@ -32,26 +32,26 @@ Font.register({
   family: 'Libre Baskerville',
   fonts: [
     {
-      src: LibreBaskervilleBold,
-      fontWeight: 700,
+      src: 'https://fonts.gstatic.com/s/librebaskerville/v14/kmKnZrc3Hgbbcjq75U4uslyuy4kn0pNeYRI4CN2V.ttf',
+      fontWeight: 400,
     },
     {
-      src: LibreBaskervilleRegular,
-      fontWeight: 600,
+      src: 'https://fonts.gstatic.com/s/librebaskerville/v14/kmKiZrc3Hgbbcjq75U4uslyuy4kn0qviTjYwI8Gcw6Oi.ttf',
+      fontWeight: 700,
     },
   ],
 });
 
 Font.register({
-  family: 'Times New Roman',
+  family: 'Roboto',
   fonts: [
     {
-      src: TimesNewRomanBold,
-      fontWeight: 700,
+      src: 'https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf',
+      fontWeight: 400,
     },
     {
-      src: TimesNewRomanRegular,
-      fontWeight: 600,
+      src: 'https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf',
+      fontWeight: 700,
     },
   ],
 });
@@ -59,7 +59,7 @@ Font.register({
 const styles = StyleSheet.create({
   page: {
     // fontFamily: "Noto Sans Devanagari", // Use the registered font
-    fontFamily: 'Times New Roman',
+    fontFamily: 'Roboto',
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: '#E4E4E4',
