@@ -1,36 +1,42 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
 
+import { useFormData } from '../../../hooks/useFormData';
 import FormField from '../../molecules/FormField';
-import useBioDataFormViewModel from '../viewModel';
 
 import AddExtraFieldForm from './AddExtraFieldForm';
 
 const FormGroup: React.FC = () => {
-  const viewModel = useBioDataFormViewModel();
-  const data = viewModel.getData();
+  // eslint-disable-next-line prettier/prettier
+  const {
+    data,
+    removeFormField,
+    moveFormField,
+    updateFieldValue,
+    showAddFieldForm,
+  } = useFormData();
 
   return (
     <div className="biodata-fields-wrapper biodata-group-wrapper">
-      {data.map((data) => (
+      {data.map((group) => (
         <>
           <div className="biodata-field-title-wrapper">
-            <p className="biodata-field-title">{data.title}</p>
+            <p className="biodata-field-title">{group.title}</p>
           </div>
-          {data.data.map((field) => (
+          {group.data.map((field) => (
             <FormField
               key={field.id}
               label={field.label}
               required={field.required}
-              onDelete={() => viewModel.removeFormField(data.id, field.id)}
+              onDelete={() => removeFormField(group.id, field.id)}
               onFieldMove={(direction: 'up' | 'down') =>
-                viewModel.moveTheFormField(data.id, field.id, direction)
+                moveFormField(group.id, field.id, direction)
               }
               value={field.value}
               onChange={(
                 e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
               ) => {
-                viewModel.handleValueChange(data.id, field.id, e.target.value);
+                updateFieldValue(group.id, field.id, e.target.value);
               }}
               error={field.error}
               errorText={field.errorText}
@@ -39,7 +45,7 @@ const FormGroup: React.FC = () => {
           <Button
             variant="text"
             className="add-field-btn"
-            onClick={() => viewModel.setShowExtraFieldForm(data.id)}
+            onClick={() => showAddFieldForm(group.id)}
           >
             <AddIcon /> Add More Fields
           </Button>

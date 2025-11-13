@@ -1,9 +1,10 @@
-import useBioDataFormViewModel from '../viewModel';
+import { useUIStore } from '../../../stores/uiStore';
 
 const TodaysCountShow: React.FC = () => {
-  const viewModel = useBioDataFormViewModel();
-  const todaysCount = viewModel.getTodaysBioDataCount();
-  if (!todaysCount) return <></>;
+  const todaysCount = useUIStore((state) => state.todaysBiodataCount);
+
+  if (!todaysCount) return null;
+
   return (
     <p className="todays-count-show-wrapper">
       <div className="blinking-dot" />
@@ -11,4 +12,5 @@ const TodaysCountShow: React.FC = () => {
     </p>
   );
 };
+
 export default TodaysCountShow;

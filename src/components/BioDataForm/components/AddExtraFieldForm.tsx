@@ -1,13 +1,13 @@
 import { FormControl, FormHelperText, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
 
+import { useFormData } from '../../../hooks/useFormData';
 import PrimaryButton from '../../atoms/PrimaryButton';
 import SecondaryButton from '../../atoms/SecondaryButton';
 import CustomModal from '../../molecules/Modals/Modal';
-import useBioDataFormViewModel from '../viewModel';
 
 const AddExtraFieldForm = () => {
-  const viewModel = useBioDataFormViewModel();
+  const { showAddNewFieldForm, addFormField, hideAddFieldForm } = useFormData();
 
   const [extraFieldLabel, setExtraFieldLabel] = useState<string>('');
   const [extraFieldValue, setExtraFieldValue] = useState<string>('');
@@ -15,15 +15,28 @@ const AddExtraFieldForm = () => {
 
   const isError = (value: string) => submitted && value.length === 0;
 
+  const handleClose = () => {
+    setExtraFieldLabel('');
+    setExtraFieldValue('');
+    setSubmitted(false);
+    hideAddFieldForm();
+  };
+
+  const handleSave = () => {
+    if (extraFieldLabel.length === 0 || extraFieldValue.length === 0) {
+      setSubmitted(true);
+      return;
+    }
+    addFormField(extraFieldLabel, extraFieldValue);
+    setExtraFieldLabel('');
+    setExtraFieldValue('');
+    setSubmitted(false);
+  };
+
   return (
     <CustomModal
-      show={viewModel.getShowExtraFieldForm()}
-      onHide={() => {
-        setExtraFieldLabel('');
-        setExtraFieldValue('');
-        setSubmitted(false);
-        viewModel.hideExtraFieldForm();
-      }}
+      show={showAddNewFieldForm}
+      onHide={handleClose}
       header={<div>Enter Field Name and Value</div>}
       body={
         <div
@@ -70,28 +83,9 @@ const AddExtraFieldForm = () => {
           </FormControl>
         </div>
       }
-      primaryButton={
-        <PrimaryButton
-          onClick={() => {
-            if (extraFieldLabel.length === 0 || extraFieldValue.length === 0) {
-              setSubmitted(true);
-              return;
-            }
-            viewModel.addFormField(extraFieldLabel, extraFieldValue);
-          }}
-        >
-          Save
-        </PrimaryButton>
-      }
+      primaryButton={<PrimaryButton onClick={handleSave}>Save</PrimaryButton>}
       secondaryButton={
-        <SecondaryButton
-          onClick={() => {
-            setSubmitted(false);
-            viewModel.hideExtraFieldForm();
-          }}
-        >
-          Cancel
-        </SecondaryButton>
+        <SecondaryButton onClick={handleClose}>Cancel</SecondaryButton>
       }
     />
   );

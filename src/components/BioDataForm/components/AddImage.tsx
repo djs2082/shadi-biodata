@@ -9,12 +9,12 @@ import { useImageCrop } from '../../../hooks/useImageCrop';
 import { useImageStorage } from '../../../hooks/useImageStorage';
 import { useImageUpload } from '../../../hooks/useImageUpload';
 import { useIsMobile } from '../../../hooks/useMediaQuery';
+import { useUIStore } from '../../../stores/uiStore';
 import { createImageObjectURL } from '../../../utils/imageResizer';
 import PrimaryButton from '../../atoms/PrimaryButton';
 import SecondaryButton from '../../atoms/SecondaryButton';
 import imageFrameOld from '../../BioDataTemplates/images/imageFrameOld2.png';
 import CustomModal from '../../molecules/Modals/Modal';
-import useBioDataFormViewModel from '../viewModel';
 
 /**
  * AddImage Component - Refactored
@@ -22,7 +22,6 @@ import useBioDataFormViewModel from '../viewModel';
  * Now uses custom hooks for separation of concerns
  */
 const AddImage = () => {
-  const viewModel = useBioDataFormViewModel();
   const isMobile = useIsMobile();
 
   // Custom hooks for image management
@@ -45,9 +44,10 @@ const AddImage = () => {
     destroyCropper,
   } = useImageCrop();
 
-  // Sync with view model
-  const setCroppedImage = viewModel.setCroppedImage;
-  const croppedImage = viewModel.getCroppedImage() || storedImage;
+  // UI state for cropped image
+  const croppedImage = useUIStore((state) => state.croppedImage);
+  const setCroppedImage = useUIStore((state) => state.setCroppedImage);
+  const displayImage = croppedImage || storedImage;
 
   /**
    * Handle file input change
@@ -121,7 +121,7 @@ const AddImage = () => {
         <img className="profile-image-wrapper" alt="" src={imageFrameOld} />
 
         {/* Display cropped image with controls */}
-        {croppedImage && (
+        {displayImage && (
           <>
             <div
               className="replace-photo-btn"
@@ -139,7 +139,7 @@ const AddImage = () => {
               </IconButton>
             </Tooltip>
             <img
-              src={croppedImage}
+              src={displayImage}
               alt={selectedImage.name || 'Profile Picture'}
               className="biodata-profile-picture"
               style={{ marginBottom: '0' }}
@@ -159,7 +159,7 @@ const AddImage = () => {
         />
 
         {/* Upload prompt when no image */}
-        {!croppedImage && (
+        {!displayImage && (
           <>
             {isMobile ? (
               <>
