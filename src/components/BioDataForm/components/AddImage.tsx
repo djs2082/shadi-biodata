@@ -62,10 +62,12 @@ const AddImage = () => {
   useEffect(() => {
     getImageFromDB()
       .then((result) => {
-        resizeImage(result, 800, 600).then((resizedBlob) => {
-          const objectURL = URL.createObjectURL(resizedBlob as Blob);
-          setCroppedImage(objectURL);
-        });
+        if (result) {
+          resizeImage(result, 800, 600).then((resizedBlob) => {
+            const objectURL = URL.createObjectURL(resizedBlob as Blob);
+            setCroppedImage(objectURL);
+          });
+        }
       })
       .catch(() => {
         // Silently handle error

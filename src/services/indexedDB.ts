@@ -3,20 +3,26 @@ import { logger } from '../utils/logger';
 const dbName = 'ShadiBioData';
 const storeName = 'profile_pictures';
 
-const openDB = () => {
+interface ProfilePictureRecord {
+  id: string;
+  blob: Blob;
+  createdAt: string;
+}
+
+const openDB = (): Promise<IDBDatabase> => {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(dbName, 2);
 
     request.onerror = () => {
-      reject('Database Error');
+      reject(new Error('Database Error'));
     };
 
     request.onsuccess = () => {
       resolve(request.result);
     };
 
-    request.onupgradeneeded = (event) => {
-      const db = event.target.result;
+    request.onupgradeneeded = (event: IDBVersionChangeEvent) => {
+      const db = (event.target as IDBOpenDBRequest).result;
       if (!db.objectStoreNames.contains(storeName)) {
         db.createObjectStore(storeName, { keyPath: 'id' });
       }
@@ -24,7 +30,7 @@ const openDB = () => {
   });
 };
 
-export const addImageToDB = async (id, blob) => {
+export const addImageToDB = async (id: string, blob: Blob): Promise<string> => {
   const db = await openDB();
   const transaction = db.transaction(storeName, 'readwrite');
   const store = transaction.objectStore(storeName);
@@ -37,13 +43,17 @@ export const addImageToDB = async (id, blob) => {
       resolve('Image Stored Successfully');
     };
     transaction.onerror = () => {
-      reject('Failed to store image');
+      reject(new Error('Failed to store image'));
     };
   });
 };
 
-export const getImageFromDB = async () => {
+export const getImageFromDB = async (): Promise<Blob | null> => {
   const id = localStorage.getItem('profile_picture_id');
+  if (!id) {
+    return null;
+  }
+
   const db = await openDB();
   const transaction = db.transaction(storeName, 'readonly');
   const store = transaction.objectStore(storeName);
@@ -51,19 +61,26 @@ export const getImageFromDB = async () => {
 
   return new Promise((resolve, reject) => {
     request.onsuccess = () => {
-      resolve(request.result ? request.result.blob : null);
+      const result = request.result as ProfilePictureRecord | undefined;
+      resolve(result ? result.blob : null);
     };
     request.onerror = () => {
-      reject('Failed to retrieve image');
+      reject(new Error('Failed to retrieve image'));
     };
   });
 };
 
-export const deleteImageFromDB = async () => {
+export const deleteImageFromDB = async (): Promise<string> => {
+  const id = localStorage.getItem('profile_picture_id');
+  if (!id) {
+    return 'No image to delete';
+  }
+
   const db = await openDB();
   const transaction = db.transaction(storeName, 'readwrite');
   const store = transaction.objectStore(storeName);
-  const request = store.delete(localStorage.getItem('profile_picture_id'));
+  const request = store.delete(id);
+
   return new Promise((resolve, reject) => {
     request.onsuccess = () => {
       localStorage.removeItem('profile_picture_id');
@@ -71,7 +88,7 @@ export const deleteImageFromDB = async () => {
     };
     request.onerror = () => {
       logger.error('Failed to delete record:', request.error);
-      reject('Failed to delete record: ' + request.error);
+      reject(new Error('Failed to delete record: ' + request.error));
     };
   });
 };
