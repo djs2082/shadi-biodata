@@ -1,4 +1,11 @@
-const Tags = {
+import { CSSProperties } from 'react';
+
+interface StyleTags {
+  h1: CSSProperties;
+  paragraph: CSSProperties;
+}
+
+const Tags: StyleTags = {
   h1: {
     fontSize: '32px',
     fontWeight: 'bold',
@@ -11,4 +18,5 @@ const Tags = {
     marginBottom: '5px',
   },
 };
+
 export default Tags;
