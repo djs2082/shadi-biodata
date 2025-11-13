@@ -3,15 +3,20 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getImageFromDB } from '../../services/indexedDB';
+import { logger } from '../../utils/logger';
 
 import BasicTemplate from './BasicTemplate';
 import Data from './data';
 
-const TemplatesSandBox = () => {
-  const { template_name } = useParams();
-  const [croppedImage, setCroppedImage] = useState();
+const TemplatesSandBox: React.FC = () => {
+  const { template_name } = useParams<{ template_name?: string }>();
+  const [croppedImage, setCroppedImage] = useState<string | undefined>();
 
-  const resizeImage = (imageBlob, width, height) => {
+  const resizeImage = (
+    imageBlob: Blob,
+    width: number,
+    height: number
+  ): Promise<Blob | null> => {
     return new Promise((resolve) => {
       const img = document.createElement('img');
       img.src = URL.createObjectURL(imageBlob);
@@ -21,7 +26,7 @@ const TemplatesSandBox = () => {
         canvas.height = height;
         const ctx = canvas.getContext('2d');
         ctx?.drawImage(img, 0, 0, width, height);
-        canvas.toBlob(resolve, 'image/jpeg', 0.7); // Compressing the image
+        canvas.toBlob(resolve, 'image/jpeg', 0.7);
       };
     });
   };
@@ -29,30 +34,35 @@ const TemplatesSandBox = () => {
   useEffect(() => {
     getImageFromDB()
       .then((result) => {
-        resizeImage(result, 800, 600).then((resizedBlob) => {
-          const objectURL = URL.createObjectURL(resizedBlob);
-          setCroppedImage(objectURL); // Set the resized image for rendering
-        });
-        // console.log(result);
-        // setCroppedImage(URL.createObjectURL(result));
+        if (result) {
+          resizeImage(result, 800, 600).then((resizedBlob) => {
+            if (resizedBlob) {
+              const objectURL = URL.createObjectURL(resizedBlob);
+              setCroppedImage(objectURL);
+            }
+          });
+        }
       })
       .catch((error) => {
-        console.log(error);
+        logger.error('Failed to load image from DB:', error);
       });
     return () => {
-      URL.revokeObjectURL(croppedImage || '');
+      if (croppedImage) {
+        URL.revokeObjectURL(croppedImage);
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getTemplateComponent = () => {
+  const getTemplateComponent = (): JSX.Element => {
     switch (template_name) {
       case 'basic_template':
         return <BasicTemplate data={Data} image={croppedImage} />;
       default:
-        <></>;
+        return <></>;
     }
   };
+
   return (
     <PDFViewer style={{ width: '100%', height: '842px' }}>
       {getTemplateComponent()}
