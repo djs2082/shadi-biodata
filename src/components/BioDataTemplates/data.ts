@@ -1,4 +1,18 @@
-const Data = [
+export interface FormFieldData {
+  id: number;
+  label: string;
+  type: string;
+  value: string;
+  required: boolean;
+}
+
+export interface FormDataGroup {
+  id: number;
+  title: string;
+  data: FormFieldData[];
+}
+
+const Data: FormDataGroup[] = [
   {
     id: 1,
     title: 'Personal Details',
