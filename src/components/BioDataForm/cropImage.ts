@@ -1,4 +1,10 @@
-import { Area } from 'react-easy-crop';
+// Type definition for crop area
+export interface Area {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
 
 const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {

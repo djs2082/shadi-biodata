@@ -1,26 +1,24 @@
-import React, { useState, useRef, useEffect } from 'react';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import ImageIcon from '@mui/icons-material/Image';
-import Cropper from 'react-cropper'; // Assuming you're using react-cropper
-
-import 'cropperjs/dist/cropper.css';
 import { IconButton, Tooltip } from '@mui/material';
+import 'cropperjs/dist/cropper.css';
 import { fileTypeFromBuffer, FileTypeResult } from 'file-type';
-import Media from 'react-media';
+import { useEffect, useRef, useState } from 'react';
+import Cropper from 'react-cropper';
 import { v4 as uuidv4 } from 'uuid';
 
-import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
-import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
-import CustomModal from '../../UtilComponents/Modals/Modal';
-
+import { useIsMobile } from '../../../hooks/useMediaQuery';
 import {
   addImageToDB,
   deleteImageFromDB,
   getImageFromDB,
-} from './../../../services/indexedDB';
-import imageFrameOld from './../../BioDataTemplates/images/imageFrameOld2.png';
-import useBioDataFormViewModel from './../viewModel';
+} from '../../../services/indexedDB';
+import imageFrameOld from '../../BioDataTemplates/images/imageFrameOld2.png';
+import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
+import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
+import CustomModal from '../../UtilComponents/Modals/Modal';
+import useBioDataFormViewModel from '../viewModel';
 
 interface SelectedImage {
   file: string | ArrayBuffer | null;
@@ -31,6 +29,7 @@ interface SelectedImage {
 
 const AddImage = () => {
   const viewModel = useBioDataFormViewModel();
+  const isMobile = useIsMobile();
   const [selectedImage, setSelectedImage] = useState<SelectedImage>({
     file: null,
     name: null,
@@ -198,8 +197,6 @@ const AddImage = () => {
     }
   };
 
-  const isMobile = () => window.screen.width <= 480;
-
   return (
     <div className="profile-image-container">
       <div
@@ -215,19 +212,7 @@ const AddImage = () => {
             >
               {' '}
               <ImageIcon></ImageIcon>
-              <Media
-                queries={{
-                  mobile: '(max-width: 480px)',
-                  web: '(min-width: 480px)',
-                }}
-              >
-                {(matches) => (
-                  <>
-                    {matches.mobile && 'Replace'}
-                    {matches.web && 'Replace Photo'}
-                  </>
-                )}
-              </Media>
+              {isMobile ? 'Replace' : 'Replace Photo'}
             </div>
             <Tooltip title="Remove the Profile Picture">
               <IconButton
@@ -258,74 +243,64 @@ const AddImage = () => {
         />
         <>
           {!croppedImage && (
-            <Media
-              queries={{
-                mobile: '(max-width: 480px)',
-                web: '(min-width: 480px)',
-              }}
-            >
-              {(matches) => (
+            <>
+              {isMobile ? (
                 <>
-                  {matches.mobile && (
-                    <>
-                      <AddAPhotoIcon
-                        sx={{
-                          width: '100px',
-                          fontSize: '60px',
-                          color: '#64728c',
-                        }}
-                      />
-                      <p>
-                        Click here <br />
-                        (Up to 20MB only)
-                      </p>
-                    </>
-                  )}
-                  {matches.web && (
-                    <>
-                      <IconButton
-                        disableRipple
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          rowGap: '2px',
-                          fontSize: '16px',
-                          transition:
-                            'transform 0.1s ease-in-out, color 0.3s ease-in-out', // Smooth transition
-                          '&:hover': {
-                            transform: 'scale(1.2)', // Grow the icon by 20% on hover
-                          },
-                        }}
-                      >
-                        <AddAPhotoIcon
-                          sx={{
-                            color: '#5E5E5E',
-                            width: '100px',
-                            fontSize: '100px',
-                            // transition:
-                            //   "transform 0.2s ease-in-out, color 0.3s ease-in-out", // Smooth transition
-                            // "&:hover": {
-                            //   transform: "scale(1.2)", // Grow the icon by 20% on hover
-                            // },
-                            // color: "#64728c",
-                          }}
-                        />
+                  <AddAPhotoIcon
+                    sx={{
+                      width: '100px',
+                      fontSize: '60px',
+                      color: '#64728c',
+                    }}
+                  />
+                  <p>
+                    Click here <br />
+                    (Up to 20MB only)
+                  </p>
+                </>
+              ) : (
+                <>
+                  <IconButton
+                    disableRipple
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      rowGap: '2px',
+                      fontSize: '16px',
+                      transition:
+                        'transform 0.1s ease-in-out, color 0.3s ease-in-out', // Smooth transition
+                      '&:hover': {
+                        transform: 'scale(1.2)', // Grow the icon by 20% on hover
+                      },
+                    }}
+                  >
+                    <AddAPhotoIcon
+                      sx={{
+                        color: '#5E5E5E',
+                        width: '100px',
+                        fontSize: '100px',
+                        // transition:
+                        //   "transform 0.2s ease-in-out, color 0.3s ease-in-out", // Smooth transition
+                        // "&:hover": {
+                        //   transform: "scale(1.2)", // Grow the icon by 20% on hover
+                        // },
+                        // color: "#64728c",
+                      }}
+                    />
 
-                        <p
-                          style={{
-                            color: '#5E5E5E',
-                            fontWeight: 'bold',
-                            margin: 0,
-                          }}
-                        >
-                          {'Add your photo'.toUpperCase()} <br />
-                        </p>
-                      </IconButton>
-                    </>
-                  )}
+                    <p
+                      style={{
+                        color: '#5E5E5E',
+                        fontWeight: 'bold',
+                        margin: 0,
+                      }}
+                    >
+                      {'Add your photo'.toUpperCase()} <br />
+                    </p>
+                  </IconButton>
                 </>
               )}
-            </Media>
+            </>
           )}
           <CustomModal
             show={showCropModal}
@@ -340,16 +315,16 @@ const AddImage = () => {
               <div onWheel={handleZoom}>
                 <Cropper
                   style={{
-                    height: isMobile() ? 228.6 : 400,
-                    width: isMobile() ? 160 : 280,
+                    height: isMobile ? 228.6 : 400,
+                    width: isMobile ? 160 : 280,
                   }}
                   zoomTo={0.5}
                   // initialAspectRatio={280 / 400}
                   preview=".img-preview"
                   src={selectedImage.file as string}
                   // viewMode={1}
-                  minCropBoxHeight={isMobile() ? 228.6 : 400}
-                  minCropBoxWidth={isMobile() ? 160 : 280}
+                  minCropBoxHeight={isMobile ? 228.6 : 400}
+                  minCropBoxWidth={isMobile ? 160 : 280}
                   background={false}
                   responsive
                   // autoCropArea={1}
@@ -364,27 +339,9 @@ const AddImage = () => {
               </div>
             }
             primaryButton={
-              <Media
-                queries={{
-                  mobile: '(max-width: 480px)',
-                  web: '(min-width: 480px)',
-                }}
-              >
-                {(matches) => (
-                  <>
-                    {matches.mobile && (
-                      <PrimaryButton onClick={saveProfilePicture}>
-                        Save Crop
-                      </PrimaryButton>
-                    )}
-                    {matches.web && (
-                      <PrimaryButton onClick={saveProfilePicture}>
-                        Save
-                      </PrimaryButton>
-                    )}
-                  </>
-                )}
-              </Media>
+              <PrimaryButton onClick={saveProfilePicture}>
+                {isMobile ? 'Save Crop' : 'Save'}
+              </PrimaryButton>
             }
             secondaryButton={
               <SecondaryButton onClick={closeCropModal}>Close</SecondaryButton>

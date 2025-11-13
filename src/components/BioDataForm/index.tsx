@@ -1,22 +1,23 @@
 import { pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
-import './index.scss';
 import { useEffect, useRef } from 'react';
-import Media from 'react-media';
 import { useSearchParams } from 'react-router-dom';
 
+import { useIsMobile } from '../../hooks/useMediaQuery';
 import BasicTemplate from '../BioDataTemplates/BasicTemplate';
+import imageFrame from '../BioDataTemplates/images/imageFrame.png';
 import PrimaryButton from '../UtilComponents/Buttons/PrimaryButton';
 import SecondaryButton from '../UtilComponents/Buttons/SecondaryButton';
 
-import imageFrame from './../BioDataTemplates/images/imageFrame.png';
 import AddImage from './components/AddImage';
 import FormGroup from './components/FormGroup';
 import MobileAddImage from './components/MobileAddImage';
+import './index.scss';
 import useBioDataFormViewModel from './viewModel';
 
 const BioDataForm = () => {
   const viewModel = useBioDataFormViewModel();
+  const isMobile = useIsMobile();
 
   const [params] = useSearchParams();
   const isDev = params.get('dev');
@@ -62,28 +63,20 @@ const BioDataForm = () => {
       /> */}
       <div ref={targetDevRef} className="biodata-form-outer-wrapper">
         <img className="design-image-left" src={imageFrame} alt="" />
-        <Media queries={{ mobile: '(max-width: 480px)' }}>
-          {(matches) => <>{matches.mobile && <MobileAddImage />}</>}
-        </Media>
+        {isMobile && <MobileAddImage />}
         <div className="biodata-form-wrapper">
           <div className="biodata-fields-wrapper">
             <FormGroup />
             <div className="biodata-form-buttons-wrpper">
-              <PrimaryButton
-                onClick={(e) => {
-                  validateData();
-                }}
-              >
+              <PrimaryButton onClick={() => validateData()}>
                 Submit
               </PrimaryButton>
-              <SecondaryButton onClick={(e) => viewModel.resetFormFields()}>
+              <SecondaryButton onClick={() => viewModel.resetFormFields()}>
                 Reset Form
               </SecondaryButton>
             </div>
           </div>
-          <Media queries={{ web: '(min-width: 480px)' }}>
-            {(matches) => <>{matches.web && <AddImage />}</>}
-          </Media>
+          {!isMobile && <AddImage />}
         </div>
       </div>
     </>
