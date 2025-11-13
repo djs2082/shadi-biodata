@@ -118,16 +118,7 @@ class BioDataFormViewModel {
 
   public resetFormFields = () => {
     localStorage.setItem('biodataData', '');
-    // const updatedFormDataGroups: FormDataFieldGorup[] = this.store.data.map(
-    //   (group) => ({
-    //     ...group,
-    //     data: group.data.map((field) => ({
-    //       ...field,
-    //       value: "",
-    //     })),
-    //   })
-    // );
-    this.store.setData(FormDataFields); // Update state with the new array
+    this.store.setData(FormDataFields);
   };
 
   public moveTheFormField = (
@@ -183,9 +174,6 @@ class BioDataFormViewModel {
     });
     if (error) {
       this.store.setData(newFormDataFieldsGroup);
-      // if (targetDevRef.current) {
-      //   targetDevRef.current.scrollIntoView({ behavior: 'smooth' });
-      // }
     }
     return error;
   };

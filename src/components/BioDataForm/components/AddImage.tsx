@@ -64,10 +64,8 @@ const AddImage = () => {
       .then((result) => {
         resizeImage(result, 800, 600).then((resizedBlob) => {
           const objectURL = URL.createObjectURL(resizedBlob as Blob);
-          setCroppedImage(objectURL); // Set the resized image for rendering
+          setCroppedImage(objectURL);
         });
-        // console.log(result);
-        // setCroppedImage(URL.createObjectURL(result));
       })
       .catch(() => {
         // Silently handle error
@@ -139,11 +137,8 @@ const AddImage = () => {
         if (blob) {
           resizeImage(blob, 800, 600).then((resizedBlob) => {
             const objectURL = URL.createObjectURL(resizedBlob as Blob);
-            setCroppedImage(objectURL); // Set the resized image for rendering
+            setCroppedImage(objectURL);
           });
-          // const croppedUrl = URL.createObjectURL(blob);
-          // setCroppedImage(croppedUrl);
-          // viewModel.setCroppedImage(croppedUrl);
           blobbedImage(blob);
         }
       },
@@ -184,7 +179,6 @@ const AddImage = () => {
     if (!isReplace) e.stopPropagation();
     setSelectedImage({ file: null, name: null, size: null, type: null });
     setCroppedImage(null);
-    // removeImageFromLocalStorage("profile_picture");
     deleteImageFromDB();
     cropper?.destroy();
     if (inputRef.current) {
@@ -222,7 +216,6 @@ const AddImage = () => {
               alt={selectedImage.name || 'Selected Image'}
               className="biodata-profile-picture"
               style={{ marginBottom: '0' }}
-              // style={{ width: "100%", height: "auto", marginTop: "10px" }} // Adjust styles as needed
             />
           </>
         )}{' '}
@@ -274,12 +267,6 @@ const AddImage = () => {
                         color: '#5E5E5E',
                         width: '100px',
                         fontSize: '100px',
-                        // transition:
-                        //   "transform 0.2s ease-in-out, color 0.3s ease-in-out", // Smooth transition
-                        // "&:hover": {
-                        //   transform: "scale(1.2)", // Grow the icon by 20% on hover
-                        // },
-                        // color: "#64728c",
                       }}
                     />
 

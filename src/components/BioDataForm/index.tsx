@@ -31,7 +31,6 @@ const BioDataForm = () => {
 
   const validateData = () => {
     if (!viewModel.validateData()) {
-      // URL.revokeObjectURL(viewModel.getCroppedImage() || "");
       localStorage.setItem('biodataData', JSON.stringify(viewModel.getData()));
       downloadPdf();
     }
@@ -50,16 +49,6 @@ const BioDataForm = () => {
 
   return (
     <>
-      {/* <LandingPage
-        onCreateClick={() => {
-          if (targetDevRef && targetDevRef.current) {
-            targetDevRef.current.scrollIntoView({
-              behavior: "smooth", // Smooth scrolling
-              block: "start", // Align to the top
-            });
-          }
-        }}
-      /> */}
       <div ref={targetDevRef} className="biodata-form-outer-wrapper">
         <img className="design-image-left" src={imageFrame} alt="" />
         {isMobile && <MobileAddImage />}

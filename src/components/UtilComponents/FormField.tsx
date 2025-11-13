@@ -1,6 +1,3 @@
-// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,7 +5,6 @@ import {
   FormControl,
   IconButton,
   OutlinedInput,
-  // TextField,
   InputLabel,
   Tooltip,
   FormHelperText,
@@ -45,29 +41,6 @@ const FormField: React.FC<FormFieldProps> = ({
   return (
     <div className="form-field-wrapper">
       <div className="form-fields">
-        {/* <TextField
-          id={`label_${formFieldKey}`}
-          label={required ? `${label} ${required ? "(Required)" : ""}` : ""}
-          placeholder={required ? "" : `Enter ${label} Name`}
-          variant="outlined"
-          disabled={required}
-          InputLabelProps={{
-            shrink: false,
-          }}
-          sx={{
-            width: "100%",
-            "& .MuiInputLabel-root": {
-              color: "#1a1e3e",
-            },
-            "& .MuiInputLabel-root.Mui-focused": {
-              color: "#1a1e3e",
-            },
-            "& .MuiInputBase-root.Mui-disabled": {
-              backgroundColor: "#f0f0f0", // Change the background color here
-            },
-          }}
-          // sx={{ width: "100%" }}
-        /> */}
         <InputLabel htmlFor="custom-text-field" sx={{ color: '#1a1e3e' }}>
           {`${label} ${required ? ' (Required)' : ''}`}
         </InputLabel>
@@ -90,16 +63,6 @@ const FormField: React.FC<FormFieldProps> = ({
             error={error}
           />
           {error && <FormHelperText error>{errorText}</FormHelperText>}
-          {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DesktopDatePicker
-              id="dob-input"
-              label="Date of Birth"
-              inputFormat="MM/dd/yyyy"
-              value={new Date("14-10-1997")}
-              onChange={() => {}}
-              renderInput={(params: any) => <OutlinedInput {...params} />}
-            />
-          </LocalizationProvider> */}
         </FormControl>
       </div>
       <div className="form-move-arrows">
