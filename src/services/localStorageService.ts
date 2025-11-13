@@ -1,3 +1,6 @@
+import { logger } from '../utils/logger';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 export const setDataInStorage = (): void => {};
 
 // Convert a Blob to Base64
@@ -23,7 +26,7 @@ export const saveImageBlobToLocalStorage = async (
       throw new Error('Failed to convert blob to base64 string');
     }
   } catch (error) {
-    console.error('Failed to save blob to localStorage:', error);
+    logger.error('Failed to save blob to localStorage:', error);
   }
 };
 
@@ -40,7 +43,6 @@ function base64ToBlob(base64: string): Blob {
 // Retrieve Blob from localStorage
 export function retrieveImageBlobFromLocalStorage(key: string): Blob | null {
   const base64Data = localStorage.getItem(key);
-  console.log(base64Data);
   if (!base64Data) {
     return null;
   }

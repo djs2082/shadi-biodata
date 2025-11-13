@@ -69,8 +69,8 @@ const AddImage = () => {
         // console.log(result);
         // setCroppedImage(URL.createObjectURL(result));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        // Silently handle error
       });
     return () => {
       URL.revokeObjectURL(croppedImage || '');
@@ -85,7 +85,6 @@ const AddImage = () => {
   const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const files: FileList | null = e.target.files;
-    console.log(files);
     if (files && files[0]) {
       const blob = files[0];
       const reader = new FileReader();
@@ -102,7 +101,6 @@ const AddImage = () => {
           const mimeType = await fileTypeFromBuffer(uint);
           if (isValidFileFormat(mimeType)) {
             readerDataUri.onload = (eventDataUri) => {
-              console.log(files);
               setSelectedImage({
                 file: eventDataUri.target?.result || null,
                 name: files ? files[0].name : null,
@@ -117,7 +115,6 @@ const AddImage = () => {
             );
           } else {
             setFileFormatSupported(false);
-            console.log(fileFormatSupported);
             setTimeout(() => setFileFormatSupported(true), 2000);
           }
         }
@@ -127,13 +124,12 @@ const AddImage = () => {
 
   const blobbedImage = (blob: Blob) => {
     addImageToDB(uuidv4(), blob)
-      .then((result) => {
-        console.log(result);
+      .then(() => {
         setShowCropModal(false);
         setFileFormatSupported(true);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        // Silently handle error
       });
   };
 
@@ -169,7 +165,6 @@ const AddImage = () => {
   };
 
   const handleZoom = (e: React.WheelEvent) => {
-    console.log(e);
     e.preventDefault(); // Prevent the default scroll behavior
     if (cropper) {
       const zoomRatio = e.deltaY < 0 ? 0.1 : -0.1; // Adjust the zoom ratio as needed

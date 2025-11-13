@@ -1,3 +1,5 @@
+import { logger } from '../utils/logger';
+
 const dbName = 'ShadiBioData';
 const storeName = 'profile_pictures';
 
@@ -10,14 +12,12 @@ const openDB = () => {
     };
 
     request.onsuccess = () => {
-      console.log('dfasddjklsfjdklsj');
       resolve(request.result);
     };
 
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
       if (!db.objectStoreNames.contains(storeName)) {
-        console.log('i am here');
         db.createObjectStore(storeName, { keyPath: 'id' });
       }
     };
@@ -33,7 +33,6 @@ export const addImageToDB = async (id, blob) => {
 
   return new Promise((resolve, reject) => {
     transaction.oncomplete = () => {
-      console.log('JLKJ');
       localStorage.setItem('profile_picture_id', id);
       resolve('Image Stored Successfully');
     };
@@ -67,12 +66,11 @@ export const deleteImageFromDB = async () => {
   const request = store.delete(localStorage.getItem('profile_picture_id'));
   return new Promise((resolve, reject) => {
     request.onsuccess = () => {
-      console.log('Record Deleted successfulley');
       localStorage.removeItem('profile_picture_id');
       resolve('Record Deleted successfully');
     };
     request.onerror = () => {
-      console.error('Failed to delete record:', request.error);
+      logger.error('Failed to delete record:', request.error);
       reject('Failed to delete record: ' + request.error);
     };
   });

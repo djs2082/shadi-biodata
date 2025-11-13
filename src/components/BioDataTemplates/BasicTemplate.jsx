@@ -240,7 +240,6 @@ const BasicTemplate = (props) => {
   const checkIfTitlePrintable = (data) => {
     let isAllowed = false;
     data.forEach((item) => {
-      console.log(data.data);
       if (item.value.length > 0) {
         isAllowed = true;
         return;

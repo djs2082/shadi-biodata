@@ -33,7 +33,6 @@ const BioDataForm = () => {
     if (!viewModel.validateData()) {
       // URL.revokeObjectURL(viewModel.getCroppedImage() || "");
       localStorage.setItem('biodataData', JSON.stringify(viewModel.getData()));
-      console.log(JSON.stringify(viewModel.getData()));
       downloadPdf();
     }
   };

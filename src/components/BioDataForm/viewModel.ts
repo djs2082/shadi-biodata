@@ -2,6 +2,8 @@ import axios from 'axios';
 import _ from 'lodash';
 import React from 'react';
 
+import { logger } from '../../utils/logger';
+
 import { FormDataFields, FormDataPreFilledFields } from './formDataFields';
 import useBioDataFormDataStore, { BioDataFormDataStore } from './index.store';
 
@@ -31,7 +33,6 @@ class BioDataFormViewModel {
 
   public getCroppedImage = () => this.store.croppedImage;
   public setCroppedImage = (image: string | null) => {
-    console.log(image);
     this.store.setCroppedImage(image);
   };
 
@@ -57,7 +58,6 @@ class BioDataFormViewModel {
 
   public setTodaysBioDataCount = () => {
     axios.get(this.url).then((res) => {
-      console.log(res.data.count);
       this.store.setTodaysBiodataCount(res.data.count);
     });
   };
@@ -73,7 +73,6 @@ class BioDataFormViewModel {
     if (e.target.files && e.target.files.length > 0) {
       // const file = e.target.files[0];
       // let imageDataUrl = await readFile(file);
-      console.log('uploading files');
       // setImageSrc(imageDataUrl);
       this.store.setShowImageCropModal(true);
     }
@@ -143,13 +142,13 @@ class BioDataFormViewModel {
     const data = parentGroup?.data;
     const index = data.findIndex((item) => item.id === childFieldId);
     if (index === -1) {
-      console.error('Item not found');
+      logger.error('Item not found');
       return; // Item not found, return original array
     }
     const newIndex = direction === 'up' ? index - 1 : index + 1;
     // Check if the new index is valid
     if (newIndex < 0 || newIndex >= data.length) {
-      console.error('Cannot move in that direction');
+      logger.error('Cannot move in that direction');
       return; // New index is out of bounds
     }
 
@@ -202,7 +201,6 @@ class BioDataFormViewModel {
           if (field.id === fieldId) {
             if (field.label === 'Full Name')
               this.store.setDownloadFileName(`${_.snakeCase(value)}_biodata`);
-            console.log(field);
             return {
               ...field,
               error: false,
