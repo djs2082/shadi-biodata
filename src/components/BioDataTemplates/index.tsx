@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import SecondaryButton from '../UtilComponents/Buttons/SecondaryButton';
+import SecondaryButton from '../atoms/SecondaryButton';
 
 const BioDataTemplates: React.FC = () => {
   const navigate = useNavigate();

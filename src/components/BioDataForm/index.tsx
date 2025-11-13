@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { useIsMobile } from '../../hooks/useMediaQuery';
+import PrimaryButton from '../atoms/PrimaryButton';
+import SecondaryButton from '../atoms/SecondaryButton';
 import BasicTemplate from '../BioDataTemplates/BasicTemplate';
 import imageFrame from '../BioDataTemplates/images/imageFrame.png';
-import PrimaryButton from '../UtilComponents/Buttons/PrimaryButton';
-import SecondaryButton from '../UtilComponents/Buttons/SecondaryButton';
 
 import AddImage from './components/AddImage';
 import FormGroup from './components/FormGroup';

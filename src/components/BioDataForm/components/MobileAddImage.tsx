@@ -1,9 +1,9 @@
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useState } from 'react';
 
-import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
-import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
-import CustomModal from '../../UtilComponents/Modals/Modal';
+import PrimaryButton from '../../atoms/PrimaryButton';
+import SecondaryButton from '../../atoms/SecondaryButton';
+import CustomModal from '../../molecules/Modals/Modal';
 import useBioDataFormViewModel from '../viewModel';
 
 import AddImage from './AddImage';

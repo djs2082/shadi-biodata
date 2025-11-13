@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
+import PrimaryButton from '../../atoms/PrimaryButton';
 
 import TodaysCountShow from './TodaysCountShow';
 
