@@ -10,7 +10,6 @@ import {
   FormHelperText,
 } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
-import './index.scss';
 
 interface FormFieldProps {
   key?: number;
@@ -39,8 +38,8 @@ const FormField: React.FC<FormFieldProps> = ({
 }) => {
   const formFieldKey = key || uuidv4();
   return (
-    <div className="form-field-wrapper">
-      <div className="form-fields">
+    <div className="flex z-[2]">
+      <div className="flex flex-col gap-2 w-full">
         <InputLabel htmlFor="custom-text-field" sx={{ color: '#1a1e3e' }}>
           {`${label} ${required ? ' (Required)' : ''}`}
         </InputLabel>

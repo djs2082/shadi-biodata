@@ -1,5 +1,4 @@
 import { Button } from '@mui/material';
-import './index.scss';
 
 interface ImageCropModalProps {
   show: boolean;
@@ -11,15 +10,17 @@ export const ImageCropModal: React.FC<ImageCropModalProps> = ({
   bodyContent,
 }) => {
   return show ? (
-    <div className="image-crop-modal-wrapper">
-      <div className="image-crop-modal-inner-wrapper">
-        <div className="image-crop-modal-content-wrapper">
-          <div className="image-crop-modal-content">{bodyContent}</div>
-          <div className="image-crop-modal-buttons-wrapper">
-            <div className="action-buttons-wrapper">
+    <div className="absolute bg-gray-500/50 h-[600px] w-[500px] flex justify-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-between bg-white text-center w-full h-full">
+          <div className="bg-black h-[389px] w-[500px] relative">
+            {bodyContent}
+          </div>
+          <div className="flex justify-center gap-10 py-2 h-[211px]">
+            <div className="items-end h-6">
               <Button
                 variant="outlined"
-                className="cancel-btn"
+                className="w-20 h-6"
                 onClick={() => {
                   // Handler implementation needed
                 }}
@@ -28,7 +29,7 @@ export const ImageCropModal: React.FC<ImageCropModalProps> = ({
               </Button>
               <Button
                 variant="outlined"
-                className="crop-btn"
+                className="w-20 h-6"
                 onClick={() => {
                   // Handler implementation needed
                 }}
