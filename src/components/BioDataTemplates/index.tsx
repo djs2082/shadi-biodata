@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 import SecondaryButton from '../UtilComponents/Buttons/SecondaryButton';
-const BioDataTemplates = () => {
+
+const BioDataTemplates: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div
@@ -18,7 +19,13 @@ const BioDataTemplates = () => {
       <SecondaryButton onClick={() => navigate('/template/basic_template')}>
         Basic Template
       </SecondaryButton>
-      <SecondaryButton>Advance Template</SecondaryButton>
+      <SecondaryButton
+        onClick={() => {
+          // TODO: Implement advanced template navigation
+        }}
+      >
+        Advance Template
+      </SecondaryButton>
     </div>
   );
 };
