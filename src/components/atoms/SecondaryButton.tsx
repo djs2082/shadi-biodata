@@ -5,7 +5,7 @@ interface SecondaryButtonProps {
   disabled?: boolean;
   disableRipple?: boolean;
   children: string | JSX.Element;
-  onClick: (e: any) => void;
+  onClick: () => void;
 }
 
 const SecondaryButton: React.FC<SecondaryButtonProps> = ({
@@ -48,7 +48,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
     <Button
       className="secondary-button"
       disabled={disabled}
-      disableRipple
+      disableRipple={disableRipple}
       sx={SecondaryButtonStyle}
       onClick={onClick}
     >

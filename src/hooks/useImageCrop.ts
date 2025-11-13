@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Cropper from 'react-cropper';
+// eslint-disable-next-line import/no-named-as-default
+import type Cropper from 'react-cropper';
 
 import { resizeImage } from '../utils/imageResizer';
 

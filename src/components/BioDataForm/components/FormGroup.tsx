@@ -52,14 +52,6 @@ const FormGroup: React.FC = () => {
           <AddExtraFieldForm />
         </>
       ))}
-
-      {/* <Button variant="text" className="add-field-btn" onClick={downloadPdf}>
-    Submit
-    </Button> */}
-
-      {/* <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
-   {({blob, url, loading, error}) => (loading ? 'Loading document ...': 'Download now!')}
-    </PDFDownloadLink> */}
     </div>
   );
 };

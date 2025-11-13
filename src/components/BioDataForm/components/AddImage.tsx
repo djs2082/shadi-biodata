@@ -3,6 +3,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import ImageIcon from '@mui/icons-material/Image';
 import { IconButton, Tooltip } from '@mui/material';
 import 'cropperjs/dist/cropper.css';
+// eslint-disable-next-line import/no-named-as-default
 import Cropper from 'react-cropper';
 
 import { useImageCrop } from '../../../hooks/useImageCrop';

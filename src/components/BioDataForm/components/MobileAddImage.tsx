@@ -1,17 +1,16 @@
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useState } from 'react';
 
+import { useUIStore } from '../../../stores/uiStore';
 import PrimaryButton from '../../atoms/PrimaryButton';
 import SecondaryButton from '../../atoms/SecondaryButton';
 import CustomModal from '../../molecules/Modals/Modal';
-import useBioDataFormViewModel from '../viewModel';
 
 import AddImage from './AddImage';
 
 const MobileAddImage = () => {
   const [showAddImageModal, setShowAddImageModal] = useState<boolean>(false);
-  const viewModel = useBioDataFormViewModel();
-  const croppedImage = viewModel.getCroppedImage();
+  const croppedImage = useUIStore((state) => state.croppedImage);
   return (
     <div
       style={{
