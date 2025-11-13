@@ -261,7 +261,7 @@ const BasicTemplate = (props) => {
           {data.data.map(
             (field) =>
               field.value.length > 0 && (
-                <View style={styles.body.fieldsContainer}>
+                <View key={field.label} style={styles.body.fieldsContainer}>
                   <Text style={styles.body.fieldsContainer.label}>
                     {field.label}
                   </Text>

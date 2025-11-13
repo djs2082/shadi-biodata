@@ -55,12 +55,24 @@
 - Git hooks preventing bad commits
 - Tailwind classes available for use
 
-#### Day 2: Dependency Cleanup - 🔄 PENDING
+#### Day 2: Dependency Cleanup - 🔄 IN PROGRESS
 
-- [ ] Update Zustand to stable version
-- [ ] Remove unused dependencies
-- [ ] Update major dependencies
-- [ ] Font optimization
+- [x] **Step 2.1:** Update Zustand to stable version (Commit: 99f1eb1)
+- [x] **Step 2.2:** Remove unused dependencies (Commit: b2d08d6)
+- [ ] **Step 2.3:** Update major dependencies
+- [ ] **Step 2.4:** Font optimization
+
+**Achievements:**
+
+- ✅ Zustand updated from 5.0.0-rc.2 to 5.0.8 (stable)
+- ✅ Removed 7 unused packages (react-easy-crop, loadash, react-media, etc.)
+- ✅ Created custom useMediaQuery hook to replace react-media
+- ✅ Fixed all import order issues for ESLint compliance
+
+**Metrics Improved:**
+
+- Bundle size reduced (removed 3 dependencies)
+- Custom hook implementation (no external dependency)
 
 ---
 
