@@ -1,18 +1,19 @@
-import { saveAs } from 'file-saver';
 import { pdf } from '@react-pdf/renderer';
+import { saveAs } from 'file-saver';
 import './index.scss';
 import { useEffect, useRef } from 'react';
+import Media from 'react-media';
+import { useSearchParams } from 'react-router-dom';
 
 import BasicTemplate from '../BioDataTemplates/BasicTemplate';
 import PrimaryButton from '../UtilComponents/Buttons/PrimaryButton';
 import SecondaryButton from '../UtilComponents/Buttons/SecondaryButton';
-import { useSearchParams } from 'react-router-dom';
-import useBioDataFormViewModel from './viewModel';
-import FormGroup from './components/FormGroup';
-import AddImage from './components/AddImage';
-import Media from 'react-media';
-import MobileAddImage from './components/MobileAddImage';
+
 import imageFrame from './../BioDataTemplates/images/imageFrame.png';
+import AddImage from './components/AddImage';
+import FormGroup from './components/FormGroup';
+import MobileAddImage from './components/MobileAddImage';
+import useBioDataFormViewModel from './viewModel';
 
 const BioDataForm = () => {
   const viewModel = useBioDataFormViewModel();

@@ -1,23 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
-import { fileTypeFromBuffer, FileTypeResult } from 'file-type';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import ImageIcon from '@mui/icons-material/Image';
-import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
-import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
-import CustomModal from '../../UtilComponents/Modals/Modal';
 import Cropper from 'react-cropper'; // Assuming you're using react-cropper
+
 import 'cropperjs/dist/cropper.css';
-import useBioDataFormViewModel from './../viewModel';
 import { IconButton, Tooltip } from '@mui/material';
+import { fileTypeFromBuffer, FileTypeResult } from 'file-type';
+import Media from 'react-media';
 import { v4 as uuidv4 } from 'uuid';
+
+import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
+import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
+import CustomModal from '../../UtilComponents/Modals/Modal';
+
 import {
   addImageToDB,
   deleteImageFromDB,
   getImageFromDB,
 } from './../../../services/indexedDB';
-import Media from 'react-media';
 import imageFrameOld from './../../BioDataTemplates/images/imageFrameOld2.png';
+import useBioDataFormViewModel from './../viewModel';
 
 interface SelectedImage {
   file: string | ArrayBuffer | null;
@@ -82,7 +85,7 @@ const AddImage = () => {
 
   const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    let files: FileList | null = e.target.files;
+    const files: FileList | null = e.target.files;
     console.log(files);
     if (files && files[0]) {
       const blob = files[0];

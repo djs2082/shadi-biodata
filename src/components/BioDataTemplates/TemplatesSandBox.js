@@ -1,7 +1,9 @@
 import { PDFViewer } from '@react-pdf/renderer';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { getImageFromDB } from '../../services/indexedDB';
+
 import BasicTemplate from './BasicTemplate';
 import Data from './data';
 

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 import SecondaryButton from '../UtilComponents/Buttons/SecondaryButton';
 const BioDataTemplates = () => {
   const navigate = useNavigate();

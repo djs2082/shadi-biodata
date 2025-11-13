@@ -1,9 +1,10 @@
 import { FormControl, FormHelperText, OutlinedInput } from '@mui/material';
-import CustomModal from '../../UtilComponents/Modals/Modal';
-import useBioDataFormViewModel from '../viewModel';
+import { useState } from 'react';
+
 import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
 import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
-import { useState } from 'react';
+import CustomModal from '../../UtilComponents/Modals/Modal';
+import useBioDataFormViewModel from '../viewModel';
 
 const AddExtraFieldForm = () => {
   const viewModel = useBioDataFormViewModel();

@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import CloseIcon from '@mui/icons-material/Close';
+import { IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import React, { ReactNode } from 'react';
 import './index.scss';
 
 interface CustomModalProps {

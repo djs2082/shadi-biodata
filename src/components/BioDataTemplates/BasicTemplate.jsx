@@ -1,7 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import cornerRangoli from './images/corner_rangoli.jpeg';
-import cornerBottomFlower from './images/corner_bottom_flower.jpeg';
-import Tags from './tags';
 import {
   Page,
   Text,
@@ -11,11 +7,16 @@ import {
   Font,
   Image,
 } from '@react-pdf/renderer';
-import NotoSansFont from './../../fonts/Noto_Sans/NotoSans-VariableFont_wdth.ttf';
+import React, { useState, useEffect } from 'react';
+
 import LibreBaskervilleBold from './../../fonts/LibreBaskerville/LibreBaskerville-Bold.ttf';
 import LibreBaskervilleRegular from './../../fonts/LibreBaskerville/LibreBaskerville-Regular.ttf';
-import TimesNewRomanRegular from './../../fonts/TimesNewRoman/times_new_roman_regular.ttf';
+import NotoSansFont from './../../fonts/Noto_Sans/NotoSans-VariableFont_wdth.ttf';
 import TimesNewRomanBold from './../../fonts/TimesNewRoman/times_new_roman_bold.ttf';
+import TimesNewRomanRegular from './../../fonts/TimesNewRoman/times_new_roman_regular.ttf';
+import cornerBottomFlower from './images/corner_bottom_flower.jpeg';
+import cornerRangoli from './images/corner_rangoli.jpeg';
+import Tags from './tags';
 
 Font.register({
   family: 'Noto Sans Devanagari',

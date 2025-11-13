@@ -1,6 +1,8 @@
-import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
-import TodaysCountShow from './TodaysCountShow';
 import { useNavigate } from 'react-router-dom';
+
+import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
+
+import TodaysCountShow from './TodaysCountShow';
 
 import './../index.scss';
 interface LandingPageProps {}

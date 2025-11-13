@@ -1,8 +1,9 @@
 import axios from 'axios';
-import useBioDataFormDataStore, { BioDataFormDataStore } from './index.store';
 import _ from 'lodash';
 import React from 'react';
+
 import { FormDataFields, FormDataPreFilledFields } from './formDataFields';
+import useBioDataFormDataStore, { BioDataFormDataStore } from './index.store';
 
 class BioDataFormViewModel {
   private store: BioDataFormDataStore;

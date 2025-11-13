@@ -1,7 +1,9 @@
+import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
+
 import FormField from '../../UtilComponents/FormField';
 import useBioDataFormViewModel from '../viewModel';
-import AddIcon from '@mui/icons-material/Add';
+
 import AddExtraFieldForm from './AddExtraFieldForm';
 
 const FormGroup: React.FC = () => {

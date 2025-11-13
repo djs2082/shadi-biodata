@@ -1,10 +1,12 @@
-import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useState } from 'react';
-import CustomModal from '../../UtilComponents/Modals/Modal';
-import AddImage from './AddImage';
+
 import PrimaryButton from '../../UtilComponents/Buttons/PrimaryButton';
+import SecondaryButton from '../../UtilComponents/Buttons/SecondaryButton';
+import CustomModal from '../../UtilComponents/Modals/Modal';
 import useBioDataFormViewModel from '../viewModel';
+
+import AddImage from './AddImage';
 
 const MobileAddImage = () => {
   const [showAddImageModal, setShowAddImageModal] = useState<boolean>(false);

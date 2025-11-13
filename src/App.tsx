@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import TemplatesSandBox from './components/BioDataTemplates/TemplatesSandBox';
-import BioDataTemplates from './components/BioDataTemplates';
+
 import LandingPage from './components/BioDataForm/components/LandingPage';
+import BioDataTemplates from './components/BioDataTemplates';
+import TemplatesSandBox from './components/BioDataTemplates/TemplatesSandBox';
+import Home from './components/Home';
 
 const App: React.FC = () => {
   return (
