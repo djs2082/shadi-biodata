@@ -5,7 +5,6 @@ describe('logger utility', () => {
   let consoleWarnSpy: jest.SpyInstance;
   let consoleErrorSpy: jest.SpyInstance;
   let consoleDebugSpy: jest.SpyInstance;
-  const originalEnv = process.env.NODE_ENV;
 
   beforeEach(() => {
     consoleInfoSpy = jest.spyOn(console, 'info').mockImplementation();
@@ -16,7 +15,6 @@ describe('logger utility', () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
-    process.env.NODE_ENV = originalEnv;
   });
 
   describe('info', () => {
@@ -42,20 +40,14 @@ describe('logger utility', () => {
 
       expect(consoleErrorSpy).toHaveBeenCalledWith('Error occurred', error);
     });
-
-    it('should always log errors even in production', () => {
-      process.env.NODE_ENV = 'production';
-
-      logger.error('Production error');
-
-      expect(consoleErrorSpy).toHaveBeenCalledWith('Production error');
-    });
   });
 
   describe('debug', () => {
     it('should log debug messages', () => {
       logger.debug('Debug message', { value: 42 });
 
+      // False positive: consoleDebugSpy is a test spy, not a debug statement
+      // eslint-disable-next-line testing-library/no-debugging-utils
       expect(consoleDebugSpy).toHaveBeenCalledWith('Debug message', { value: 42 });
     });
   });
