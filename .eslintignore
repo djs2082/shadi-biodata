@@ -5,3 +5,5 @@ dist
 coverage
 public
 *.config.js
+*.config.ts
+vite.config.ts

@@ -41,8 +41,8 @@ export const useFormData = () => {
   // API URL for counter
   const getCounterUrl = useCallback(() => {
     const baseUrl =
-      process.env.REACT_APP_COUNTER_API_URL || 'https://api.counterapi.dev/v1';
-    const environment = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+      import.meta.env.VITE_COUNTER_API_URL || 'https://api.counterapi.dev/v1';
+    const environment = import.meta.env.MODE === 'production' ? 'prod' : 'dev';
     return `${baseUrl}/shadibiodata/${environment}`;
   }, []);
 
