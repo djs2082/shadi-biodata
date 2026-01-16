@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "ಮದುವೆ ಬಯೋಡೇಟಾ ತಯಾರಕ",
+    "subtitle": "ನಿಮಿಷಗಳಲ್ಲಿ ಸುಂದರ ಬಯೋಡೇಟಾವನ್ನು ರಚಿಸಿ"
+  },
+  "form": {
+    "selectLanguage": "ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "addMoreFields": "ಹೆಚ್ಚಿನ ಕ್ಷೇತ್ರಗಳನ್ನು ಸೇರಿಸಿ",
+    "required": "ಅಗತ್ಯವಿದೆ",
+    "enter": "ನಮೂದಿಸಿ",
+    "cannotDeleteRequired": "ಅಗತ್ಯವಾದ ಕ್ಷೇತ್ರವನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ",
+    "selectOption": "ಒಂದು ಆಯ್ಕೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "selectHeight": "ಎತ್ತರವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "selectTime": "ಸಮಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "now": "ಈಗ",
+    "clickToAddPhoto": "ನಿಮ್ಮ ಫೋಟೋವನ್ನು ಸೇರಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ",
+    "photoSizeLimit": "(ಗರಿಷ್ಠ 20MB ಗಾತ್ರ)"
+  },
+  "groups": {
+    "personalDetails": "ವೈಯಕ್ತಿಕ ವಿವರಗಳು",
+    "familyDetails": "ಕುಟುಂಬ ವಿವರಗಳು",
+    "contactDetails": "ಸಂಪರ್ಕ ವಿವರಗಳು"
+  },
+  "fields": {
+    "fullName": "ಪೂರ್ಣ ಹೆಸರು",
+    "dateOfBirth": "ಜನ್ಮ ದಿನಾಂಕ",
+    "placeOfBirth": "ಜನ್ಮ ಸ್ಥಳ",
+    "timeOfBirth": "ಜನ್ಮ ಸಮಯ",
+    "rashi": "ರಾಶಿ",
+    "nakshatra": "ನಕ್ಷತ್ರ",
+    "complexion": "ವರ್ಣ",
+    "height": "ಎತ್ತರ",
+    "gotra": "ಗೋತ್ರ",
+    "bachelors": "ಪದವಿ",
+    "work": "ಕೆಲಸ",
+    "fathersName": "ತಂದೆಯ ಹೆಸರು",
+    "fathersOccupation": "ತಂದೆಯ ವೃತ್ತಿ",
+    "mothersName": "ತಾಯಿಯ ಹೆಸರು",
+    "mothersOccupation": "ತಾಯಿಯ ವೃತ್ತಿ",
+    "siblings": "ಸಹೋದರ ಸಹೋದರಿಯರು",
+    "contactPerson": "ಸಂಪರ್ಕ ವ್ಯಕ್ತಿ",
+    "contactNumber": "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ",
+    "emailId": "ಇಮೇಲ್ ಐಡಿ",
+    "residentialAddress": "ವಸತಿ ವಿಳಾಸ"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "ಮೇಷ",
+      "vrishabh": "ವೃಷಭ",
+      "mithun": "ಮಿಥುನ",
+      "kark": "ಕರ್ಕಾಟಕ",
+      "simha": "ಸಿಂಹ",
+      "kanya": "ಕನ್ಯಾ",
+      "tula": "ತುಲಾ",
+      "vrishchik": "ವೃಶ್ಚಿಕ",
+      "dhanur": "ಧನುಸ್ಸು",
+      "makar": "ಮಕರ",
+      "kumbh": "ಕುಂಭ",
+      "meen": "ಮೀನ"
+    },
+    "nakshatra": {
+      "ashlesha": "ಆಶ್ಲೇಷ",
+      "bharani": "ಭರಣಿ",
+      "krittika": "ಕೃತ್ತಿಕಾ",
+      "rohini": "ರೋಹಿಣಿ",
+      "mrigashira": "ಮೃಗಶಿರ"
+    },
+    "complexion": {
+      "veryFair": "ತುಂಬಾ ಬಿಳಿ",
+      "fair": "ಬಿಳಿ",
+      "medium": "ಮಧ್ಯಮ",
+      "brown": "ಕಂದು",
+      "dark": "ಕಪ್ಪು"
+    }
+  },
+  "buttons": {
+    "save": "ಉಳಿಸಿ",
+    "cancel": "ರದ್ದುಮಾಡಿ",
+    "ok": "ಸರಿ",
+    "delete": "ಅಳಿಸಿ",
+    "next": "ಮುಂದೆ",
+    "previous": "ಹಿಂದೆ",
+    "submit": "ಸಲ್ಲಿಸಿ",
+    "reset": "ಫಾರ್ಮ್ ಮರುಹೊಂದಿಸಿ",
+    "generateBiodata": "ಬಯೋಡೇಟಾವನ್ನು ರಚಿಸಿ"
+  },
+  "template": {
+    "selectTemplate": "ಟೆಂಪ್ಲೇಟ್ ಆಯ್ಕೆಮಾಡಿ",
+    "preview": "ಪೂರ್ವವೀಕ್ಷಣೆ",
+    "free": "ಉಚಿತ",
+    "basic": "ಮೂಲ ಟೆಂಪ್ಲೇಟ್",
+    "goldenBorder": "ಗೋಲ್ಡನ್ ಬಾರ್ಡರ್",
+    "navyFloral": "ನೇವಿ ಫ್ಲೋರಲ್",
+    "navyGoldRoyal": "ನೇವಿ ಗೋಲ್ಡ್ ರಾಯಲ್",
+    "ornateGold": "ಆರ್ನೇಟ್ ಗೋಲ್ಡ್",
+    "traditional": "ಸಾಂಪ್ರದಾಯಿಕ"
+  },
+  "validation": {
+    "required": "ಈ ಕ್ಷೇತ್ರ ಅಗತ್ಯವಿದೆ",
+    "invalidEmail": "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಇಮೇಲ್ ನಮೂದಿಸಿ",
+    "invalidPhone": "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ"
+  }
+}

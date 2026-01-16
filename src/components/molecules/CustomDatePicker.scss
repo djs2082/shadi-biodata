@@ -1,0 +1,272 @@
+// CustomDatePicker Styles
+
+.custom-datepicker-container {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+}
+
+.custom-datepicker-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a1e3e;
+  margin-bottom: 8px;
+}
+
+.custom-datepicker-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-datepicker-input {
+  width: 100%;
+  padding: 14px;
+  padding-right: 45px;
+  font-size: 1rem;
+  color: #1a1e3e;
+  background-color: #fff;
+  border: 1px solid #800000;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #800000;
+  }
+
+  &:focus,
+  &.focused {
+    border: 1.5px solid #800000;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.1);
+  }
+
+  &.error {
+    border-color: #d32f2f;
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+}
+
+.custom-datepicker-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1a1e3e;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.custom-datepicker-error {
+  display: block;
+  font-size: 0.75rem;
+  color: #d32f2f;
+  margin-top: 4px;
+}
+
+.custom-datepicker-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 9999;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  width: 320px;
+  min-width: 320px;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.custom-datepicker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 4px;
+
+  button {
+    padding: 4px;
+    min-width: auto;
+  }
+}
+
+.custom-datepicker-month-year {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1e3e;
+}
+
+.custom-datepicker-days-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.custom-datepicker-day-name {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 8px 0;
+}
+
+.custom-datepicker-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.custom-datepicker-day {
+  aspect-ratio: 1;
+  min-height: 36px;
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #1a1e3e;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  &.other-month {
+    color: #9ca3af;
+  }
+
+  &.today {
+    font-weight: 700;
+    color: #800000;
+    background-color: #fee;
+  }
+
+  &.selected {
+    background-color: #800000;
+    color: #fff;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #600000;
+    }
+  }
+}
+
+.custom-datepicker-months-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.custom-datepicker-month {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #1a1e3e;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  &.current {
+    font-weight: 700;
+    color: #800000;
+    background-color: #fee;
+  }
+
+  &.selected {
+    background-color: #800000;
+    color: #fff;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #600000;
+    }
+  }
+}
+
+.custom-datepicker-years-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.custom-datepicker-year {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #1a1e3e;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  &.current {
+    font-weight: 700;
+    color: #800000;
+    background-color: #fee;
+  }
+
+  &.selected {
+    background-color: #800000;
+    color: #fff;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #600000;
+    }
+  }
+}
+
+.custom-datepicker-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.custom-datepicker-today-btn {
+  padding: 8px 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #800000;
+  background-color: transparent;
+  border: 1px solid #800000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #800000;
+    color: #fff;
+  }
+}

@@ -12,6 +12,7 @@ interface FormDataField {
   required: boolean;
   error?: boolean;
   errorText?: string;
+  options?: string[];
 }
 
 export const FormDataFields: FormDataFieldGorup[] = [
@@ -31,7 +32,7 @@ export const FormDataFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Date Of Birth',
-        type: 'text',
+        type: 'date',
         value: '',
         required: true,
         error: false,
@@ -49,35 +50,51 @@ export const FormDataFields: FormDataFieldGorup[] = [
       {
         id: 4,
         label: 'Time Of Birth',
-        type: 'text',
+        type: 'time',
         value: '',
         required: false,
       },
       {
         id: 5,
         label: 'Rashi',
-        type: 'text',
+        type: 'dropdown',
+        options: [
+          'Mesh (Aries)',
+          'Vrishabh (Taurus)',
+          'Mithun (Gemini)',
+          'Kark (Cancer)',
+          'Simha (Leo)',
+          'Kanya (Virgo)',
+          'Tula (Libra)',
+          'Vrishchik (Scorpio)',
+          'Dhanur (Sagittarius)',
+          'Makar (Capricorn)',
+          'Kumbh (Aquarius)',
+          'Meen (Pisces)',
+        ],
         value: '',
         required: false,
       },
       {
         id: 6,
         label: 'Nakshatra',
-        type: 'text',
+        type: 'dropdown',
+        options: ['Ashlesha', 'Bharani', 'Krittika', 'Rohini', 'Mrigashira'],
         value: '',
         required: false,
       },
       {
         id: 7,
         label: 'Complexion',
-        type: 'text',
+        type: 'dropdown',
+        options: ['Vert Fair', 'Fair', 'Medium', 'Brown', 'Dark'],
         value: '',
         required: false,
       },
       {
         id: 8,
         label: 'Height',
-        type: 'text',
+        type: 'height',
         value: '',
         required: false,
       },
@@ -159,7 +176,7 @@ export const FormDataFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Contact Number',
-        type: 'date',
+        type: 'text',
         value: '',
         required: false,
       },
@@ -198,7 +215,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Date Of Birth',
-        type: 'text',
+        type: 'date',
         value: '18-09-1993',
         required: true,
         error: false,
@@ -216,7 +233,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 4,
         label: 'Time Of Birth',
-        type: 'text',
+        type: 'time',
         value: '11:10 AM',
         required: false,
       },
@@ -227,13 +244,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
         value: 'Taurus',
         required: false,
       },
-      {
-        id: 6,
-        label: 'Nakshatra',
-        type: 'text',
-        value: 'Ashlesha',
-        required: false,
-      },
+
       {
         id: 7,
         label: 'Complexion',
@@ -244,7 +255,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 8,
         label: 'Height',
-        type: 'text',
+        type: 'height',
         value: '5`9',
         required: false,
       },
@@ -326,7 +337,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Contact Number',
-        type: 'date',
+        type: 'text',
         value: '8628954575',
         required: false,
       },

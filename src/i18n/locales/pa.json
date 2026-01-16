@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "ਸ਼ਾਦੀ ਬਾਇਓਡੇਟਾ ਨਿਰਮਾਤਾ",
+    "subtitle": "ਮਿੰਟਾਂ ਵਿੱਚ ਸੁੰਦਰ ਬਾਇਓਡੇਟਾ ਬਣਾਓ"
+  },
+  "form": {
+    "selectLanguage": "ਭਾਸ਼ਾ ਚੁਣੋ",
+    "addMoreFields": "ਹੋਰ ਖੇਤਰ ਸ਼ਾਮਲ ਕਰੋ",
+    "required": "ਲੋੜੀਂਦਾ",
+    "enter": "ਦਰਜ ਕਰੋ",
+    "cannotDeleteRequired": "ਲੋੜੀਂਦੇ ਖੇਤਰ ਨੂੰ ਮਿਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ",
+    "selectOption": "ਇੱਕ ਵਿਕਲਪ ਚੁਣੋ",
+    "selectHeight": "ਉਚਾਈ ਚੁਣੋ",
+    "selectTime": "ਸਮਾਂ ਚੁਣੋ",
+    "now": "ਹੁਣ",
+    "clickToAddPhoto": "ਆਪਣੀ ਫੋਟੋ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਇੱਥੇ ਕਲਿਕ ਕਰੋ",
+    "photoSizeLimit": "(ਵੱਧ ਤੋਂ ਵੱਧ 20MB ਆਕਾਰ)"
+  },
+  "groups": {
+    "personalDetails": "ਨਿੱਜੀ ਵੇਰਵੇ",
+    "familyDetails": "ਪਰਿਵਾਰਕ ਵੇਰਵੇ",
+    "contactDetails": "ਸੰਪਰਕ ਵੇਰਵੇ"
+  },
+  "fields": {
+    "fullName": "ਪੂਰਾ ਨਾਮ",
+    "dateOfBirth": "ਜਨਮ ਮਿਤੀ",
+    "placeOfBirth": "ਜਨਮ ਸਥਾਨ",
+    "timeOfBirth": "ਜਨਮ ਸਮਾਂ",
+    "rashi": "ਰਾਸ਼ੀ",
+    "nakshatra": "ਨਕਸ਼ਤਰ",
+    "complexion": "ਰੰਗ",
+    "height": "ਉਚਾਈ",
+    "gotra": "ਗੋਤਰ",
+    "bachelors": "ਗ੍ਰੈਜੁਏਟ",
+    "work": "ਕੰਮ",
+    "fathersName": "ਪਿਤਾ ਦਾ ਨਾਮ",
+    "fathersOccupation": "ਪਿਤਾ ਦਾ ਪੇਸ਼ਾ",
+    "mothersName": "ਮਾਤਾ ਦਾ ਨਾਮ",
+    "mothersOccupation": "ਮਾਤਾ ਦਾ ਪੇਸ਼ਾ",
+    "siblings": "ਭਰਾ-ਭੈਣ",
+    "contactPerson": "ਸੰਪਰਕ ਵਿਅਕਤੀ",
+    "contactNumber": "ਸੰਪਰਕ ਨੰਬਰ",
+    "emailId": "ਈਮੇਲ ਆਈਡੀ",
+    "residentialAddress": "ਰਿਹਾਇਸ਼ੀ ਪਤਾ"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "ਮੇਸ਼",
+      "vrishabh": "ਵ੍ਰਿਸ਼ਭ",
+      "mithun": "ਮਿਥੁਨ",
+      "kark": "ਕਰਕ",
+      "simha": "ਸਿੰਹ",
+      "kanya": "ਕੰਨਿਆ",
+      "tula": "ਤੁਲਾ",
+      "vrishchik": "ਵ੍ਰਿਸ਼ਚਿਕ",
+      "dhanur": "ਧਨੁ",
+      "makar": "ਮਕਰ",
+      "kumbh": "ਕੁੰਭ",
+      "meen": "ਮੀਨ"
+    },
+    "nakshatra": {
+      "ashlesha": "ਆਸ਼ਲੇਸ਼ਾ",
+      "bharani": "ਭਰਣੀ",
+      "krittika": "ਕ੍ਰਿਤਿਕਾ",
+      "rohini": "ਰੋਹਿਣੀ",
+      "mrigashira": "ਮ੍ਰਿਗਸ਼ਿਰਾ"
+    },
+    "complexion": {
+      "veryFair": "ਬਹੁਤ ਗੋਰਾ",
+      "fair": "ਗੋਰਾ",
+      "medium": "ਮੱਧਮ",
+      "brown": "ਭੂਰਾ",
+      "dark": "ਗੂੜ੍ਹਾ"
+    }
+  },
+  "buttons": {
+    "save": "ਸੁਰੱਖਿਅਤ ਕਰੋ",
+    "cancel": "ਰੱਦ ਕਰੋ",
+    "ok": "ਠੀਕ ਹੈ",
+    "delete": "ਮਿਟਾਓ",
+    "next": "ਅਗਲਾ",
+    "previous": "ਪਿਛਲਾ",
+    "submit": "ਜਮ੍ਹਾਂ ਕਰੋ",
+    "reset": "ਫਾਰਮ ਰੀਸੈੱਟ ਕਰੋ",
+    "generateBiodata": "ਬਾਇਓਡੇਟਾ ਬਣਾਓ"
+  },
+  "template": {
+    "selectTemplate": "ਟੈਮਪਲੇਟ ਚੁਣੋ",
+    "preview": "ਪੂਰਵਦ੍ਰਿਸ਼ਟੀ",
+    "free": "ਮੁਫਤ",
+    "basic": "ਬੇਸਿਕ ਟੈਮਪਲੇਟ",
+    "goldenBorder": "ਗੋਲਡਨ ਬਾਰਡਰ",
+    "navyFloral": "ਨੇਵੀ ਫਲੋਰਲ",
+    "navyGoldRoyal": "ਨੇਵੀ ਗੋਲਡ ਰਾਇਲ",
+    "ornateGold": "ਆਰਨੇਟ ਗੋਲਡ",
+    "traditional": "ਪਰੰਪਰਾਗਤ"
+  },
+  "validation": {
+    "required": "ਇਹ ਖੇਤਰ ਲੋੜੀਂਦਾ ਹੈ",
+    "invalidEmail": "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ ਈਮੇਲ ਦਰਜ ਕਰੋ",
+    "invalidPhone": "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ ਫੋਨ ਨੰਬਰ ਦਰਜ ਕਰੋ"
+  }
+}

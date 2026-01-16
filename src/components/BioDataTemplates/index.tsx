@@ -16,15 +16,33 @@ const BioDataTemplates: React.FC = () => {
         height: '100vh',
       }}
     >
+      <h1
+        style={{
+          fontSize: '2rem',
+          fontWeight: 700,
+          color: '#1e293b',
+          marginBottom: '20px',
+        }}
+      >
+        Biodata Templates Sandbox
+      </h1>
       <SecondaryButton onClick={() => navigate('/template/basic_template')}>
         Basic Template
       </SecondaryButton>
-      <SecondaryButton
-        onClick={() => {
-          // TODO: Implement advanced template navigation
-        }}
-      >
-        Advance Template
+      <SecondaryButton onClick={() => navigate('/template/golden_border')}>
+        Golden Border Template
+      </SecondaryButton>
+      <SecondaryButton onClick={() => navigate('/template/navy_floral')}>
+        Navy Floral Template
+      </SecondaryButton>
+      <SecondaryButton onClick={() => navigate('/template/ornate_gold')}>
+        Ornate Gold Template
+      </SecondaryButton>
+      <SecondaryButton onClick={() => navigate('/template/free_template')}>
+        Free Template
+      </SecondaryButton>
+      <SecondaryButton onClick={() => navigate('/template/traditional')}>
+        Traditional Template
       </SecondaryButton>
     </div>
   );

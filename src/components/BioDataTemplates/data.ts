@@ -27,7 +27,7 @@ const Data: FormDataGroup[] = [
       {
         id: 2,
         label: 'Date Of Birth',
-        type: 'text',
+        type: 'date',
         value: '14-10-1997',
         required: true,
       },
@@ -41,7 +41,7 @@ const Data: FormDataGroup[] = [
       {
         id: 4,
         label: 'Time Of Birth',
-        type: 'text',
+        type: 'time',
         value: '11:59 AM',
         required: false,
       },
@@ -62,7 +62,7 @@ const Data: FormDataGroup[] = [
       {
         id: 8,
         label: 'Height',
-        type: 'text',
+        type: 'height',
         value: '5`6',
         required: false,
       },
@@ -159,7 +159,7 @@ const Data: FormDataGroup[] = [
       {
         id: 2,
         label: 'Contact Number',
-        type: 'date',
+        type: 'text',
         value: '+91 8975427620',
         required: false,
       },

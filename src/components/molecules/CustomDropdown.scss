@@ -1,0 +1,144 @@
+.custom-dropdown-label {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+  color: #1a1e3e;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.custom-dropdown-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-dropdown-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  border: 1px solid #800000;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+
+  &:hover {
+    border-color: #800000;
+  }
+
+  &.open {
+    border-width: 1.5px;
+    border-color: #800000;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.1);
+    padding: 13.5px;
+  }
+
+  &.error {
+    border-color: #d32f2f;
+
+    &.open {
+      border-color: #d32f2f;
+      box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.1);
+    }
+  }
+}
+
+.custom-dropdown-value {
+  font-size: 16px;
+  color: #1a1e3e;
+  flex: 1;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+}
+
+.custom-dropdown-placeholder {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.38);
+  flex: 1;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+}
+
+.custom-dropdown-arrow {
+  color: #800000;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #800000;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #800000;
+    border-radius: 4px;
+
+    &:hover {
+      background: #600000;
+    }
+  }
+}
+
+.custom-dropdown-option {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(128, 0, 0, 0.08);
+  }
+
+  &.selected {
+    background-color: rgba(128, 0, 0, 0.12);
+    color: #800000;
+    font-weight: 500;
+  }
+
+  &.disabled {
+    color: #999;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.custom-dropdown-error-text {
+  color: #d32f2f;
+  font-size: 12px;
+  margin: 4px 0 0 0;
+}

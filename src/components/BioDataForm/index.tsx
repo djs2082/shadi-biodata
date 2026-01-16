@@ -1,32 +1,30 @@
-import { pdf } from '@react-pdf/renderer';
-import { saveAs } from 'file-saver';
 import { useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { useFormData } from '../../hooks/useFormData';
 import { useIsMobile } from '../../hooks/useMediaQuery';
-import { useUIStore } from '../../stores/uiStore';
+import { useLanguage } from '../../contexts/LanguageContext';
 import PrimaryButton from '../atoms/PrimaryButton';
 import SecondaryButton from '../atoms/SecondaryButton';
-import BasicTemplate from '../BioDataTemplates/BasicTemplate';
 import imageFrame from '../BioDataTemplates/images/imageFrame.png';
 
 import AddImage from './components/AddImage';
 import FormGroup from './components/FormGroup';
 import MobileAddImage from './components/MobileAddImage';
+import LanguageSelector from '../molecules/LanguageSelector';
 import './index.scss';
 
 const BioDataForm = () => {
+  const navigate = useNavigate();
+  const { t } = useLanguage();
   const {
     data,
-    downloadFileName,
     initializeData,
     fetchTodaysBioDataCount,
     validateData: validateFormData,
     resetFormFields,
   } = useFormData();
 
-  const croppedImage = useUIStore((state) => state.croppedImage);
   const isMobile = useIsMobile();
 
   const [params] = useSearchParams();
@@ -44,16 +42,8 @@ const BioDataForm = () => {
     const hasError = validateFormData();
     if (!hasError) {
       localStorage.setItem('biodataData', JSON.stringify(data));
-      downloadPdf();
+      navigate('/select-template');
     }
-  };
-
-  const downloadPdf = async () => {
-    const blob = await pdf(
-      <BasicTemplate data={data} image={croppedImage} />
-    ).toBlob();
-    saveAs(blob, downloadFileName);
-    fetchTodaysBioDataCount();
   };
 
   return (
@@ -63,11 +53,14 @@ const BioDataForm = () => {
         {isMobile && <MobileAddImage />}
         <div className="biodata-form-wrapper">
           <div className="biodata-fields-wrapper">
+            <div className="language-selector-container">
+              <LanguageSelector />
+            </div>
             <FormGroup />
             <div className="biodata-form-buttons-wrpper">
-              <PrimaryButton onClick={handleSubmit}>Submit</PrimaryButton>
+              <PrimaryButton onClick={handleSubmit}>{t('buttons.submit')}</PrimaryButton>
               <SecondaryButton onClick={resetFormFields}>
-                Reset Form
+                {t('buttons.reset')}
               </SecondaryButton>
             </div>
           </div>

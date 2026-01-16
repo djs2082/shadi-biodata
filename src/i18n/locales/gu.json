@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "લગ્ન બાયોડેટા નિર્માતા",
+    "subtitle": "મિનિટોમાં સુંદર બાયોડેટા બનાવો"
+  },
+  "form": {
+    "selectLanguage": "ભાષા પસંદ કરો",
+    "addMoreFields": "વધુ ફીલ્ડ ઉમેરો",
+    "required": "આવશ્યક",
+    "enter": "દાખલ કરો",
+    "cannotDeleteRequired": "આવશ્યક ફીલ્ડ કાઢી શકાતું નથી",
+    "selectOption": "એક વિકલ્પ પસંદ કરો",
+    "selectHeight": "ઊંચાઈ પસંદ કરો",
+    "selectTime": "સમય પસંદ કરો",
+    "now": "હમણાં",
+    "clickToAddPhoto": "તમારો ફોટો ઉમેરવા અહીં ક્લિક કરો",
+    "photoSizeLimit": "(મહત્તમ 20MB કદ)"
+  },
+  "groups": {
+    "personalDetails": "વ્યક્તિગત વિગતો",
+    "familyDetails": "પારિવારિક વિગતો",
+    "contactDetails": "સંપર્ક વિગતો"
+  },
+  "fields": {
+    "fullName": "પૂરું નામ",
+    "dateOfBirth": "જન્મ તારીખ",
+    "placeOfBirth": "જન્મ સ્થળ",
+    "timeOfBirth": "જન્મ સમય",
+    "rashi": "રાશિ",
+    "nakshatra": "નક્ષત્ર",
+    "complexion": "રંગ",
+    "height": "ઊંચાઈ",
+    "gotra": "ગોત્ર",
+    "bachelors": "સ્નાતક",
+    "work": "કામ",
+    "fathersName": "પિતાનું નામ",
+    "fathersOccupation": "પિતાનો વ્યવસાય",
+    "mothersName": "માતાનું નામ",
+    "mothersOccupation": "માતાનો વ્યવસાય",
+    "siblings": "ભાઈ-બહેન",
+    "contactPerson": "સંપર્ક વ્યક્તિ",
+    "contactNumber": "સંપર્ક નંબર",
+    "emailId": "ઇમેઇલ આઈડી",
+    "residentialAddress": "રહેઠાણનું સરનામું"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "મેષ",
+      "vrishabh": "વૃષભ",
+      "mithun": "મિથુન",
+      "kark": "કર્ક",
+      "simha": "સિંહ",
+      "kanya": "કન્યા",
+      "tula": "તુલા",
+      "vrishchik": "વૃશ્ચિક",
+      "dhanur": "ધનુ",
+      "makar": "મકર",
+      "kumbh": "કુંભ",
+      "meen": "મીન"
+    },
+    "nakshatra": {
+      "ashlesha": "આશ્લેષા",
+      "bharani": "ભરણી",
+      "krittika": "કૃત્તિકા",
+      "rohini": "રોહિણી",
+      "mrigashira": "મૃગશિરા"
+    },
+    "complexion": {
+      "veryFair": "ખૂબ ગોરો",
+      "fair": "ગોરો",
+      "medium": "મધ્યમ",
+      "brown": "ભૂરો",
+      "dark": "કાળો"
+    }
+  },
+  "buttons": {
+    "save": "સાચવો",
+    "cancel": "રદ કરો",
+    "ok": "બરાબર",
+    "delete": "કાઢી નાખો",
+    "next": "આગળ",
+    "previous": "પાછળ",
+    "submit": "સબમિટ કરો",
+    "reset": "ફોર્મ રીસેટ કરો",
+    "generateBiodata": "બાયોડેટા બનાવો"
+  },
+  "template": {
+    "selectTemplate": "ટેમ્પલેટ પસંદ કરો",
+    "preview": "પૂર્વાવલોકન",
+    "free": "મફત",
+    "basic": "બેઝિક ટેમ્પલેટ",
+    "goldenBorder": "ગોલ્ડન બોર્ડર",
+    "navyFloral": "નેવી ફ્લોરલ",
+    "navyGoldRoyal": "નેવી ગોલ્ડ રોયલ",
+    "ornateGold": "ઓર્નેટ ગોલ્ડ",
+    "traditional": "પરંપરાગત"
+  },
+  "validation": {
+    "required": "આ ફીલ્ડ આવશ્યક છે",
+    "invalidEmail": "કૃપા કરીને માન્ય ઇમેઇલ દાખલ કરો",
+    "invalidPhone": "કૃપા કરીને માન્ય ફોન નંબર દાખલ કરો"
+  }
+}

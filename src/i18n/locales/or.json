@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "ବିବାହ ବାୟୋଡାଟା ନିର୍ମାତା",
+    "subtitle": "ମିନିଟରେ ସୁନ୍ଦର ବାୟୋଡାଟା ସୃଷ୍ଟି କରନ୍ତୁ"
+  },
+  "form": {
+    "selectLanguage": "ଭାଷା ବାଛନ୍ତୁ",
+    "addMoreFields": "ଅଧିକ ଫିଲ୍ଡ ଯୋଗ କରନ୍ତୁ",
+    "required": "ଆବଶ୍ୟକ",
+    "enter": "ପ୍ରବେଶ କରନ୍ତୁ",
+    "cannotDeleteRequired": "ଆବଶ୍ୟକ ଫିଲ୍ଡ ବିଲୋପ କରାଯାଇପାରିବ ନାହିଁ",
+    "selectOption": "ଗୋଟିଏ ବିକଳ୍ପ ବାଛନ୍ତୁ",
+    "selectHeight": "ଉଚ୍ଚତା ବାଛନ୍ତୁ",
+    "selectTime": "ସମୟ ବାଛନ୍ତୁ",
+    "now": "ବର୍ତ୍ତମାନ",
+    "clickToAddPhoto": "ଆପଣଙ୍କ ଫଟୋ ଯୋଗ କରିବାକୁ ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ",
+    "photoSizeLimit": "(ସର୍ବାଧିକ 20MB ଆକାର)"
+  },
+  "groups": {
+    "personalDetails": "ବ୍ୟକ୍ତିଗତ ବିବରଣୀ",
+    "familyDetails": "ପରିବାର ବିବରଣୀ",
+    "contactDetails": "ଯୋଗାଯୋଗ ବିବରଣୀ"
+  },
+  "fields": {
+    "fullName": "ସମ୍ପୂର୍ଣ୍ଣ ନାମ",
+    "dateOfBirth": "ଜନ୍ମ ତାରିଖ",
+    "placeOfBirth": "ଜନ୍ମସ୍ଥାନ",
+    "timeOfBirth": "ଜନ୍ମ ସମୟ",
+    "rashi": "ରାଶି",
+    "nakshatra": "ନକ୍ଷତ୍ର",
+    "complexion": "ରଙ୍ଗ",
+    "height": "ଉଚ୍ଚତା",
+    "gotra": "ଗୋତ୍ର",
+    "bachelors": "ସ୍ନାତକ",
+    "work": "କାମ",
+    "fathersName": "ପିତାଙ୍କ ନାମ",
+    "fathersOccupation": "ପିତାଙ୍କ ବୃତ୍ତି",
+    "mothersName": "ମାତାଙ୍କ ନାମ",
+    "mothersOccupation": "ମାତାଙ୍କ ବୃତ୍ତି",
+    "siblings": "ଭାଇଭଉଣୀ",
+    "contactPerson": "ଯୋଗାଯୋଗ ବ୍ୟକ୍ତି",
+    "contactNumber": "ଯୋଗାଯୋଗ ନମ୍ବର",
+    "emailId": "ଇମେଲ୍ ଆଇଡି",
+    "residentialAddress": "ଆବାସିକ ଠିକଣା"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "ମେଷ",
+      "vrishabh": "ବୃଷ",
+      "mithun": "ମିଥୁନ",
+      "kark": "କର୍କଟ",
+      "simha": "ସିଂହ",
+      "kanya": "କନ୍ୟା",
+      "tula": "ତୁଲା",
+      "vrishchik": "ବୃଶ୍ଚିକ",
+      "dhanur": "ଧନୁ",
+      "makar": "ମକର",
+      "kumbh": "କୁମ୍ଭ",
+      "meen": "ମୀନ"
+    },
+    "nakshatra": {
+      "ashlesha": "ଆଶ୍ଲେଷା",
+      "bharani": "ଭରଣୀ",
+      "krittika": "କୃତ୍ତିକା",
+      "rohini": "ରୋହିଣୀ",
+      "mrigashira": "ମୃଗଶିରା"
+    },
+    "complexion": {
+      "veryFair": "ଅତ୍ୟନ୍ତ ଫର୍ସା",
+      "fair": "ଫର୍ସା",
+      "medium": "ମଧ୍ୟମ",
+      "brown": "ବାଦାମୀ",
+      "dark": "କଳା"
+    }
+  },
+  "buttons": {
+    "save": "ସଂରକ୍ଷଣ କରନ୍ତୁ",
+    "cancel": "ବାତିଲ କରନ୍ତୁ",
+    "ok": "ଠିକ ଅଛି",
+    "delete": "ବିଲୋପ କରନ୍ତୁ",
+    "next": "ପରବର୍ତ୍ତୀ",
+    "previous": "ପୂର୍ବବର୍ତ୍ତୀ",
+    "submit": "ଦାଖଲ କରନ୍ତୁ",
+    "reset": "ଫର୍ମ ପୁନଃସ୍ଥାପନ କରନ୍ତୁ",
+    "generateBiodata": "ବାୟୋଡାଟା ସୃଷ୍ଟି କରନ୍ତୁ"
+  },
+  "template": {
+    "selectTemplate": "ଟେମ୍ପଲେଟ୍ ବାଛନ୍ତୁ",
+    "preview": "ପୂର୍ବଦୃଶ୍ୟ",
+    "free": "ମାଗଣା",
+    "basic": "ବେସିକ୍ ଟେମ୍ପଲେଟ୍",
+    "goldenBorder": "ଗୋଲ୍ଡେନ ବର୍ଡର",
+    "navyFloral": "ନେଭି ଫ୍ଲୋରାଲ",
+    "navyGoldRoyal": "ନେଭି ଗୋଲ୍ଡ ରୟାଲ",
+    "ornateGold": "ଅର୍ନେଟ ଗୋଲ୍ଡ",
+    "traditional": "ପରମ୍ପରାଗତ"
+  },
+  "validation": {
+    "required": "ଏହି ଫିଲ୍ଡ ଆବଶ୍ୟକ",
+    "invalidEmail": "ଦୟାକରି ଗୋଟିଏ ବୈଧ ଇମେଲ ପ୍ରବେଶ କରନ୍ତୁ",
+    "invalidPhone": "ଦୟାକରି ଗୋଟିଏ ବୈଧ ଫୋନ ନମ୍ବର ପ୍ରବେଶ କରନ୍ତୁ"
+  }
+}

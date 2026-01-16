@@ -15,42 +15,22 @@ import Tags from './tags';
 
 // Register Google Fonts for PDF rendering
 Font.register({
-  family: 'Noto Sans',
-  fonts: [
-    {
-      src: 'https://fonts.gstatic.com/s/notosans/v36/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7dvhuy_SI.ttf',
-      fontWeight: 400,
-    },
-    {
-      src: 'https://fonts.gstatic.com/s/notosans/v36/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcxavdvhuy_SI.ttf',
-      fontWeight: 700,
-    },
-  ],
-});
-
-Font.register({
-  family: 'Libre Baskerville',
-  fonts: [
-    {
-      src: 'https://fonts.gstatic.com/s/librebaskerville/v14/kmKnZrc3Hgbbcjq75U4uslyuy4kn0pNeYRI4CN2V.ttf',
-      fontWeight: 400,
-    },
-    {
-      src: 'https://fonts.gstatic.com/s/librebaskerville/v14/kmKiZrc3Hgbbcjq75U4uslyuy4kn0qviTjYwI8Gcw6Oi.ttf',
-      fontWeight: 700,
-    },
-  ],
-});
-
-Font.register({
   family: 'Roboto',
   fonts: [
     {
-      src: 'https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf',
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-light-webfont.ttf',
+      fontWeight: 300,
+    },
+    {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-regular-webfont.ttf',
       fontWeight: 400,
     },
     {
-      src: 'https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf',
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-medium-webfont.ttf',
+      fontWeight: 500,
+    },
+    {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-bold-webfont.ttf',
       fontWeight: 700,
     },
   ],
@@ -62,20 +42,21 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#E4E4E4',
+    backgroundColor: '#FFFFFF',
     border: '8px solid #a63e12',
+    padding: '12px 16px',
   },
   title: {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '24px',
+    fontSize: '18px',
     textAlign: 'center',
-    marginBottom: '20px',
-    marginTop: '20px',
+    marginBottom: '12px',
+    marginTop: '8px',
     color: '#a63e12',
-    fontFamily: 'Noto Sans Devanagari',
+    fontFamily: 'Roboto',
   },
 
   headerWrapper: {
@@ -85,31 +66,29 @@ const styles = StyleSheet.create({
     // alignItems: "flex-start",
     width: '100%',
     header: {
-      width: 'calc ( 100% - 304px)',
+      width: 'calc(100% - 320px)',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-start',
-      marginHorizontal: 'auto',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      alignSelf: 'flex-start',
-      justifySelf: 'flex-start',
+      alignItems: 'center',
       justifyContent: 'center',
-      padding: '120px',
+      paddingTop: '20px',
       text: {
         margin: 4,
+        textAlign: 'center',
       },
       name: {
-        fontSize: '28px',
+        fontSize: '30px',
         fontWeight: '700',
+        textAlign: 'center',
+        marginBottom: '4px',
       },
     },
     profileImageWrapper: {
-      width: '304px',
+      width: '240px',
       profileImage: {
-        width: '240px',
-        height: '343px',
-        margin: '0 32px',
+        width: '200px',
+        height: '280px',
+        margin: '0 12px',
       },
     },
   },
@@ -146,52 +125,52 @@ const styles = StyleSheet.create({
     subHeader: {
       backgroundColor: '#8a3e07' /* Brownish color */,
       color: 'white' /* White text */,
-      fontSize: '18px',
+      fontSize: '14px',
       fontWeight: '700' /* Bold text */,
-      border: 'none' /* Remove default border */,
-      borderRadius: '50px' /* Fully rounded corners */,
-      padding: '10px 30px' /* Add padding to the button */,
-      cursor: 'pointer' /* Change cursor to pointer on hover */,
+      borderRadius: '24px' /* Rounded corners */,
+      padding: '6px 20px' /* Add padding to the button */,
       textAlign: 'center',
       justifyContent: 'center',
       display: 'inline-block',
-      boxShadow:
-        '0px 4px 6px rgba(0, 0, 0, 0.1)' /* Optional shadow for a nice effect */,
-      width: '240px',
-      margin: '40px 0',
+      boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.06)',
+      width: '200px',
+      margin: '18px auto',
     },
     fieldsWrapper: {
       display: 'flex',
       flexDirection: 'column',
-      fontSize: '18px',
-      width: '100vw',
+      fontSize: '16px',
+      width: '100%',
     },
     fieldsContainer: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-start',
       marginBottom: '10px',
-      columnGap: '10%',
+      columnGap: '6%',
       width: '100%',
-      padding: '0 40px 10px 40px',
+      padding: '0 40px 6px 40px',
       label: {
         fontWeight: '600',
-        width: '40%',
+        width: '38%',
         justifySelf: 'left',
         alignSelf: 'flex-start',
         textAlign: 'left',
-        paddingLeft: '40px',
+        paddingLeft: '0px',
+        fontSize: '12px',
+        color: '#333',
       },
       value: {
         fontWeight: '600',
-        width: '75%',
-        // textAlign: "left",
+        width: '56%',
         justifySelf: 'left',
         alignSelf: 'flex-start',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
-        paddingRight: '48px',
+        paddingRight: '0px',
+        fontSize: '12px',
+        color: '#222',
       },
     },
   },
@@ -288,7 +267,12 @@ const BasicTemplate = (props) => {
             </View>
           )}
           <View style={styles.headerWrapper.header}>
-            <Text style={{ ...styles.headerWrapper.header.text, ...Tags.h1 }}>
+            <Text
+              style={{
+                ...styles.headerWrapper.header.text,
+                ...styles.headerWrapper.header.name,
+              }}
+            >
               {personalDetail.fullName}
             </Text>
             <Text
@@ -310,7 +294,7 @@ const BasicTemplate = (props) => {
 
   return (
     <Document>
-      <Page size="A3" style={styles.page}>
+      <Page size="A4" style={styles.page}>
         <View fixed>
           <Image
             style={{ ...styles.watermark, right: 0 }}

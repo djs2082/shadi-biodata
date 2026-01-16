@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "திருமண பயோடேட்டா உருவாக்கி",
+    "subtitle": "நிமிடங்களில் அழகான பயோடேட்டாவை உருவாக்குங்கள்"
+  },
+  "form": {
+    "selectLanguage": "மொழியைத் தேர்ந்தெடுக்கவும்",
+    "addMoreFields": "மேலும் புலங்களைச் சேர்க்கவும்",
+    "required": "தேவையான",
+    "enter": "உள்ளிடவும்",
+    "cannotDeleteRequired": "தேவையான புலத்தை நீக்க முடியாது",
+    "selectOption": "ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்",
+    "selectHeight": "உயரத்தைத் தேர்ந்தெடுக்கவும்",
+    "selectTime": "நேரத்தைத் தேர்ந்தெடுக்கவும்",
+    "now": "இப்போது",
+    "clickToAddPhoto": "உங்கள் புகைப்படத்தைச் சேர்க்க இங்கே கிளிக் செய்யவும்",
+    "photoSizeLimit": "(அதிகபட்சம் 20MB அளவு)"
+  },
+  "groups": {
+    "personalDetails": "தனிப்பட்ட விவரங்கள்",
+    "familyDetails": "குடும்ப விவரங்கள்",
+    "contactDetails": "தொடர்பு விவரங்கள்"
+  },
+  "fields": {
+    "fullName": "முழுப் பெயர்",
+    "dateOfBirth": "பிறந்த தேதி",
+    "placeOfBirth": "பிறந்த இடம்",
+    "timeOfBirth": "பிறந்த நேரம்",
+    "rashi": "ராசி",
+    "nakshatra": "நட்சத்திரம்",
+    "complexion": "நிறம்",
+    "height": "உயரம்",
+    "gotra": "கோத்திரம்",
+    "bachelors": "இளங்கலை",
+    "work": "வேலை",
+    "fathersName": "தந்தையின் பெயர்",
+    "fathersOccupation": "தந்தையின் தொழில்",
+    "mothersName": "தாயின் பெயர்",
+    "mothersOccupation": "தாயின் தொழில்",
+    "siblings": "சகோதரர்கள்",
+    "contactPerson": "தொடர்பு நபர்",
+    "contactNumber": "தொடர்பு எண்",
+    "emailId": "மின்னஞ்சல் ஐடி",
+    "residentialAddress": "குடியிருப்பு முகவரி"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "மேஷம்",
+      "vrishabh": "ரிஷபம்",
+      "mithun": "மிதுனம்",
+      "kark": "கடகம்",
+      "simha": "சிம்மம்",
+      "kanya": "கன்னி",
+      "tula": "துலாம்",
+      "vrishchik": "விருச்சிகம்",
+      "dhanur": "தனுசு",
+      "makar": "மகரம்",
+      "kumbh": "கும்பம்",
+      "meen": "மீனம்"
+    },
+    "nakshatra": {
+      "ashlesha": "ஆயில்யம்",
+      "bharani": "பரணி",
+      "krittika": "கார்த்திகை",
+      "rohini": "ரோகிணி",
+      "mrigashira": "மிருகசீரிடம்"
+    },
+    "complexion": {
+      "veryFair": "மிக வெளிர்",
+      "fair": "வெளிர்",
+      "medium": "நடுத்தரம்",
+      "brown": "பழுப்பு",
+      "dark": "கருப்பு"
+    }
+  },
+  "buttons": {
+    "save": "சேமி",
+    "cancel": "ரத்துசெய்",
+    "ok": "சரி",
+    "delete": "நீக்கு",
+    "next": "அடுத்தது",
+    "previous": "முந்தையது",
+    "submit": "சமர்ப்பிக்கவும்",
+    "reset": "படிவத்தை மீட்டமைக்கவும்",
+    "generateBiodata": "பயோடேட்டாவை உருவாக்கவும்"
+  },
+  "template": {
+    "selectTemplate": "வார்ப்புருவைத் தேர்ந்தெடுக்கவும்",
+    "preview": "முன்னோட்டம்",
+    "free": "இலவசம்",
+    "basic": "அடிப்படை வார்ப்புரு",
+    "goldenBorder": "தங்க எல்லை",
+    "navyFloral": "நேவி மலர்",
+    "navyGoldRoyal": "நேவி கோல்ட் ராயல்",
+    "ornateGold": "அலங்கார தங்கம்",
+    "traditional": "பாரம்பரிய"
+  },
+  "validation": {
+    "required": "இந்த புலம் தேவை",
+    "invalidEmail": "சரியான மின்னஞ்சலை உள்ளிடவும்",
+    "invalidPhone": "சரியான தொலைபேசி எண்ணை உள்ளிடவும்"
+  }
+}

@@ -21,7 +21,9 @@ describe('logger utility', () => {
     it('should log info messages', () => {
       logger.info('Test info message', { data: 'test' });
 
-      expect(consoleInfoSpy).toHaveBeenCalledWith('Test info message', { data: 'test' });
+      expect(consoleInfoSpy).toHaveBeenCalledWith('Test info message', {
+        data: 'test',
+      });
     });
   });
 
@@ -48,7 +50,9 @@ describe('logger utility', () => {
 
       // False positive: consoleDebugSpy is a test spy, not a debug statement
       // eslint-disable-next-line testing-library/no-debugging-utils
-      expect(consoleDebugSpy).toHaveBeenCalledWith('Debug message', { value: 42 });
+      expect(consoleDebugSpy).toHaveBeenCalledWith('Debug message', {
+        value: 42,
+      });
     });
   });
 });

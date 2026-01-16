@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "शादी बायोडाटा निर्माता",
+    "subtitle": "मिनटों में सुंदर बायोडाटा बनाएं"
+  },
+  "form": {
+    "selectLanguage": "भाषा चुनें",
+    "addMoreFields": "और फ़ील्ड जोड़ें",
+    "required": "आवश्यक",
+    "enter": "दर्ज करें",
+    "cannotDeleteRequired": "आवश्यक फ़ील्ड हटाया नहीं जा सकता",
+    "selectOption": "एक विकल्प चुनें",
+    "selectHeight": "ऊंचाई चुनें",
+    "selectTime": "समय चुनें",
+    "now": "अभी",
+    "clickToAddPhoto": "अपनी फोटो जोड़ने के लिए यहां क्लिक करें",
+    "photoSizeLimit": "(अधिकतम 20MB आकार)"
+  },
+  "groups": {
+    "personalDetails": "व्यक्तिगत विवरण",
+    "familyDetails": "पारिवारिक विवरण",
+    "contactDetails": "संपर्क विवरण"
+  },
+  "fields": {
+    "fullName": "पूरा नाम",
+    "dateOfBirth": "जन्मतिथि",
+    "placeOfBirth": "जन्म स्थान",
+    "timeOfBirth": "जन्म समय",
+    "rashi": "राशि",
+    "nakshatra": "नक्षत्र",
+    "complexion": "रंग",
+    "height": "ऊंचाई",
+    "gotra": "गोत्र",
+    "bachelors": "स्नातक",
+    "work": "कार्य",
+    "fathersName": "पिता का नाम",
+    "fathersOccupation": "पिता का व्यवसाय",
+    "mothersName": "माता का नाम",
+    "mothersOccupation": "माता का व्यवसाय",
+    "siblings": "भाई-बहन",
+    "contactPerson": "संपर्क व्यक्ति",
+    "contactNumber": "संपर्क नंबर",
+    "emailId": "ईमेल आईडी",
+    "residentialAddress": "आवासीय पता"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "मेष",
+      "vrishabh": "वृषभ",
+      "mithun": "मिथुन",
+      "kark": "कर्क",
+      "simha": "सिंह",
+      "kanya": "कन्या",
+      "tula": "तुला",
+      "vrishchik": "वृश्चिक",
+      "dhanur": "धनु",
+      "makar": "मकर",
+      "kumbh": "कुंभ",
+      "meen": "मीन"
+    },
+    "nakshatra": {
+      "ashlesha": "आश्लेषा",
+      "bharani": "भरणी",
+      "krittika": "कृत्तिका",
+      "rohini": "रोहिणी",
+      "mrigashira": "मृगशिरा"
+    },
+    "complexion": {
+      "veryFair": "बहुत गोरा",
+      "fair": "गोरा",
+      "medium": "मध्यम",
+      "brown": "भूरा",
+      "dark": "सांवला"
+    }
+  },
+  "buttons": {
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "ok": "ठीक है",
+    "delete": "मिटाएं",
+    "next": "अगला",
+    "previous": "पिछला",
+    "submit": "जमा करें",
+    "reset": "फॉर्म रीसेट करें",
+    "generateBiodata": "बायोडाटा बनाएं"
+  },
+  "template": {
+    "selectTemplate": "टेम्पलेट चुनें",
+    "preview": "पूर्वावलोकन",
+    "free": "मुफ़्त",
+    "basic": "बेसिक टेम्पलेट",
+    "goldenBorder": "गोल्डन बॉर्डर",
+    "navyFloral": "नेवी फ्लोरल",
+    "navyGoldRoyal": "नेवी गोल्ड रॉयल",
+    "ornateGold": "ऑर्नेट गोल्ड",
+    "traditional": "पारंपरिक"
+  },
+  "validation": {
+    "required": "यह फ़ील्ड आवश्यक है",
+    "invalidEmail": "कृपया एक वैध ईमेल दर्ज करें",
+    "invalidPhone": "कृपया एक वैध फ़ोन नंबर दर्ज करें"
+  }
+}

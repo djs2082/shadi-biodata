@@ -56,25 +56,28 @@ export const useImageUpload = () => {
         return false;
       }
 
-      // Read file as data URL for preview
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setSelectedImage({
-          file: e.target?.result as string,
-          name: file.name,
-          size: file.size,
-          type: validation.mimeType?.mime || file.type,
-        });
-        setUploadError(null);
-      };
+      // Read file as data URL for preview - wrap in Promise to wait for completion
+      return new Promise<boolean>((resolve, reject) => {
+        const reader = new FileReader();
 
-      reader.onerror = () => {
-        setUploadError('Failed to read file');
-        return false;
-      };
+        reader.onload = (e) => {
+          setSelectedImage({
+            file: e.target?.result as string,
+            name: file.name,
+            size: file.size,
+            type: validation.mimeType?.mime || file.type,
+          });
+          setUploadError(null);
+          resolve(true);
+        };
 
-      reader.readAsDataURL(file);
-      return true;
+        reader.onerror = () => {
+          setUploadError('Failed to read file');
+          resolve(false);
+        };
+
+        reader.readAsDataURL(file);
+      });
     } catch (error) {
       setUploadError('Failed to process file');
       return false;

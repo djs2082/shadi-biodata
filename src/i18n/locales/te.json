@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "వివాహ బయోడేటా నిర్మాత",
+    "subtitle": "నిమిషాల్లో అందమైన బయోడేటాను రూపొందించండి"
+  },
+  "form": {
+    "selectLanguage": "భాషను ఎంచుకోండి",
+    "addMoreFields": "మరిన్ని ఫీల్డ్‌లను జోడించండి",
+    "required": "అవసరమైనది",
+    "enter": "నమోదు చేయండి",
+    "cannotDeleteRequired": "అవసరమైన ఫీల్డ్‌ను తొలగించలేరు",
+    "selectOption": "ఒక ఎంపికను ఎంచుకోండి",
+    "selectHeight": "ఎత్తును ఎంచుకోండి",
+    "selectTime": "సమయాన్ని ఎంచుకోండి",
+    "now": "ఇప్పుడు",
+    "clickToAddPhoto": "మీ ఫోటోను జోడించడానికి ఇక్కడ క్లిక్ చేయండి",
+    "photoSizeLimit": "(గరిష్టంగా 20MB పరిమాణం)"
+  },
+  "groups": {
+    "personalDetails": "వ్యక్తిగత వివరాలు",
+    "familyDetails": "కుటుంబ వివరాలు",
+    "contactDetails": "సంప్రదింపు వివరాలు"
+  },
+  "fields": {
+    "fullName": "పూర్తి పేరు",
+    "dateOfBirth": "పుట్టిన తేదీ",
+    "placeOfBirth": "పుట్టిన ప్రదేశం",
+    "timeOfBirth": "పుట్టిన సమయం",
+    "rashi": "రాశి",
+    "nakshatra": "నక్షత్రం",
+    "complexion": "రంగు",
+    "height": "ఎత్తు",
+    "gotra": "గోత్రం",
+    "bachelors": "బ్యాచిలర్స్",
+    "work": "పని",
+    "fathersName": "తండ్రి పేరు",
+    "fathersOccupation": "తండ్రి వృత్తి",
+    "mothersName": "తల్లి పేరు",
+    "mothersOccupation": "తల్లి వృత్తి",
+    "siblings": "తోబుట్టువులు",
+    "contactPerson": "సంప్రదింపు వ్యక్తి",
+    "contactNumber": "సంప్రదింపు నంబర్",
+    "emailId": "ఇమెయిల్ ఐడి",
+    "residentialAddress": "నివాస చిరునామా"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "మేషం",
+      "vrishabh": "వృషభం",
+      "mithun": "మిథునం",
+      "kark": "కర్కాటకం",
+      "simha": "సింహం",
+      "kanya": "కన్య",
+      "tula": "తులా",
+      "vrishchik": "వృశ్చికం",
+      "dhanur": "ధనుస్సు",
+      "makar": "మకరం",
+      "kumbh": "కుంభం",
+      "meen": "మీనం"
+    },
+    "nakshatra": {
+      "ashlesha": "ఆశ్లేష",
+      "bharani": "భరణి",
+      "krittika": "కృత్తిక",
+      "rohini": "రోహిణి",
+      "mrigashira": "మృగశిర"
+    },
+    "complexion": {
+      "veryFair": "చాలా తెల్లగా",
+      "fair": "తెల్లగా",
+      "medium": "మధ్యస్థం",
+      "brown": "గోధుమ రంగు",
+      "dark": "నల్లగా"
+    }
+  },
+  "buttons": {
+    "save": "సేవ్ చేయండి",
+    "cancel": "రద్దు చేయండి",
+    "ok": "సరే",
+    "delete": "తొలగించండి",
+    "next": "తదుపరి",
+    "previous": "మునుపటి",
+    "submit": "సమర్పించండి",
+    "reset": "ఫారమ్‌ను రీసెట్ చేయండి",
+    "generateBiodata": "బయోడేటాను రూపొందించండి"
+  },
+  "template": {
+    "selectTemplate": "టెంప్లేట్‌ను ఎంచుకోండి",
+    "preview": "ప్రివ్యూ",
+    "free": "ఉచితం",
+    "basic": "బేసిక్ టెంప్లేట్",
+    "goldenBorder": "గోల్డెన్ బోర్డర్",
+    "navyFloral": "నేవీ ఫ్లోరల్",
+    "navyGoldRoyal": "నేవీ గోల్డ్ రాయల్",
+    "ornateGold": "ఆర్నేట్ గోల్డ్",
+    "traditional": "సాంప్రదాయ"
+  },
+  "validation": {
+    "required": "ఈ ఫీల్డ్ అవసరం",
+    "invalidEmail": "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్‌ను నమోదు చేయండి",
+    "invalidPhone": "దయచేసి చెల్లుబాటు అయ్యే ఫోన్ నంబర్‌ను నమోదు చేయండి"
+  }
+}

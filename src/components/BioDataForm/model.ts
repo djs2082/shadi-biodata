@@ -31,7 +31,7 @@ export const FormDataFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Date Of Birth',
-        type: 'text',
+        type: 'date',
         value: '',
         required: true,
         error: false,
@@ -77,7 +77,7 @@ export const FormDataFields: FormDataFieldGorup[] = [
       {
         id: 8,
         label: 'Height',
-        type: 'text',
+        type: 'height',
         value: '',
         required: false,
       },
@@ -159,7 +159,7 @@ export const FormDataFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Contact Number',
-        type: 'date',
+        type: 'text',
         value: '',
         required: false,
       },
@@ -198,7 +198,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Date Of Birth',
-        type: 'text',
+        type: 'date',
         value: '18-09-1993',
         required: true,
         error: false,
@@ -216,7 +216,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 4,
         label: 'Time Of Birth',
-        type: 'text',
+        type: 'time',
         value: '11:10 AM',
         required: false,
       },
@@ -244,7 +244,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 8,
         label: 'Height',
-        type: 'text',
+        type: 'height',
         value: '5`9',
         required: false,
       },
@@ -326,7 +326,7 @@ export const FormDataPreFilledFields: FormDataFieldGorup[] = [
       {
         id: 2,
         label: 'Contact Number',
-        type: 'date',
+        type: 'text',
         value: '8628954575',
         required: false,
       },

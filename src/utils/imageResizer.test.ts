@@ -1,4 +1,8 @@
-import { createImageObjectURL, revokeImageObjectURL, resizeImage } from './imageResizer';
+import {
+  createImageObjectURL,
+  revokeImageObjectURL,
+  resizeImage,
+} from './imageResizer';
 
 // Mock URL.createObjectURL and URL.revokeObjectURL
 global.URL.createObjectURL = jest.fn(() => 'blob:mock-url');

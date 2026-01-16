@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "Shadi Biodata Maker",
+    "subtitle": "Create Beautiful Biodata in Minutes"
+  },
+  "form": {
+    "selectLanguage": "Select Language",
+    "addMoreFields": "Add More Fields",
+    "required": "Required",
+    "enter": "Enter",
+    "cannotDeleteRequired": "Cannot Delete Required Field",
+    "selectOption": "Select an option",
+    "selectHeight": "Select Height",
+    "selectTime": "Select time",
+    "now": "Now",
+    "clickToAddPhoto": "Click here to add your photo",
+    "photoSizeLimit": "(Up to 20MB in size)"
+  },
+  "groups": {
+    "personalDetails": "Personal Details",
+    "familyDetails": "Family Details",
+    "contactDetails": "Contact Details"
+  },
+  "fields": {
+    "fullName": "Full Name",
+    "dateOfBirth": "Date Of Birth",
+    "placeOfBirth": "Place Of Birth",
+    "timeOfBirth": "Time Of Birth",
+    "rashi": "Rashi",
+    "nakshatra": "Nakshatra",
+    "complexion": "Complexion",
+    "height": "Height",
+    "gotra": "Gotra",
+    "bachelors": "Bachelors",
+    "work": "Work",
+    "fathersName": "Father's Name",
+    "fathersOccupation": "Father's Occupation",
+    "mothersName": "Mother's Name",
+    "mothersOccupation": "Mother's Occupation",
+    "siblings": "Siblings",
+    "contactPerson": "Contact Person",
+    "contactNumber": "Contact Number",
+    "emailId": "Email Id",
+    "residentialAddress": "Residential Address"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "Mesh (Aries)",
+      "vrishabh": "Vrishabh (Taurus)",
+      "mithun": "Mithun (Gemini)",
+      "kark": "Kark (Cancer)",
+      "simha": "Simha (Leo)",
+      "kanya": "Kanya (Virgo)",
+      "tula": "Tula (Libra)",
+      "vrishchik": "Vrishchik (Scorpio)",
+      "dhanur": "Dhanur (Sagittarius)",
+      "makar": "Makar (Capricorn)",
+      "kumbh": "Kumbh (Aquarius)",
+      "meen": "Meen (Pisces)"
+    },
+    "nakshatra": {
+      "ashlesha": "Ashlesha",
+      "bharani": "Bharani",
+      "krittika": "Krittika",
+      "rohini": "Rohini",
+      "mrigashira": "Mrigashira"
+    },
+    "complexion": {
+      "veryFair": "Very Fair",
+      "fair": "Fair",
+      "medium": "Medium",
+      "brown": "Brown",
+      "dark": "Dark"
+    }
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "delete": "Delete",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "reset": "Reset Form",
+    "generateBiodata": "Generate Biodata"
+  },
+  "template": {
+    "selectTemplate": "Select Template",
+    "preview": "Preview",
+    "free": "Free",
+    "basic": "Basic Template",
+    "goldenBorder": "Golden Border",
+    "navyFloral": "Navy Floral",
+    "navyGoldRoyal": "Navy Gold Royal",
+    "ornateGold": "Ornate Gold",
+    "traditional": "Traditional"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email",
+    "invalidPhone": "Please enter a valid phone number"
+  }
+}

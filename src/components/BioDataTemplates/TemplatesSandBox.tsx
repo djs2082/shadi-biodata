@@ -7,6 +7,12 @@ import { logger } from '../../utils/logger';
 
 import BasicTemplate from './BasicTemplate';
 import Data from './data';
+import FreeTemplate from './FreeTemplate';
+import GoldenBorderTemplate from './GoldenBorderTemplate';
+import NavyFloralTemplate from './NavyFloralTemplate';
+import NavyGoldRoyalTemplate from './NavyGoldRoyalTemplate';
+import OrnateGoldTemplate from './OrnateGoldTemplate';
+import TraditionalTemplate from './TraditionalTemplate';
 
 const TemplatesSandBox: React.FC = () => {
   const { template_name } = useParams<{ template_name?: string }>();
@@ -55,9 +61,22 @@ const TemplatesSandBox: React.FC = () => {
   }, []);
 
   const getTemplateComponent = (): JSX.Element => {
+    console.log(template_name);
     switch (template_name) {
       case 'basic_template':
         return <BasicTemplate data={Data} image={croppedImage} />;
+      case 'golden_border':
+        return <GoldenBorderTemplate data={Data} image={croppedImage} />;
+      case 'navy_floral':
+        return <NavyFloralTemplate data={Data} image={croppedImage} />;
+      case 'navy_gold_royal':
+        return <NavyGoldRoyalTemplate data={Data} image={croppedImage} />;
+      case 'ornate_gold':
+        return <OrnateGoldTemplate data={Data} image={croppedImage} />;
+      case 'free_template':
+        return <FreeTemplate data={Data} image={croppedImage} />;
+      case 'traditional':
+        return <TraditionalTemplate data={Data} image={croppedImage} />;
       default:
         return <></>;
     }

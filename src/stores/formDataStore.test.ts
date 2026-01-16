@@ -79,7 +79,15 @@ describe('formDataStore', () => {
         {
           id: 1,
           title: 'Test',
-          data: [{ id: 1, label: 'Name', value: 'Test', type: 'string', required: false }],
+          data: [
+            {
+              id: 1,
+              label: 'Name',
+              value: 'Test',
+              type: 'string',
+              required: false,
+            },
+          ],
         },
       ];
 

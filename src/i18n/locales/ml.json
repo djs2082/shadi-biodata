@@ -1,0 +1,103 @@
+{
+  "app": {
+    "title": "വിവാഹ ബയോഡേറ്റ സൃഷ്ടാവ്",
+    "subtitle": "മിനിറ്റുകൾക്കുള്ളിൽ മനോഹരമായ ബയോഡേറ്റ സൃഷ്ടിക്കുക"
+  },
+  "form": {
+    "selectLanguage": "ഭാഷ തിരഞ്ഞെടുക്കുക",
+    "addMoreFields": "കൂടുതൽ ഫീൽഡുകൾ ചേർക്കുക",
+    "required": "ആവശ്യമാണ്",
+    "enter": "നൽകുക",
+    "cannotDeleteRequired": "ആവശ്യമായ ഫീൽഡ് ഇല്ലാതാക്കാൻ കഴിയില്ല",
+    "selectOption": "ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക",
+    "selectHeight": "ഉയരം തിരഞ്ഞെടുക്കുക",
+    "selectTime": "സമയം തിരഞ്ഞെടുക്കുക",
+    "now": "ഇപ്പോൾ",
+    "clickToAddPhoto": "നിങ്ങളുടെ ഫോട്ടോ ചേർക്കാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക",
+    "photoSizeLimit": "(പരമാവധി 20MB വലുപ്പം)"
+  },
+  "groups": {
+    "personalDetails": "വ്യക്തിഗത വിശദാംശങ്ങൾ",
+    "familyDetails": "കുടുംബ വിശദാംശങ്ങൾ",
+    "contactDetails": "ബന്ധപ്പെടാനുള്ള വിശദാംശങ്ങൾ"
+  },
+  "fields": {
+    "fullName": "പൂർണ്ണ നാമം",
+    "dateOfBirth": "ജനന തീയതി",
+    "placeOfBirth": "ജനന സ്ഥലം",
+    "timeOfBirth": "ജനന സമയം",
+    "rashi": "രാശി",
+    "nakshatra": "നക്ഷത്രം",
+    "complexion": "നിറം",
+    "height": "ഉയരം",
+    "gotra": "ഗോത്രം",
+    "bachelors": "ബിരുദം",
+    "work": "ജോലി",
+    "fathersName": "പിതാവിന്റെ പേര്",
+    "fathersOccupation": "പിതാവിന്റെ തൊഴിൽ",
+    "mothersName": "അമ്മയുടെ പേര്",
+    "mothersOccupation": "അമ്മയുടെ തൊഴിൽ",
+    "siblings": "സഹോദരങ്ങൾ",
+    "contactPerson": "ബന്ധപ്പെടാനുള്ള വ്യക്തി",
+    "contactNumber": "ബന്ധപ്പെടാനുള്ള നമ്പർ",
+    "emailId": "ഇമെയിൽ ഐഡി",
+    "residentialAddress": "താമസ വിലാസം"
+  },
+  "dropdownOptions": {
+    "rashi": {
+      "mesh": "മേടം",
+      "vrishabh": "ഇടവം",
+      "mithun": "മിഥുനം",
+      "kark": "കർക്കടകം",
+      "simha": "ചിങ്ങം",
+      "kanya": "കന്നി",
+      "tula": "തുലാം",
+      "vrishchik": "വൃശ്ചികം",
+      "dhanur": "ധനു",
+      "makar": "മകരം",
+      "kumbh": "കുംഭം",
+      "meen": "മീനം"
+    },
+    "nakshatra": {
+      "ashlesha": "ആയില്യം",
+      "bharani": "ഭരണി",
+      "krittika": "കാർത്തിക",
+      "rohini": "രോഹിണി",
+      "mrigashira": "മകയിരം"
+    },
+    "complexion": {
+      "veryFair": "വളരെ ഫെയർ",
+      "fair": "ഫെയർ",
+      "medium": "ഇടത്തരം",
+      "brown": "ബ്രൗൺ",
+      "dark": "ഇരുണ്ട"
+    }
+  },
+  "buttons": {
+    "save": "സംരക്ഷിക്കുക",
+    "cancel": "റദ്ദാക്കുക",
+    "ok": "ശരി",
+    "delete": "ഇല്ലാതാക്കുക",
+    "next": "അടുത്തത്",
+    "previous": "മുമ്പത്തേത്",
+    "submit": "സമർപ്പിക്കുക",
+    "reset": "ഫോം പുനഃസജ്ജമാക്കുക",
+    "generateBiodata": "ബയോഡേറ്റ സൃഷ്ടിക്കുക"
+  },
+  "template": {
+    "selectTemplate": "ടെംപ്ലേറ്റ് തിരഞ്ഞെടുക്കുക",
+    "preview": "പ്രിവ്യൂ",
+    "free": "സൗജന്യം",
+    "basic": "അടിസ്ഥാന ടെംപ്ലേറ്റ്",
+    "goldenBorder": "ഗോൾഡൻ ബോർഡർ",
+    "navyFloral": "നേവി ഫ്ലോറൽ",
+    "navyGoldRoyal": "നേവി ഗോൾഡ് റോയൽ",
+    "ornateGold": "ഓർണേറ്റ് ഗോൾഡ്",
+    "traditional": "പരമ്പരാഗത"
+  },
+  "validation": {
+    "required": "ഈ ഫീൽഡ് ആവശ്യമാണ്",
+    "invalidEmail": "ദയവായി സാധുവായ ഇമെയിൽ നൽകുക",
+    "invalidPhone": "ദയവായി സാധുവായ ഫോൺ നമ്പർ നൽകുക"
+  }
+}
