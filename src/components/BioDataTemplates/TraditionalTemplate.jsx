@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
   Page,
   Text,
@@ -7,24 +8,17 @@ import {
   Font,
   Image,
 } from '@react-pdf/renderer';
-import React, { useState, useEffect } from 'react';
+
 import goldenRing from './images/golden_ring.png';
 
-// Register Google Fonts for PDF rendering
+/* -------------------- Fonts -------------------- */
+
 Font.register({
   family: 'Roboto',
   fonts: [
     {
-      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-light-webfont.ttf',
-      fontWeight: 300,
-    },
-    {
       src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-regular-webfont.ttf',
       fontWeight: 400,
-    },
-    {
-      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-medium-webfont.ttf',
-      fontWeight: 500,
     },
     {
       src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-bold-webfont.ttf',
@@ -33,223 +27,162 @@ Font.register({
   ],
 });
 
-// Register Noto Sans Devanagari for Sanskrit text
 Font.register({
   family: 'NotoSansDevanagari',
   src: 'https://cdn.jsdelivr.net/npm/@expo-google-fonts/noto-sans-devanagari@0.2.3/NotoSansDevanagari_400Regular.ttf',
 });
 
+/* -------------------- Styles -------------------- */
+
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Roboto',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#F5EFE7',
-    padding: '28px',
+    backgroundColor: '#F6F1E7',
+    padding: 28,
     position: 'relative',
   },
-  border: {
+
+  /* Borders */
+  outerBorder: {
     position: 'absolute',
-    top: '16px',
-    left: '16px',
-    right: '16px',
-    bottom: '16px',
-    border: '4px solid #B8860B',
-    borderRadius: '4px',
+    top: 16,
+    left: 16,
+    right: 16,
+    bottom: 16,
+    border: '4 solid #B8860B',
   },
+
   innerBorder: {
     position: 'absolute',
-    top: '20px',
-    left: '20px',
-    right: '20px',
-    bottom: '20px',
-    border: '1px solid #DAA520',
+    top: 22,
+    left: 22,
+    right: 22,
+    bottom: 22,
+    border: '1 solid #DAA520',
   },
+
+  /* Header */
   header: {
-    display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: '16px',
-    paddingTop: '8px',
+    marginBottom: 16,
   },
+
   ganeshText: {
     fontFamily: 'NotoSansDevanagari',
-    fontSize: '16px',
+    fontSize: 16,
     color: '#8B4513',
     fontWeight: 700,
-    marginTop: '8px',
-    marginBottom: '20px',
   },
+
+  /* Section */
   sectionTitle: {
-    fontSize: '14px',
+    fontSize: 13,
     fontWeight: 700,
     color: '#5B2C0D',
-    marginBottom: '8px',
-    marginTop: '12px',
+    marginTop: 14,
+    marginBottom: 6,
+    borderBottom: '2 solid #B8860B',
+    paddingBottom: 4,
     textTransform: 'uppercase',
-    borderBottom: '2px solid #B8860B',
-    paddingBottom: '4px',
   },
-  fieldsWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: '8px',
-  },
+
   fieldRow: {
-    display: 'flex',
     flexDirection: 'row',
-    marginBottom: '4px',
-    fontSize: '10px',
-    alignItems: 'flex-start',
+    fontSize: 10,
+    marginBottom: 4,
   },
+
   fieldLabel: {
-    width: '140px',
-    color: '#3E2723',
+    width: 140,
     fontWeight: 700,
-  },
-  fieldColon: {
-    width: '8px',
     color: '#3E2723',
   },
+
+  fieldColon: {
+    width: 8,
+    color: '#3E2723',
+  },
+
   fieldValue: {
     flex: 1,
     color: '#3E2723',
-    fontWeight: 400,
   },
+
+  /* Image */
   imageWrapper: {
     position: 'absolute',
-    top: '100px',
-    right: '45px',
-    width: '150px',
-    height: '150px',
-    display: 'flex',
+    top: 95,
+    right: 40,
+    width: 150,
+    height: 150,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  goldenRingFrame: {
+
+  goldenRing: {
     position: 'absolute',
-    width: '150px',
-    height: '150px',
-    zIndex: 2,
+    width: 150,
+    height: 150,
   },
-  profileImageContainer: {
-    position: 'absolute',
-    width: '120px',
-    height: '120px',
-    borderRadius: '100px',
+
+  profileContainer: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
     overflow: 'hidden',
-    backgroundColor: '#FFF',
-    zIndex: 1,
+    backgroundColor: '#FFFFFF',
   },
+
   profileImage: {
-    width: '120px',
-    height: '120px',
+    width: 120,
+    height: 120,
     objectFit: 'cover',
   },
+
+  /* Footer */
   footer: {
     position: 'absolute',
-    bottom: '24px',
-    left: '0',
-    right: '0',
-    fontSize: '8px',
-    color: '#8B6914',
+    bottom: 24,
+    left: 0,
+    right: 0,
+    fontSize: 8,
     textAlign: 'center',
+    color: '#8B6914',
     fontStyle: 'italic',
   },
-  decorativeCorner: {
-    position: 'absolute',
-    width: '40px',
-    height: '40px',
-    opacity: 0.3,
-  },
-  topLeftCorner: {
-    top: '32px',
-    left: '32px',
-  },
-  topRightCorner: {
-    top: '32px',
-    right: '32px',
-  },
-  bottomLeftCorner: {
-    bottom: '32px',
-    left: '32px',
-  },
-  bottomRightCorner: {
-    bottom: '32px',
-    right: '32px',
-  },
+
+  /* Watermark */
   watermark: {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    fontSize: '50px',
-    color: '#DAA520',
+    fontSize: 48,
     fontWeight: 700,
+    color: '#DAA520',
     opacity: 0.05,
     transform: 'translate(-50%, -50%) rotate(-35deg)',
   },
 });
 
-const TraditionalTemplate = (props) => {
-  const [personalDetail, setPersonalDetail] = useState({
-    fullName: '',
-    dateOfBirth: '',
-    placeOfBirth: '',
-    timeOfBirth: '',
-  });
+/* -------------------- Component -------------------- */
 
-  useEffect(() => {
-    let fullName = '';
-    let dateOfBirth = '';
-    let placeOfBirth = '';
-    let timeOfBirth = '';
-    props.data.forEach((data) => {
-      if (data.title === 'Personal Details') {
-        data.data.forEach((field) => {
-          if (field.label === 'Full Name') {
-            fullName = field.value;
-          }
-          if (field.label === 'Date Of Birth') {
-            dateOfBirth = field.value;
-          }
-          if (field.label === 'Place Of Birth') {
-            placeOfBirth = field.value;
-          }
-          if (field.label === 'Time Of Birth') {
-            timeOfBirth = field.value;
-          }
-        });
-      }
-    });
-    setPersonalDetail({
-      fullName,
-      dateOfBirth,
-      placeOfBirth,
-      timeOfBirth,
-    });
-  }, [props.data]);
-
-  const renderSection = (sectionData) => {
-    if (!sectionData || !sectionData.data) return null;
-
-    const hasContent = sectionData.data.some((field) => field.value.length > 0);
-    if (!hasContent) return null;
+const TraditionalTemplate = ({ data = [], image }) => {
+  const renderSection = (section) => {
+    if (!section?.data?.some((f) => f.value)) return null;
 
     return (
       <View>
-        <Text style={styles.sectionTitle}>{sectionData.title}</Text>
-        <View style={styles.fieldsWrapper}>
-          {sectionData.data.map(
-            (field, index) =>
-              field.value.length > 0 && (
-                <View key={index} style={styles.fieldRow}>
-                  <Text style={styles.fieldLabel}>{field.label}</Text>
-                  <Text style={styles.fieldColon}>:</Text>
-                  <Text style={styles.fieldValue}>{field.value}</Text>
-                </View>
-              )
-          )}
-        </View>
+        <Text style={styles.sectionTitle}>{section.title}</Text>
+        {section.data.map(
+          (field, idx) =>
+            field.value && (
+              <View key={idx} style={styles.fieldRow}>
+                <Text style={styles.fieldLabel}>{field.label}</Text>
+                <Text style={styles.fieldColon}>:</Text>
+                <Text style={styles.fieldValue}>{field.value}</Text>
+              </View>
+            )
+        )}
       </View>
     );
   };
@@ -258,13 +191,11 @@ const TraditionalTemplate = (props) => {
     <Document>
       <Page size="A4" style={styles.page}>
         {/* Borders */}
-        <View style={styles.border} />
+        <View style={styles.outerBorder} />
         <View style={styles.innerBorder} />
 
         {/* Watermark */}
-        <View style={styles.watermark}>
-          <Text>SHADI BIODATA</Text>
-        </View>
+        <Text style={styles.watermark}>SHADI BIODATA</Text>
 
         {/* Header */}
         <View style={styles.header}>
@@ -272,31 +203,24 @@ const TraditionalTemplate = (props) => {
         </View>
 
         {/* Profile Image */}
-        {props.image && (
+        {image && (
           <View style={styles.imageWrapper}>
-            <View style={styles.profileImageContainer}>
-              <Image style={styles.profileImage} src={props.image} />
+            <Image src={goldenRing} style={styles.goldenRing} />
+            <View style={styles.profileContainer}>
+              <Image src={image} style={styles.profileImage} />
             </View>
-            <Image style={styles.goldenRingFrame} src={goldenRing} />
           </View>
         )}
 
         {/* Content */}
-        <View
-          style={{
-            paddingRight: props.image ? '160px' : '0',
-            paddingLeft: '12px',
-          }}
-        >
-          {props.data.map((section, index) => (
+        <View style={{ paddingRight: image ? 180 : 0 }}>
+          {data.map((section, index) => (
             <View key={index}>{renderSection(section)}</View>
           ))}
         </View>
 
         {/* Footer */}
-        <View style={styles.footer}>
-          <Text>Created with Love at shadibiodata.com</Text>
-        </View>
+        <Text style={styles.footer}>Created with Love at shadibiodata.com</Text>
       </Page>
     </Document>
   );

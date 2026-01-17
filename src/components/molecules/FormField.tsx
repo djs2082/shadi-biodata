@@ -8,6 +8,7 @@ import {
   InputLabel,
   Tooltip,
   FormHelperText,
+  InputAdornment,
 } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -25,6 +26,7 @@ interface FormFieldProps {
   onBlur?: () => void;
   error?: boolean;
   errorText?: string;
+  endAdornment?: React.ReactNode;
 }
 
 const FormField: React.FC<FormFieldProps> = ({
@@ -38,6 +40,7 @@ const FormField: React.FC<FormFieldProps> = ({
   value,
   error,
   errorText,
+  endAdornment,
 }) => {
   const { t } = useLanguage();
   const formFieldKey = key || uuidv4();
@@ -79,6 +82,7 @@ const FormField: React.FC<FormFieldProps> = ({
             onChange={onChange}
             onBlur={onBlur}
             error={error}
+            endAdornment={endAdornment}
           />
           {error && <FormHelperText error>{errorText}</FormHelperText>}
         </FormControl>
