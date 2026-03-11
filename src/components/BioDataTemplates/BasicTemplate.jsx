@@ -11,7 +11,6 @@ import React, { useState, useEffect } from 'react';
 
 import cornerBottomFlower from './images/corner_bottom_flower.jpeg';
 import cornerRangoli from './images/corner_rangoli.jpeg';
-import Tags from './tags';
 
 // Register Google Fonts for PDF rendering
 Font.register({
@@ -34,6 +33,11 @@ Font.register({
       fontWeight: 700,
     },
   ],
+});
+
+Font.register({
+  family: 'NotoSansDevanagari',
+  src: 'https://cdn.jsdelivr.net/npm/@expo-google-fonts/noto-sans-devanagari@0.2.3/NotoSansDevanagari_400Regular.ttf',
 });
 
 const styles = StyleSheet.create({
@@ -62,33 +66,44 @@ const styles = StyleSheet.create({
   headerWrapper: {
     display: 'flex',
     flexDirection: 'row',
-    // justifyContent: "flex-start",
-    // alignItems: "flex-start",
+    alignItems: 'center',
     width: '100%',
+    marginBottom: 10,
     header: {
-      width: 'calc(100% - 320px)',
+      flex: 1,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop: '20px',
+      paddingVertical: 20,
       text: {
-        margin: 4,
+        marginVertical: 3,
         textAlign: 'center',
       },
       name: {
-        fontSize: '30px',
-        fontWeight: '700',
+        fontFamily: 'Roboto',
+        fontSize: 28,
+        fontWeight: 700,
         textAlign: 'center',
-        marginBottom: '4px',
+        marginBottom: 8,
+        color: '#2c1810',
+      },
+      detail: {
+        fontSize: 14,
+        fontWeight: 400,
+        textAlign: 'center',
+        color: '#8B4513',
+        marginVertical: 2,
       },
     },
     profileImageWrapper: {
-      width: '240px',
+      width: 200,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       profileImage: {
-        width: '200px',
-        height: '280px',
-        margin: '0 12px',
+        width: 180,
+        height: 240,
       },
     },
   },
@@ -181,6 +196,12 @@ const styles = StyleSheet.create({
     bottom: '20',
     right: '20',
   },
+  ganeshText: {
+    fontFamily: 'NotoSansDevanagari',
+    fontSize: 18,
+    color: '#8B4513',
+    fontWeight: 700,
+  },
 });
 
 const BasicTemplate = (props) => {
@@ -267,22 +288,13 @@ const BasicTemplate = (props) => {
             </View>
           )}
           <View style={styles.headerWrapper.header}>
-            <Text
-              style={{
-                ...styles.headerWrapper.header.text,
-                ...styles.headerWrapper.header.name,
-              }}
-            >
+            <Text style={styles.headerWrapper.header.name}>
               {personalDetail.fullName}
             </Text>
-            <Text
-              style={{ ...styles.headerWrapper.header.text, ...Tags.paragraph }}
-            >
+            <Text style={styles.headerWrapper.header.detail}>
               Date Of Birth : {personalDetail.dateOfBirth}
             </Text>
-            <Text
-              style={{ ...styles.headerWrapper.header.text, ...Tags.paragraph }}
-            >
+            <Text style={styles.headerWrapper.header.detail}>
               Place Of Birth : {personalDetail.placeOfBirth}
             </Text>
           </View>
@@ -302,7 +314,9 @@ const BasicTemplate = (props) => {
           />
         </View>
         <View fixed>
-          <Text style={styles.title}>ॐ श्री गणेशाय नमः</Text>
+          <Text style={{ ...styles.title, ...styles.ganeshText }}>
+            ॐ श्री गणेशाय नमः
+          </Text>
         </View>
         {createPersonalDetailsPage(props.data[0])}
         {getPageUI(props.data[1])}

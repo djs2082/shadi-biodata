@@ -15,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .navbar-logo h3 {
@@ -25,6 +26,7 @@
 
 .navbar-logo {
   text-decoration: none;
+  z-index: 1001;
 }
 
 .navbar-links {
@@ -41,4 +43,92 @@
 
 .navbar-link:hover {
   color: var(--color-primary);
+}
+
+/* Hamburger Menu Button */
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.navbar-hamburger span {
+  width: 28px;
+  height: 3px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburger Animation */
+.navbar-hamburger span.active:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-hamburger span.active:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-hamburger span.active:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    padding: 1rem;
+  }
+
+  .navbar-logo h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Show hamburger menu */
+  .navbar-hamburger {
+    display: flex;
+  }
+
+  /* Hide navigation links by default on mobile */
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--box-shadow);
+    padding: 0;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  /* Show navigation links when active */
+  .navbar-links.active {
+    max-height: 400px;
+    padding: 1rem 0;
+  }
+
+  .navbar-link {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .navbar-link:last-child {
+    border-bottom: none;
+  }
+
+  .navbar-link:hover {
+    background: var(--color-background-light, #f8fafc);
+  }
 }

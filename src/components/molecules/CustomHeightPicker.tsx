@@ -3,7 +3,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HeightIcon from '@mui/icons-material/Height';
-import { IconButton } from '@mui/material';
+import { IconButton, useMediaQuery, useTheme } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import './CustomHeightPicker.scss';
 
@@ -33,6 +33,8 @@ const CustomHeightPicker: React.FC<CustomHeightPickerProps> = ({
   errorText,
 }) => {
   const formFieldKey = key || uuidv4();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [isOpen, setIsOpen] = useState(false);
   const [unit, setUnit] = useState<HeightUnit>('cm');
   const [tempCm, setTempCm] = useState('170');
@@ -270,17 +272,17 @@ const CustomHeightPicker: React.FC<CustomHeightPickerProps> = ({
       </div>
 
       <div className="form-move-arrows">
-        <IconButton onClick={() => onFieldMove('up')}>
-          <ArrowDropUpIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('up')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropUpIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
-        <IconButton onClick={() => onFieldMove('down')}>
-          <ArrowDropDownIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('down')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropDownIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
       </div>
 
       <div className="form-field-delete-icon">
-        <IconButton onClick={onDelete}>
-          <DeleteIcon fontSize="large" sx={{ color: 'rgb(235, 119, 117)' }} />
+        <IconButton onClick={onDelete} size={isMobile ? 'small' : 'medium'}>
+          <DeleteIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: 'rgb(235, 119, 117)' }} />
         </IconButton>
       </div>
     </div>

@@ -7,7 +7,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import { IconButton, Tooltip } from '@mui/material';
+import { IconButton, Tooltip, useMediaQuery, useTheme } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import './CustomDatePicker.scss';
 
@@ -44,6 +44,8 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   errorText,
 }) => {
   const formFieldKey = key || uuidv4();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [isOpen, setIsOpen] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -395,17 +397,18 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
       </div>
 
       <div className="form-move-arrows">
-        <IconButton onClick={() => onFieldMove('up')}>
-          <ArrowDropUpIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('up')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropUpIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
-        <IconButton onClick={() => onFieldMove('down')}>
-          <ArrowDropDownIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('down')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropDownIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
       </div>
 
       <div className="form-field-delete-icon">
         <Tooltip title={required ? 'Cannot Delete Required Field' : null} arrow>
           <IconButton
+            size={isMobile ? 'small' : 'medium'}
             sx={{
               cursor: required ? 'not-allowed' : 'pointer',
               '&.Mui-disabled': {
@@ -414,7 +417,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
             }}
             onClick={() => (required ? '' : onDelete())}
           >
-            <DeleteIcon fontSize="large" sx={{ color: 'rgb(235, 119, 117)' }} />
+            <DeleteIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: 'rgb(235, 119, 117)' }} />
           </IconButton>
         </Tooltip>
       </div>

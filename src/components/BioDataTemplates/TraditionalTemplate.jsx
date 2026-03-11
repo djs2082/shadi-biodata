@@ -76,11 +76,11 @@ const styles = StyleSheet.create({
 
   /* Section */
   sectionTitle: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: 700,
     color: '#5B2C0D',
-    marginTop: 14,
-    marginBottom: 6,
+    marginTop: 16,
+    marginBottom: 8,
     borderBottom: '2 solid #B8860B',
     paddingBottom: 4,
     textTransform: 'uppercase',
@@ -89,17 +89,18 @@ const styles = StyleSheet.create({
   fieldRow: {
     flexDirection: 'row',
     fontSize: 10,
-    marginBottom: 4,
+    marginBottom: 5,
+    paddingLeft: 4,
   },
 
   fieldLabel: {
-    width: 140,
+    width: 120,
     fontWeight: 700,
     color: '#3E2723',
   },
 
   fieldColon: {
-    width: 8,
+    width: 10,
     color: '#3E2723',
   },
 
@@ -111,32 +112,31 @@ const styles = StyleSheet.create({
   /* Image */
   imageWrapper: {
     position: 'absolute',
-    top: 95,
-    right: 40,
-    width: 150,
-    height: 150,
+    top: 85,
+    right: 35,
+    width: 170,
+    height: 170,
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   goldenRing: {
     position: 'absolute',
-    width: 150,
-    height: 150,
+    width: 170,
+    height: 170,
   },
 
   profileContainer: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 135,
+    height: 135,
+    borderRadius: 68,
     overflow: 'hidden',
     backgroundColor: '#FFFFFF',
   },
 
   profileImage: {
-    width: 120,
-    height: 120,
-    objectFit: 'cover',
+    width: 135,
+    height: 170,
   },
 
   /* Footer */
@@ -213,7 +213,7 @@ const TraditionalTemplate = ({ data = [], image }) => {
         )}
 
         {/* Content */}
-        <View style={{ paddingRight: image ? 180 : 0 }}>
+        <View style={{ paddingLeft: 12, paddingRight: image ? 190 : 12 }}>
           {data.map((section, index) => (
             <View key={index}>{renderSection(section)}</View>
           ))}

@@ -8,6 +8,8 @@ import Home from './components/Home';
 import LandingPage from './components/LandingPage';
 import TemplateSelection from './components/TemplateSelection';
 import DefaultLayout from './components/organisms/DefaultLayout';
+import PaymentStatus from './pages/PaymentStatus';
+import Terms from './pages/Terms';
 import { LanguageProvider } from './contexts/LanguageContext';
 import './i18n/config';
 
@@ -19,6 +21,7 @@ const App: React.FC = () => {
           {/* Routes WITH layout */}
           <Route element={<DefaultLayout />}>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="/form" element={<Home />} />
             <Route path="/sandbox" element={<BioDataTemplates />} />
           </Route>
@@ -26,6 +29,7 @@ const App: React.FC = () => {
           {/* Routes WITHOUT layout (PDF viewer and template selection) */}
           <Route path="/select-template" element={<TemplateSelection />} />
           <Route path="/template/:template_name" element={<TemplatesSandBox />} />
+          <Route path="/payment-status" element={<PaymentStatus />} />
         </Routes>
       </Router>
     </LanguageProvider>

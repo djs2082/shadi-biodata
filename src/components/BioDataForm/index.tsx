@@ -10,7 +10,6 @@ import imageFrame from '../BioDataTemplates/images/imageFrame.png';
 
 import AddImage from './components/AddImage';
 import FormGroup from './components/FormGroup';
-import MobileAddImage from './components/MobileAddImage';
 import LanguageSelector from '../molecules/LanguageSelector';
 import './index.scss';
 
@@ -26,6 +25,7 @@ const BioDataForm = () => {
   } = useFormData();
 
   const isMobile = useIsMobile();
+  const isTranslationEnabled = import.meta.env.VITE_ENABLE_TRANSLATION === 'true';
 
   const [params] = useSearchParams();
   const isDev = params.get('dev');
@@ -50,12 +50,20 @@ const BioDataForm = () => {
     <>
       <div ref={targetDevRef} className="biodata-form-outer-wrapper">
         <img className="design-image-left" src={imageFrame} alt="" />
-        {isMobile && <MobileAddImage />}
         <div className="biodata-form-wrapper">
-          <div className="biodata-fields-wrapper">
-            <div className="language-selector-container">
-              <LanguageSelector />
+          {/* Mobile: Image upload at top */}
+          {isMobile && (
+            <div className="mobile-image-section">
+              <AddImage />
             </div>
+          )}
+
+          <div className="biodata-fields-wrapper">
+            {isTranslationEnabled && (
+              <div className="language-selector-container">
+                <LanguageSelector />
+              </div>
+            )}
             <FormGroup />
             <div className="biodata-form-buttons-wrpper">
               <PrimaryButton onClick={handleSubmit}>{t('buttons.submit')}</PrimaryButton>
@@ -64,6 +72,8 @@ const BioDataForm = () => {
               </SecondaryButton>
             </div>
           </div>
+
+          {/* Desktop: Image upload on right */}
           {!isMobile && <AddImage />}
         </div>
       </div>

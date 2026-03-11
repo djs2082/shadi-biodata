@@ -7,7 +7,7 @@ import {
   Font,
   Image,
 } from '@react-pdf/renderer';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // Register Google Fonts for PDF rendering
 Font.register({
@@ -32,73 +32,83 @@ Font.register({
   ],
 });
 
+Font.register({
+  family: 'NotoSansDevanagari',
+  src: 'https://cdn.jsdelivr.net/npm/@expo-google-fonts/noto-sans-devanagari@0.2.3/NotoSansDevanagari_400Regular.ttf',
+});
+
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Roboto',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#FFFFFF',
-    padding: '30px',
-    border: '12px solid #B8860B',
-    borderRadius: '8px',
+    backgroundColor: '#FFFDF8',
+    padding: 28,
+    position: 'relative',
+  },
+  outerBorder: {
+    position: 'absolute',
+    top: 14,
+    left: 14,
+    right: 14,
+    bottom: 14,
+    border: '4px solid #B8860B',
   },
   decorativeBorder: {
     position: 'absolute',
-    top: '20px',
-    left: '20px',
-    right: '20px',
-    bottom: '20px',
-    borderWidth: '3px',
-    borderColor: '#DAA520',
-    borderStyle: 'solid',
-    borderRadius: '4px',
+    top: 20,
+    left: 20,
+    right: 20,
+    bottom: 20,
+    border: '1px solid #DAA520',
   },
   title: {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '26px',
+    fontSize: 20,
     textAlign: 'center',
-    marginBottom: '30px',
-    marginTop: '20px',
-    color: '#B8860B',
-    fontFamily: 'Roboto',
+    marginBottom: 25,
+    marginTop: 15,
+    color: '#8B4513',
+    fontFamily: 'NotoSansDevanagari',
     fontWeight: 700,
   },
   headerWrapper: {
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
-    marginBottom: '30px',
+    marginBottom: 25,
+    alignItems: 'center',
     header: {
       flex: 1,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
-      paddingLeft: '40px',
+      paddingLeft: 30,
       justifyContent: 'center',
       text: {
-        margin: 4,
-        fontSize: '14px',
-        color: '#333',
+        marginVertical: 3,
+        fontSize: 13,
+        color: '#555',
       },
       name: {
-        fontSize: '24px',
-        fontWeight: '700',
-        color: '#000',
-        marginBottom: '8px',
+        fontSize: 22,
+        fontWeight: 700,
+        color: '#3E2723',
+        marginBottom: 10,
       },
     },
     profileImageWrapper: {
-      width: '280px',
+      width: 220,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      paddingRight: '40px',
+      paddingRight: 30,
       profileImage: {
-        width: '200px',
-        height: '286px',
+        width: 160,
+        height: 200,
         border: '3px solid #DAA520',
       },
     },
@@ -106,77 +116,81 @@ const styles = StyleSheet.create({
   body: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    marginHorizontal: 'auto',
+    alignItems: 'flex-start',
     width: '100%',
-    paddingHorizontal: '40px',
+    paddingHorizontal: 30,
     sectionHeader: {
       backgroundColor: '#FFFFFF',
-      color: '#B8860B',
-      fontSize: '18px',
-      fontWeight: '700',
-      textAlign: 'center',
+      color: '#5B2C0D',
+      fontSize: 14,
+      fontWeight: 700,
+      textAlign: 'left',
       width: '100%',
-      marginTop: '25px',
-      marginBottom: '20px',
-      paddingVertical: '10px',
+      marginTop: 20,
+      marginBottom: 12,
+      paddingBottom: 6,
       borderBottom: '2px solid #DAA520',
+      textTransform: 'uppercase',
     },
     fieldsWrapper: {
       display: 'flex',
       flexDirection: 'column',
-      fontSize: '14px',
+      fontSize: 12,
       width: '100%',
     },
     fieldsContainer: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-start',
-      marginBottom: '12px',
+      marginBottom: 8,
+      paddingLeft: 8,
       width: '100%',
       label: {
-        fontWeight: '500',
-        width: '45%',
+        fontWeight: 700,
+        width: '35%',
         textAlign: 'left',
-        color: '#555',
+        color: '#3E2723',
       },
       colon: {
         width: '5%',
         textAlign: 'center',
-        color: '#555',
+        color: '#3E2723',
       },
       value: {
-        fontWeight: '400',
-        width: '50%',
+        fontWeight: 400,
+        width: '60%',
         textAlign: 'left',
-        color: '#000',
+        color: '#3E2723',
       },
     },
   },
   decorativeCorner: {
     position: 'absolute',
-    top: '10px',
-    left: '10px',
-    width: '60px',
-    height: '60px',
-    borderTop: '4px solid #DAA520',
-    borderLeft: '4px solid #DAA520',
+    top: 8,
+    left: 8,
+    width: 40,
+    height: 40,
+    borderTop: '3px solid #B8860B',
+    borderLeft: '3px solid #B8860B',
   },
   decorativeCornerBottomRight: {
     position: 'absolute',
-    bottom: '10px',
-    right: '10px',
-    width: '60px',
-    height: '60px',
-    borderBottom: '4px solid #DAA520',
-    borderRight: '4px solid #DAA520',
+    bottom: 8,
+    right: 8,
+    width: 40,
+    height: 40,
+    borderBottom: '3px solid #B8860B',
+    borderRight: '3px solid #B8860B',
   },
   branding: {
-    fontSize: '12',
-    color: '#999',
+    fontSize: 8,
+    color: '#8B6914',
+    fontStyle: 'italic',
     position: 'absolute',
-    bottom: '40',
-    right: '40',
+    bottom: 24,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
   },
 });
 
@@ -264,8 +278,15 @@ const GoldenBorderTemplate = (props) => {
     return (
       <>
         <View style={styles.headerWrapper}>
+          {props.image && (
+            <View style={styles.headerWrapper.profileImageWrapper}>
+              <Image
+                style={styles.headerWrapper.profileImageWrapper.profileImage}
+                src={props.image}
+              />
+            </View>
+          )}
           <View style={styles.headerWrapper.header}>
-            <Text style={styles.body.sectionHeader}>PERSONAL DETAILS</Text>
             <Text style={styles.headerWrapper.header.name}>
               {personalDetail.fullName}
             </Text>
@@ -281,14 +302,6 @@ const GoldenBorderTemplate = (props) => {
               Place of Birth: {personalDetail.placeOfBirth}
             </Text>
           </View>
-          {props.image && (
-            <View style={styles.headerWrapper.profileImageWrapper}>
-              <Image
-                style={styles.headerWrapper.profileImageWrapper.profileImage}
-                src={props.image}
-              />
-            </View>
-          )}
         </View>
         {getPageUI(personalDetails)}
       </>
@@ -297,16 +310,22 @@ const GoldenBorderTemplate = (props) => {
 
   return (
     <Document>
-      <Page size="A3" style={styles.page}>
+      <Page size="A4" style={styles.page}>
+        {/* Borders */}
+        <View fixed style={styles.outerBorder} />
         <View fixed style={styles.decorativeBorder} />
         <View fixed style={styles.decorativeCorner} />
         <View fixed style={styles.decorativeCornerBottomRight} />
-        <View fixed>
-          <Text style={styles.title}>ॐ श्री गणेशाय नमः</Text>
+
+        {/* Header */}
+        <View fixed style={{ alignItems: 'center', marginBottom: 12 }}>
+          <Text style={styles.title}>|| श्री गणेशाय नमः ||</Text>
         </View>
+
         {createPersonalDetailsPage(props.data[0])}
         {getPageUI(props.data[1])}
         {getPageUI(props.data[2])}
+
         <View style={styles.branding} fixed>
           <Text>www.shadibiodata.com</Text>
         </View>

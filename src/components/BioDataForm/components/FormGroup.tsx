@@ -124,12 +124,18 @@ const FormGroup: React.FC = () => {
 
   const { currentLanguage, t, translateDynamic } = useLanguage();
 
+  // Feature flag for translation
+  const isTranslationEnabled = import.meta.env.VITE_ENABLE_TRANSLATION === 'true';
+
   // Store original English values to prevent translation degradation
   // Key format: "groupId-fieldId"
   const originalValuesRef = useRef<Record<string, string>>({});
 
   // Track previous language to detect changes
   const previousLanguageRef = useRef(currentLanguage);
+
+  // Track if we're currently translating to prevent infinite loops
+  const isTranslatingRef = useRef(false);
 
   // Track which fields should remain in English (not auto-translated)
   // Key format: "groupId-fieldId", value: true means keep in English
@@ -171,7 +177,8 @@ const FormGroup: React.FC = () => {
   ) => {
     console.log(groupId, fieldId, currentValue);
     const fieldKey = `${groupId}-${fieldId}`;
-    const isCurrentlyInEnglish = keepInEnglish[fieldKey];
+    // Default to true (English) when undefined
+    const isCurrentlyInEnglish = keepInEnglish[fieldKey] ?? true;
     console.log('isCurrentlyInEnglish:', isCurrentlyInEnglish);
     if (isCurrentlyInEnglish) {
       // Field is in English, translate to selected language
@@ -230,16 +237,35 @@ const FormGroup: React.FC = () => {
    */
   useEffect(() => {
     const translateAllFields = async () => {
-      // Skip if language hasn't changed or if we're switching to English
-      if (previousLanguageRef.current === currentLanguage) {
+      // Skip if translation is disabled
+      if (!isTranslationEnabled) {
         return;
       }
+
+      // Skip if we're already translating (prevents infinite loops)
+      if (isTranslatingRef.current) {
+        console.log('Already translating, skipping...');
+        return;
+      }
+
+      // Skip if language hasn't changed
+      if (previousLanguageRef.current === currentLanguage) {
+        console.log('Language unchanged, skipping...');
+        return;
+      }
+
+      console.log(`Language changed from ${previousLanguageRef.current} to ${currentLanguage}`);
+      console.log('Current data:', data);
 
       // Update previous language
       previousLanguageRef.current = currentLanguage;
 
+      // Set translating flag
+      isTranslatingRef.current = true;
+
       // If switching to English, restore original values
       if (currentLanguage === 'en') {
+        console.log('Restoring English values...');
         data.forEach((group) => {
           group.data.forEach((field) => {
             const fieldKey = `${group.id}-${field.id}`;
@@ -247,14 +273,24 @@ const FormGroup: React.FC = () => {
 
             // Only update if we have an original value and it's different
             if (originalValue && originalValue !== field.value && field.value) {
+              console.log(`Restoring ${fieldKey}: ${field.value} -> ${originalValue}`);
               updateFieldValue(group.id, field.id, originalValue);
             }
           });
         });
+        // Reset translating flag
+        isTranslatingRef.current = false;
         return;
       }
 
-      // Translate all non-empty fields to the new language
+      // Collect all fields that need translation (snapshot to avoid stale data)
+      const fieldsToTranslate: Array<{
+        groupId: number;
+        fieldId: number;
+        originalValue: string;
+      }> = [];
+
+      console.log('Collecting fields to translate...');
       for (const group of data) {
         for (const field of group.data) {
           // Skip fields that don't have text values (date, time, height, dropdown)
@@ -269,47 +305,76 @@ const FormGroup: React.FC = () => {
 
           // Skip empty fields
           if (!field.value) {
+            console.log(`Skipping empty field: ${group.id}-${field.id}`);
             continue;
           }
 
           const fieldKey = `${group.id}-${field.id}`;
 
-          // Skip fields that should remain in English
-          if (keepInEnglish[fieldKey]) {
+          // Skip fields that user explicitly wants to keep in English
+          if (keepInEnglish[fieldKey] === true) {
+            console.log(`Skipping field ${fieldKey} (marked to keep in English)`);
             continue;
           }
 
-          try {
-            // Get original English value or use current value as original
-            let originalValue = originalValuesRef.current[fieldKey];
+          // Get original English value or use current value as original
+          let originalValue = originalValuesRef.current[fieldKey];
 
-            if (!originalValue) {
-              // If we don't have original value, assume current value is in English
-              originalValue = field.value;
-              originalValuesRef.current[fieldKey] = field.value;
-            }
-
-            // Translate from English to target language
-            const translatedText = await translateDynamic(originalValue);
-
-            // Update field with translated value
-            if (translatedText && translatedText !== field.value) {
-              updateFieldValue(group.id, field.id, translatedText);
-            }
-          } catch (error) {
-            console.error(
-              `Translation failed for field ${field.label}:`,
-              error
-            );
-            // Continue with next field even if one fails
+          if (!originalValue) {
+            // If we don't have original value, assume current value is in English
+            console.log(`No original value for ${fieldKey}, using current: ${field.value}`);
+            originalValue = field.value;
+            originalValuesRef.current[fieldKey] = field.value;
           }
+
+          console.log(`Will translate ${fieldKey}: ${originalValue}`);
+          fieldsToTranslate.push({
+            groupId: group.id,
+            fieldId: field.id,
+            originalValue,
+          });
         }
       }
+
+      console.log(`Total fields to translate: ${fieldsToTranslate.length}`);
+
+      // Translate all fields in parallel to avoid stale data issues
+      const translationPromises = fieldsToTranslate.map(async (fieldInfo) => {
+        try {
+          const translatedText = await translateDynamic(fieldInfo.originalValue);
+          console.log(`Translated ${fieldInfo.groupId}-${fieldInfo.fieldId}: ${translatedText}`);
+          return {
+            ...fieldInfo,
+            translatedText,
+          };
+        } catch (error) {
+          console.error(
+            `Translation failed for field ${fieldInfo.groupId}-${fieldInfo.fieldId}:`,
+            error
+          );
+          return null;
+        }
+      });
+
+      const translationResults = await Promise.all(translationPromises);
+
+      // Update all fields with translated values
+      console.log('Updating fields with translations...');
+      for (const result of translationResults) {
+        if (result && result.translatedText) {
+          console.log(`Updating ${result.groupId}-${result.fieldId} to: ${result.translatedText}`);
+          updateFieldValue(result.groupId, result.fieldId, result.translatedText);
+        }
+      }
+
+      // Reset translating flag after all updates
+      console.log('Translation complete, resetting flag');
+      isTranslatingRef.current = false;
     };
 
     translateAllFields();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentLanguage]);
+  }, [currentLanguage, data]);
 
   /**
    * Get language name from supported languages
@@ -322,8 +387,14 @@ const FormGroup: React.FC = () => {
    * Create translate icon button for field
    */
   const createTranslateAdornment = (groupId: number, fieldId: number) => {
+    // Don't show translate button if translation is disabled
+    if (!isTranslationEnabled) {
+      return undefined;
+    }
+
     const fieldKey = `${groupId}-${fieldId}`;
-    const isInEnglish = keepInEnglish[fieldKey];
+    // Default to true (English) when undefined
+    const isInEnglish = keepInEnglish[fieldKey] ?? true;
     const field = data
       .find((g) => g.id === groupId)
       ?.data.find((f) => f.id === fieldId);
@@ -450,7 +521,7 @@ const FormGroup: React.FC = () => {
 
   return (
     <div className="biodata-fields-wrapper biodata-group-wrapper">
-      <LanguageInputInstruction currentLanguage={currentLanguage} />
+      {/* <LanguageInputInstruction currentLanguage={currentLanguage} /> */}
       {data.map((group) => {
         const translatedTitle = getTranslatedLabel(group.title);
 

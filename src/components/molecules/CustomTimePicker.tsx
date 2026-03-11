@@ -8,7 +8,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { IconButton, Tooltip } from '@mui/material';
+import { IconButton, Tooltip, useMediaQuery, useTheme } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../contexts/LanguageContext';
 import './CustomTimePicker.scss';
@@ -38,6 +38,8 @@ const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
 }) => {
   const { t } = useLanguage();
   const formFieldKey = key || uuidv4();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [isOpen, setIsOpen] = useState(false);
   const [tempHour, setTempHour] = useState('12');
   const [tempMinute, setTempMinute] = useState('00');
@@ -272,17 +274,18 @@ const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
       </div>
 
       <div className="form-move-arrows">
-        <IconButton onClick={() => onFieldMove('up')}>
-          <ArrowDropUpIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('up')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropUpIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
-        <IconButton onClick={() => onFieldMove('down')}>
-          <ArrowDropDownIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('down')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropDownIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
       </div>
 
       <div className="form-field-delete-icon">
         <Tooltip title={required ? t('form.cannotDeleteRequired') : ''} arrow>
           <IconButton
+            size={isMobile ? 'small' : 'medium'}
             sx={{
               cursor: required ? 'not-allowed' : 'pointer',
               '&.Mui-disabled': {
@@ -291,7 +294,7 @@ const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
             }}
             onClick={() => (required ? '' : onDelete())}
           >
-            <DeleteIcon fontSize="large" sx={{ color: 'rgb(235, 119, 117)' }} />
+            <DeleteIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: 'rgb(235, 119, 117)' }} />
           </IconButton>
         </Tooltip>
       </div>

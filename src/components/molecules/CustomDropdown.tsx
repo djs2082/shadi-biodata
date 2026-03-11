@@ -3,7 +3,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { IconButton, Tooltip } from '@mui/material';
+import { IconButton, Tooltip, useMediaQuery, useTheme } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../contexts/LanguageContext';
 import './CustomDropdown.scss';
@@ -37,6 +37,8 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 }) => {
   const { t } = useLanguage();
   const formFieldKey = key || uuidv4();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const defaultPlaceholder = placeholder || t('form.selectOption');
@@ -135,17 +137,17 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
       </div>
 
       <div className="form-move-arrows">
-        <IconButton onClick={() => onFieldMove('up')}>
-          <ArrowDropUpIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('up')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropUpIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
-        <IconButton onClick={() => onFieldMove('down')}>
-          <ArrowDropDownIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('down')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropDownIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
       </div>
 
       <div className="form-field-delete-icon">
-        <IconButton onClick={onDelete}>
-          <DeleteIcon fontSize="large" sx={{ color: 'rgb(235, 119, 117)' }} />
+        <IconButton onClick={onDelete} size={isMobile ? 'small' : 'medium'}>
+          <DeleteIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: 'rgb(235, 119, 117)' }} />
         </IconButton>
       </div>
     </div>

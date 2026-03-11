@@ -9,6 +9,8 @@ import {
   Tooltip,
   FormHelperText,
   InputAdornment,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -44,10 +46,18 @@ const FormField: React.FC<FormFieldProps> = ({
 }) => {
   const { t } = useLanguage();
   const formFieldKey = key || uuidv4();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <div className="flex z-[2]">
       <div className="flex flex-col gap-2 w-full">
-        <InputLabel htmlFor="custom-text-field" sx={{ color: '#1a1e3e' }}>
+        <InputLabel
+          htmlFor="custom-text-field"
+          sx={{
+            color: '#1a1e3e',
+            fontSize: isMobile ? '1rem' : '0.875rem',
+          }}
+        >
           {`${label}${required ? ` (${t('form.required')})` : ''}`}
         </InputLabel>
         <FormControl sx={{ width: '100%' }} variant="outlined">
@@ -73,7 +83,8 @@ const FormField: React.FC<FormFieldProps> = ({
               },
               '& .MuiInputBase-input': {
                 color: '#1a1e3e',
-                padding: '14px',
+                padding: isMobile ? '16px 14px' : '14px',
+                fontSize: isMobile ? '16px' : '1rem',
                 outline: 'none',
                 boxShadow: 'none',
               },
@@ -88,16 +99,17 @@ const FormField: React.FC<FormFieldProps> = ({
         </FormControl>
       </div>
       <div className="form-move-arrows">
-        <IconButton onClick={() => onFieldMove('up')}>
-          <ArrowDropUpIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('up')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropUpIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
-        <IconButton onClick={() => onFieldMove('down')}>
-          <ArrowDropDownIcon fontSize="large" sx={{ color: '#DAA520' }} />
+        <IconButton onClick={() => onFieldMove('down')} size={isMobile ? 'small' : 'medium'}>
+          <ArrowDropDownIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: '#DAA520' }} />
         </IconButton>
       </div>
       <div className="form-field-delete-icon">
         <Tooltip title={required ? t('form.cannotDeleteRequired') : ''} arrow>
           <IconButton
+            size={isMobile ? 'small' : 'medium'}
             sx={{
               cursor: required ? 'not-allowed' : 'pointer', // Apply `not-allowed` cursor when disabled
               '&.Mui-disabled': {
@@ -106,7 +118,7 @@ const FormField: React.FC<FormFieldProps> = ({
             }}
             onClick={() => (required ? '' : onDelete())}
           >
-            <DeleteIcon fontSize="large" sx={{ color: 'rgb(235, 119, 117)' }} />
+            <DeleteIcon fontSize={isMobile ? 'medium' : 'large'} sx={{ color: 'rgb(235, 119, 117)' }} />
           </IconButton>
         </Tooltip>
       </div>

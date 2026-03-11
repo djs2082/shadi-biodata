@@ -1,0 +1,145 @@
+.payment-status-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.payment-status-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.payment-status-card.loading {
+  padding: 60px 40px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.status-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.status-icon.success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+}
+
+.status-icon.failed,
+.status-icon.error {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: white;
+}
+
+.payment-status-card h2 {
+  margin: 0 0 10px;
+  color: #333;
+  font-size: 24px;
+}
+
+.payment-status-card p {
+  color: #666;
+  margin: 0 0 30px;
+  font-size: 16px;
+}
+
+.payment-details {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 14px;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span:first-child {
+  color: #666;
+}
+
+.detail-row span:last-child {
+  color: #333;
+  font-weight: 600;
+  word-break: break-all;
+  max-width: 60%;
+  text-align: right;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.download-btn:hover {
+  box-shadow: 0 6px 20px rgba(17, 153, 142, 0.4);
+}
+
+@media (max-width: 480px) {
+  .payment-status-card {
+    padding: 30px 20px;
+  }
+
+  .status-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+
+  .payment-status-card h2 {
+    font-size: 20px;
+  }
+}

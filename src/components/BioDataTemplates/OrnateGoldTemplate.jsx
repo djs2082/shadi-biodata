@@ -34,6 +34,11 @@ Font.register({
   ],
 });
 
+Font.register({
+  family: 'NotoSansDevanagari',
+  src: 'https://cdn.jsdelivr.net/npm/@expo-google-fonts/noto-sans-devanagari@0.2.3/NotoSansDevanagari_400Regular.ttf',
+});
+
 const styles = StyleSheet.create({
   page: {
     fontFamily: 'Roboto',
@@ -41,6 +46,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#FFF9F0',
     padding: '20px',
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  ganeshText: {
+    fontFamily: 'NotoSansDevanagari',
+    fontSize: 18,
+    color: '#8B4513',
+    fontWeight: 700,
   },
   ornateHeader: {
     width: '100%',
@@ -321,8 +336,9 @@ const OrnateGoldTemplate = (props) => {
         <View fixed style={styles.ornateHeader}>
           <OrnatePattern />
         </View>
-        <View fixed>
-          <Text style={styles.title}>ॐ श्री गणेशाय नमः</Text>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.ganeshText}>|| श्री गणेशाय नमः ||</Text>
         </View>
         {createPersonalDetailsPage(props.data[0])}
         {getPageUI(props.data[1])}
