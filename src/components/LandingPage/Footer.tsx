@@ -119,7 +119,8 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         {/* Copyright */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            Copyright {currentYear} - ShadiBiodata.com. All rights reserved.
+            Copyright {currentYear} - Joshi Solutions
+            <br></br> All rights are reserved with Joshi Solutions.
           </p>
         </div>
       </div>

@@ -82,6 +82,10 @@
   }
 }
 
+.site-footer {
+  @apply text-xs text-neutral-500 py-3 text-center;
+}
+
 /* Custom utility classes */
 @layer utilities {
   .text-balance {
