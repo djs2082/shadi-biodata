@@ -9,6 +9,8 @@ import LandingPage from './components/LandingPage';
 import DefaultLayout from './components/organisms/DefaultLayout';
 import TemplateSelection from './components/TemplateSelection';
 import { LanguageProvider } from './contexts/LanguageContext';
+import Features from './pages/Features';
+import HowItWorks from './pages/HowItWorks';
 import PaymentStatus from './pages/PaymentStatus';
 import Privacy from './pages/Privacy';
 import Refund from './pages/Refund';
@@ -24,6 +26,8 @@ const App: React.FC = () => {
           <Route element={<DefaultLayout />}>
             <Route path="/" element={<LandingPage />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/features" element={<Features />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/refund" element={<Refund />} />
             <Route path="/form" element={<Home />} />

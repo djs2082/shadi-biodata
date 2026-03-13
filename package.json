@@ -35,6 +35,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "mobile": "npm run dev -- --host",
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",

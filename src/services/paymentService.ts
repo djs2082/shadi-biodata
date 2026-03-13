@@ -89,12 +89,12 @@ export async function checkPaymentStatus(
 export const BIODATA_PRICING = {
   basic: {
     name: 'Basic',
-    price: 49,
+    price: 29,
     description: 'Download your biodata in PDF format',
   },
   premium: {
     name: 'Premium',
-    price: 99,
+    price: 39,
     description: 'All templates + HD quality + No watermark',
   },
 };

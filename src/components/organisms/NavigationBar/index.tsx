@@ -40,16 +40,29 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = '' }) => {
           <Link to="/form" className="navbar-link" onClick={closeMobileMenu}>
             Create Biodata
           </Link>
-          <Link to="/sandbox" className="navbar-link" onClick={closeMobileMenu}>
+          {/* Commenting this Part as we don't want to display it on UI */}
+          {/* <Link to="/sandbox" className="navbar-link" onClick={closeMobileMenu}>
             Templates
-          </Link>
-          <a href="#features" className="navbar-link" onClick={closeMobileMenu}>
+          </Link> */}
+          <Link
+            to="/features"
+            className="navbar-link"
+            onClick={closeMobileMenu}
+          >
             Features
-          </a>
-          <a href="#how-it-works" className="navbar-link" onClick={closeMobileMenu}>
+          </Link>
+          <Link
+            to="/how-it-works"
+            className="navbar-link"
+            onClick={closeMobileMenu}
+          >
             How It Works
-          </a>
-          <a href="#testimonials" className="navbar-link" onClick={closeMobileMenu}>
+          </Link>
+          <a
+            href="#testimonials"
+            className="navbar-link"
+            onClick={closeMobileMenu}
+          >
             Reviews
           </a>
           <a href="#faq" className="navbar-link" onClick={closeMobileMenu}>
